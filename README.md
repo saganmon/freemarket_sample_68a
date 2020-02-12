@@ -24,7 +24,6 @@
 |name|string|null :false|
 |description|sgring|null :false|
 |price|integer|null :false|
-|large_categories|integer|null :false,foreign_key: true|
 |status.id|integer|null :false,foreign_key: true|
 |send_priceburden.id|integer|null :false,foreign_key: true|
 |send_selfprefecture|string|null :false|
