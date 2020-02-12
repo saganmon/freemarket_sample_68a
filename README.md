@@ -32,7 +32,8 @@
 ### Association
  - belongs_to :user
  - has_many :images
- - belongs_to :large_category
+ - has_many :products-large_categories
+ - has_many :large_categories through: :products-large_categories
  - belongs_to :statu
  - belongs_to :send_priceburden
  - belings_to :send_days
@@ -46,20 +47,32 @@
 ### Association
  - belongs_to :product
 
+
+## products-large_categories中間テーブル
+|Column|Type|Options|
+|------|----|-------|
+|products.id|integer|null :false,foreign_key: true,add_index|
+|large_categories.id|integer|null :false,foreign_key: true,add_index|
+### Association
+ - belongs_to :large_category
+ - belongs_to :midium_category
+
+
 ## large_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :products
+ - has_many :products-large_categories
+ - has_many :products through: :products-large_categories
  - has_many :large-midium_categories
  - has_many :midium_categories through: :large-midium_categories
 
 ## large-midium_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|large_categories.id|integer|null :false,foreign_key: true|
-|midium_categories.id|integer|null :false,foreign_key: true|
+|large_categories.id|integer|null :false,foreign_key: true, add_index|
+|midium_categories.id|integer|null :false,foreign_key: true, add_index|
 ### Association
  - belongs_to :large_category
  - belongs_to :midium_category
@@ -79,8 +92,8 @@
  ## midium-small_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|midium_categories.id|integer|null :false,foreign_key: true|
-|small_categories.id|integer|null :false,foreign_key: true|
+|midium_categories.id|integer|null :false,foreign_key: true, add_index|
+|small_categories.id|integer|null :false,foreign_key: true, add_index|
 ### Association
  - belong_to :midium_category
  - belong_to :small_category
@@ -95,8 +108,8 @@
  ## midium_category-sizes中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|sizes.id|integer|null :false,foreign_key: true|
-|midium_categories.id|integer|null :false,foreign_key: true|
+|sizes.id|integer|null :false,foreign_key: true, add_index|
+|midium_categories.id|integer|null :false,foreign_key: true, add_index|
 ### Association
  - belongs_to :midium_category
  - belongs_to :size
@@ -145,8 +158,8 @@
  ## send_priceburden-methods中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|send_priceburdens.id|integer|null :false,foreign_key: true|
-|send_methods.id|integer|null :false,foreign_key: true|
+|send_priceburdens.id|integer|null :false,foreign_key: true, add_index|
+|send_methods.id|integer|null :false,foreign_key: true, add_index|
 ### Association
  - belong_to :send_priceburden
  - belong_to :send_method
