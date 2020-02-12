@@ -77,3 +77,7 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'faker', "~> 2.8"
 end
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
