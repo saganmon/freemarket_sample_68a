@@ -1,0 +1,84 @@
+.wrapper
+  .sell-header
+    = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
+
+  .sell-main
+    .sell-main__image
+      出品画像
+      .sell-main__image__caution
+        最大4枚までアップロードできます
+      .sell-main__image__photos-box
+        .sell-main__image__photos-box--1
+        .sell-main__image__photos-box--2
+    .sell-main__product-name
+      .sell-main__product-name__title
+        商品名
+      %input.sell-main__product-name__box{type: 'text', placeholder: '40文字まで'}
+    .sell-main__product-description
+      .sell-main__product-description__title
+        商品の説明
+      %input.sell-main__product-description__box{type: 'text', placeholder: '商品の説明（必須 1,000文字以内）&#13;&#10;（色、素材、重さ、定価、注意点など）&#13;&#10;&#13;&#10;例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'}
+    .sell-main__product-details
+      商品の詳細
+      .sell-main__product-details__category
+        .sell-main__product-details__category__title
+          カテゴリー
+        -# .sell-main__product-details__category__lists
+        %select{name: 'category', class: 'sell-main__product-details__category__lists'}
+          %option{:value => "0"}  --
+          %option{:value => "1"} メンズ
+          %option{:value => "2"} レディース
+          %option{:value => "3"} ベビー・キッズ
+          %option{:value => "4"} インテリア・住まい・小物
+      .sell-main__product-details__brand 
+        .sell-main__product-details__brand__title
+          ブランド
+        %input.sell-main__product-details__brand__lists{type: 'text', placeholder: '例）シャネル'}
+      .sell-main__product-details__condition
+        .sell-main__product-details__condition__title
+          商品の状態
+        .sell-main__product-details__condition__lists
+    .sell-main__product-delivery
+      配送について
+      .sell-main__product-delivery__who-cares
+        .sell-main__product-delivery__who-cares__title
+          配送料の負担
+        .sell-main__product-delivery__who-cares__lists
+      .sell-main__product-delivery__where-from
+        .sell-main__product-delivery__where-from__title
+          配送元の地域
+        .sell-main__product-delivery__where-from__lists
+      .sell-main__product-delivery__how-long
+        .sell-main__product-delivery__how-long__title
+          発送までの日数
+        .sell-main__product-delivery__how-long__lists
+      .sell-main__product-price
+        価格（¥300〜9,999,999）
+      .sell-main__product-price__selling-price
+        .sell-main__product-price__selling-price__title
+          販売価格
+        .sell-main__product-price__selling-price__price
+        .sell-main__product-price__sales-commission__title
+          販売手数料（10%）
+        .sell-main__product-price__sales-commission__price
+        .sell-main__product-price__sales-profit__title
+          販売利益
+        .sell-main__product-price__sales-profit__price
+    .sell-main__sell-button
+    .sell-main__back-button
+    .sell-main__caution
+      禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+      
+  .sell-footer
+    .sell-footer__cautions
+      .sell-footer__cautions__privacy-policy
+        プライバシーポリシー
+      .sell-footer__cautions__terms-of-service
+        フリマ利用規約
+      .sell-footer__cautions__notation
+        特定商取引に関する表記
+    .sell-footer__icons
+      .sell-footer__icons--logo
+        = link_to image_tag('/material/logo/logo-white.png', width: '160'), root_path
+      .sell-footer__icons--text
+        © FURIMA
