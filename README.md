@@ -204,3 +204,4 @@
 |phone_number|string||
 ### Association
  - has_many :products
+ 
