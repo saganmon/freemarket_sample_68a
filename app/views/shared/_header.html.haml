@@ -2,7 +2,7 @@
   .header__inner
     .header__inner__main
       .header__inner__main__icon
-        = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
+        = link_to image_tag('/material/logo/logo.png', size: "100x29"), root_path
       .header__inner__main__seach
         = form_with(url: "#", local: true, method: :get, class: "header__inner__main__seach__form") do |form|
           = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__inner__main__seach__form__input"
