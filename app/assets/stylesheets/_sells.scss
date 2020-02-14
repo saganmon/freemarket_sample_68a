@@ -23,9 +23,11 @@ $font-color-blue: #0095ee;
   max-width: 700px;
   margin: 0 auto;
   &__image {
-    font-size: 14px;
-    color: $font-color-black;
     padding: 40px;
+    &__title {
+      font-size: 14px;
+      color: $font-color-black;
+    }
     &__caution {
       font-size: 14px;
       color: $font-color-gray;
@@ -34,12 +36,6 @@ $font-color-blue: #0095ee;
     &__photos-box {
       height: 150px;
       background-color: $background-color-lightgray;
-      &--1 {
-
-      }
-      &--2 {
-
-      }
     }
   }
 
