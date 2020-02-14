@@ -5,6 +5,8 @@
 .header {
   padding: 0 60px;
   display: block;
+  border-bottom: solid 0.5px black;
+  background-color: white;
 
   &__inner {
     max-width: 1040px;

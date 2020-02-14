@@ -1,0 +1,126 @@
+.wrapper
+  = render partial: 'shared/header'
+  .wrapper__main
+    .wrapper__main__list
+      %nav.wrapper__main__list__nav
+        %ul.wrapper__main__list__nav__box
+          %li.wrapper__main__list__nav__box__text
+            -# ここはリンクを貼る
+            = link_to 'マイページ','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'お知らせ','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'やることリスト','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'いいね！一覧','#'
+          %li.wrapper__main__list__nav__box__text
+            -# ここはリンクを貼る
+            = link_to '出品する','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '出品した商品-出品中','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '出品した商品-取引中','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '出品した商品-売却済','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '購入した商品-取引中','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '出品した商品-過去の取引','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'ニュース一覧','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '評価一覧','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'ガイド','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'お問い合わせ','#'
+        %h1.wrapper__main__list__nav__title メルペイ
+        %ul.wrapper__main__list__nav__box
+          %li.wrapper__main__list__nav__box__text
+            = link_to '売上・振込申請','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'ポイント','#'
+        %ul.wrapper__main__list__nav__box
+        %h1.wrapper__main__list__nav__title 設定
+        %ul.wrapper__main__list__nav__box
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'プロフィール','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '発送元・発送元・お届け先住所','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '支払い方法','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'メール/パスワード','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '本人情報','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to '電話番号の確認','#'
+          %li.wrapper__main__list__nav__box__text
+            = link_to 'ログアウト', root_path
+        %ul.wrapper__main__list__nav__box
+
+
+      
+    .wrapper__main__information
+      = link_to "#" do
+        %section.wrapper__main__information__image
+          .wrapper__main__information__image__icon
+            = image_tag("/material/icon/member_photo_noimage_thumb.png",width: "70")
+          .wrapper__main__information__image__name
+            name
+          
+      %section.wrapper__main__information__content
+        .wrapper__main__information__content__tabs
+          = link_to "#" do
+            .wrapper__main__information__content__tabs__left
+              お知らせ
+          = link_to "#" do
+            .wrapper__main__information__content__tabs__right
+              やることリスト
+            
+        %ul.wrapper__main__information__content__text1
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+        .wrapper__main__information__content__btn1
+          = link_to "#" do
+            一覧を見る
+
+        %ul.wrapper__main__information__content__text2
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+        .wrapper__main__information__content__btn2
+          = link_to "#" do
+            一覧を見る
+
+        
+      %section.wrapper__main__information__sell-list
+        .wrapper__main__information__sell-list__title
+          購入した商品
+        .wrapper__main__information__sell-list__tabs
+          = link_to "#" do
+            .wrapper__main__information__sell-list__tabs__left
+              取引中
+          = link_to "#" do
+            .wrapper__main__information__sell-list__tabs__right
+              過去の取引
+        .wrapper__main__information__sell-list__box
+          .wrapper__main__information__sell-list__box__icon
+            = image_tag('/material/logo/logo.png', width: '100')
+          .wrapper__main__information__sell-list__box__text
+            現在取引中の商品はありません
+
+  = render partial: 'shared/lower-part'

@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  root 'temporarys#index'
+  root 'mypages#index'
 end
