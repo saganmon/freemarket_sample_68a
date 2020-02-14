@@ -2,22 +2,26 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  -# .sell-main
-
   = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
-      = f.label :photos, "出品画像", class: "sell-main__image__title"
+      .sell-main__image__title
+        = f.label :photos, "出品画像", class: "sell-main__image__title--text"
+        = tag.span("必須", class: "must")
       = tag.br
       = tag.span("最大4枚までアップロードできます", class: "sell-main__image__caution")
       = tag.br
       = f.file_field(:photos, multiple: true, class: "sell-main__image__photos-box", accept: 'image/png,image/gif,image/jpeg')
     .sell-main__product-name
-      = f.label :name, "商品名", class: "sell-main__product-name__title"
+      .sell-main__product-name__title
+        = f.label :name, "商品名", class: "sell-main__product-name__title--text"
+        = tag.span("必須", class: "must")
       = tag.br
       = f.text_field :name, class:"sell-main__product-name__box", placeholder: "40文字まで"
     .sell-main__product-description
-      = f.label :discription, "商品の説明", class: "sell-main__product-description__title"
+      .sell-main__product-description__title
+        = f.label :discription, "商品の説明", class: "sell-main__product-description__title--text"
+        = tag.span("必須", class: "must")
       = tag.br
       = f.text_area :discription, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
@@ -26,7 +30,9 @@
         商品の詳細
       .sell-main__product-details__contents
         .sell-main__product-details__contents__category
-          = f.label :category, "カテゴリー", class: "sell-main__product-details__contents__category__title"
+          .sell-main__product-details__contents__category__title
+            = f.label :category, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           %select{name: 'category', class: "sell-main__product-details__contents__category__lists"}
             %option{:value => "0"} 選択してください
@@ -35,11 +41,15 @@
             %option{:value => "3"} ベビー・キッズ
             %option{:value => "4"} インテリア・住まい・小物
         .sell-main__product-details__contents__brand
-          = f.label :brand, "ブランド", class: "sell-main__product-details__contents__brand__title"
+          .sell-main__product-details__contents__brand__title
+            = f.label :brand, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           = f.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
         .sell-main__product-details__contents__condition
-          = f.label :condition, "商品の状態", class: "sell-main__product-details__contents__condition__title"
+          .sell-main__product-details__contents__condition__title
+            = f.label :condition, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           %select{name: 'condition', class: "sell-main__product-details__contents__condition__lists"}
             %option{:value => "0"} 選択してください
@@ -55,21 +65,27 @@
         配送について
       .sell-main__product-delivery__contents
         .sell-main__product-delivery__contents__who-cares
-          = f.label :whocares, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title"
+          .sell-main__product-delivery__contents__who-cares__title
+            = f.label :whocares, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           %select{name: 'whocares', class: "sell-main__product-delivery__contents__who-cares__lists"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} 送料込み(出品者負担)
             %option{:value => "2"} 着払い(購入者負担)
         .sell-main__product-delivery__contents__where-from
-          = f.label :wherefrom, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title"
+          .sell-main__product-delivery__contents__where-from__title
+            = f.label :wherefrom, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           %select{name: 'wherefrom', class: "sell-main__product-delivery__contents__where-from__lists"}
             %option{:value => "0"} 選択してください
             %option{:value => "1"} 北海道
             %option{:value => "2"} 青森県
         .sell-main__product-delivery__contents__how-long
-          = f.label :howlong, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title"
+          .sell-main__product-delivery__contents__how-long__title
+            = f.label :howlong, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
+            = tag.span("必須", class: "must")
           = tag.br
           %select{name: 'wherefrom', class: "sell-main__product-delivery__contents__how-long__lists"}
             %option{:value => "0"} 選択してください
@@ -82,7 +98,9 @@
         販売価格（¥300〜9,999,999）
       .sell-main__product-price__contents
         .sell-main__product-price__contents__selling-price
-          = f.label :name, "販売価格", class: "sell-main__product-price__contents__selling-price__title"
+          .sell-main__product-price__contents__selling-price__title
+            = f.label :name, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
+            = tag.span("必須", class: "must")
           = tag.span("¥")
           = f.text_field :name, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
         .sell-main__product-price__contents__sales-commission
@@ -91,7 +109,7 @@
         .sell-main__product-price__contents__sales-profit
           = f.label :name, "販売利益", class: "sell-main__product-price__contents__sales-profit__title"
           = tag.span("ー", class: "sell-main__product-price____contentssales-profit__price")
-
+          
     .sell-main__button
       = f.submit "出品する", class: "sell-main__button__sell"
       = tag.br

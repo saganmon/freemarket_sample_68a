@@ -12,6 +12,14 @@ $font-color-blue: #0095ee;
   background-color: $background-color-lightgray;
 }
 
+.must {
+  font-size: 10px;
+  color: $font-color-white;
+  background-color: $background-color-red;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+
 .sell-header {
   height: 120px;
   text-align: center;
@@ -34,8 +42,12 @@ $font-color-blue: #0095ee;
     padding: 40px;
     border-bottom: 1px solid $font-color-gray;
     &__title {
-      font-size: 14px;
-      color: $font-color-black;
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
     }
     &__caution {
       margin-top: 16px;
@@ -54,8 +66,19 @@ $font-color-blue: #0095ee;
   &__product-name {
     padding: 40px;
     &__title {
-      font-size: 14px;
-      color: $font-color-black;
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
+      &--must {
+        font-size: 10px;
+        color: $font-color-white;
+        background-color: $background-color-red;
+        padding: 2px 5px;
+        font-weight: bold;
+      }
     }
     &__box {
       margin-top: 16px;
@@ -68,8 +91,12 @@ $font-color-blue: #0095ee;
     padding: 40px;
     border-bottom: 1px solid $font-color-gray;
     &__title {
-      font-size: 14px;
-      color: $font-color-black;  
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
     }
     &__box {
       margin-top: 16px;
@@ -90,8 +117,12 @@ $font-color-blue: #0095ee;
     &__contents {
       &__category {
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
         }
         &__lists {
           width: 400px;
@@ -101,8 +132,12 @@ $font-color-blue: #0095ee;
       &__brand {
         margin-top: 16px;
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;  
+          }
         }
         &__lists {
           width: 400px;
@@ -112,8 +147,12 @@ $font-color-blue: #0095ee;
       &__condition {
         margin-top: 16px;
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
         }
         &__lists {
           width: 400px;
@@ -135,8 +174,12 @@ $font-color-blue: #0095ee;
     &__contents {
       &__who-cares {
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;  
+          }
         }
         &__lists {
           width: 400px;
@@ -146,8 +189,12 @@ $font-color-blue: #0095ee;
       &__where-from {
         margin-top: 16px;
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
         }
         &__lists {
           width: 400px;
@@ -157,8 +204,12 @@ $font-color-blue: #0095ee;
       &__how-long {
         margin-top: 16px;
         &__title {
-          font-size: 14px;
-          color: $font-color-black;
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
         }
         &__lists {
           width: 400px;
@@ -172,12 +223,18 @@ $font-color-blue: #0095ee;
     display: flex;
     justify-content: space-between;
     &__title {
-      font-size: 14px;
-      color: $font-color-gray;
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-gray;
+        margin-right: 10px;
+      }
     }
     &__contents {
+      width: 300px;
       &__selling-price {
         display: flex;
+        justify-content: space-between;
         border-bottom: 1px solid $font-color-gray;
         &__title {
           font-size: 14px;
@@ -186,12 +243,12 @@ $font-color-blue: #0095ee;
         &__box {
           width: 150px;
           height: 48px;
+          margin-bottom: 10px;
         }
       }
-  
       &__sales-commission {
+        padding-top: 12px;
         display: flex;
-        padding: 12px;
         border-bottom: 1px solid $font-color-gray;
         &__title {
           font-size: 14px;
@@ -203,8 +260,7 @@ $font-color-blue: #0095ee;
         }
       }
       &__sales-profit {
-        margin-top: 16px;
-        padding: 12px;
+        padding-top: 12px;
         display: flex;
         border-bottom: 1px solid $font-color-gray;
         &__title {
@@ -212,7 +268,8 @@ $font-color-blue: #0095ee;
           color: $font-color-gray;
         }
         &__price {
-  
+          font-size: 14px;
+          color: $font-color-black;  
         }
       }
     }
