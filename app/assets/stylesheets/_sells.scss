@@ -32,6 +32,7 @@ $font-color-blue: #0095ee;
   }
   &__image {
     padding: 40px;
+    border-bottom: 1px solid $font-color-gray;
     &__title {
       font-size: 14px;
       color: $font-color-black;
@@ -65,6 +66,7 @@ $font-color-blue: #0095ee;
 
   &__product-description {
     padding: 40px;
+    border-bottom: 1px solid $font-color-gray;
     &__title {
       font-size: 14px;
       color: $font-color-black;  
@@ -77,125 +79,148 @@ $font-color-blue: #0095ee;
   }
 
   &__product-details {
-    &
-    font-size: 14px;
-    color: $font-color-gray;
+    display: flex;
+    justify-content: space-between;
     padding: 40px;
-    &__category {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
-      }
-      &__lists {
-        margin-top: 16px;
-        width: 620px;
-        height: 48px;  
-      }
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      font-size: 14px;
+      color: $font-color-gray;
     }
-    &__brand {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
+    &__contents {
+      &__category {
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
       }
-      &__lists {
+      &__brand {
         margin-top: 16px;
-        width: 620px;
-        height: 48px;
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
       }
-    }
-    &__condition {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
-      }
-      &__lists {
+      &__condition {
         margin-top: 16px;
-        width: 620px;
-        height: 48px;  
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
       }
     }
   }
 
   &__product-delivery {
-    font-size: 14px;
-    color: $font-color-gray;
     padding: 40px;
-    &__who-cares {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
-      }
-      &__lists {
-        margin-top: 16px;
-        width: 620px;
-        height: 48px;
-      }
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      font-size: 14px;
+      color: $font-color-gray;
     }
-    &__where-from {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
+    &__contents {
+      &__who-cares {
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
       }
-      &__lists {
+      &__where-from {
         margin-top: 16px;
-        width: 620px;
-        height: 48px;
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
       }
-    }
-    &__how-long {
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
-      }
-      &__lists {
+      &__how-long {
         margin-top: 16px;
-        width: 620px;
-        height: 48px;
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
       }
     }
   }
   &__product-price {
     padding: 40px;
-    &__selling-price {
-      display: flex;
-      &__title {
-        font-size: 14px;
-        color: $font-color-black;
+    display: flex;
+    justify-content: space-between;
+    &__title {
+      font-size: 14px;
+      color: $font-color-gray;
+    }
+    &__contents {
+      &__selling-price {
+        display: flex;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__box {
+          width: 150px;
+          height: 48px;
+        }
       }
-      &__box {
-
+  
+      &__sales-commission {
+        display: flex;
+        padding: 12px;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-gray;
+        }
+        &__price {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+      }
+      &__sales-profit {
+        margin-top: 16px;
+        padding: 12px;
+        display: flex;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-gray;
+        }
+        &__price {
+  
+        }
       }
     }
-
-    &__sales-commission {
-      display: flex;
-      padding: 12px;
-      &__title {
-        font-size: 14px;
-        color: $font-color-gray;
-      }
-      &__price {
-
-      }
-    }
-    &__sales-profit {
-      margin-top: 16px;
-      padding: 12px;
-      display: flex;
-      &__title {
-        font-size: 14px;
-        color: $font-color-gray;
-      }
-      &__price {
-
-      }
-    }
-
-
   }
   &__button {
     text-align: center;
     width: 360px;
+    padding: 40px 0px 40px 150px;
     &__sell {
       background-color: $background-color-red;
       color: $font-color-white;
@@ -203,19 +228,25 @@ $font-color-blue: #0095ee;
       min-height: 48px;
       margin-bottom: 24px;
       line-height: 48px;
+      width: 150px;
+      height: 48px;
     }
     &__back {
       background-color: $background-color-gray;
-      color: $font-color-black;  
+      width: 150px;
+      height: 48px;
+      padding: 14px 48px 14px;
       font-size: 17px;
-      min-height: 48px;
-      line-height: 48px;
+      a {
+        color: $font-color-white;  
+        line-height: 48px;
+      }
     }
   }
   &__caution {
     font-size: 12px;
     color: $font-color-gray;
-    padding-bottom: 60px;
+    padding: 40px;
     a {
       color: $font-color-blue;
     }
@@ -227,6 +258,7 @@ $font-color-blue: #0095ee;
   &__cautions {
     display: flex;
     justify-content: center;
+    padding: 20px;
     &__privacy-policy {
       font-size: 12px;
       color: $font-color-gray;
