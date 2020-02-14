@@ -5,7 +5,7 @@
   -# .sell-main
 
   = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
-    -# = f.label :post, :title "出品画像", class: "sell-main__image"
+    = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
       = f.label :photos, "出品画像", class: "sell-main__image__title"
       = tag.br
@@ -22,84 +22,71 @@
       = f.text_area :discription, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
     .sell-main__product-details
-      商品の詳細
-      .sell-main__product-details__category
-        = f.label :category, "カテゴリー", class: "sell-main__product-description__title"
+      .sell-main__product-details__title
+        商品の詳細
+      .sell-main__product-details__contents
+        .sell-main__product-details__contents__category
+          = f.label :category, "カテゴリー", class: "sell-main__product-details__category__title"
+          %select{name: 'category', class: "sell-main__product-details__category__lists"}
+            %option{:value => "0"} 選択してください
+            %option{:value => "1"} メンズ
+            %option{:value => "2"} レディース
+            %option{:value => "3"} ベビー・キッズ
+            %option{:value => "4"} インテリア・住まい・小物
+        .sell-main__product-details__contents__brand
+          = f.label :brand, "ブランド", class: "sell-main__product-details__brand__title"
+          = f.text_field :name, class:"sell-main__product-details__brand__lists", placeholder: "例）シャネル"
+        .sell-main__product-details__contents__condition
+          = f.label :condition, "商品の状態", class: "sell-main__product-details__condition__title"
+          %select{name: 'condition', class: "sell-main__product-details__condition__lists"}
+            %option{:value => "0"} 選択してください
+            %option{:value => "1"} 新品、未使用
+            %option{:value => "2"} 未使用に近い
+            %option{:value => "3"} 目立った傷や汚れなし
+            %option{:value => "4"} やや傷や汚れあり
+            %option{:value => "5"} 傷や汚れあり
+            %option{:value => "6"} 全体的に状態が悪い
 
+    .sell-main__product-delivery
+      配送について
+      .sell-main__product-delivery__who-cares
+        = f.label :whocares, "配送料の負担", class: "sell-main__product-delivery__who-cares__title"
+        %select{name: 'whocares', class: "sell-main__product-delivery__who-cares__lists"}
+          %option{:value => "0"} 選択してください
+          %option{:value => "1"} 送料込み(出品者負担)
+          %option{:value => "2"} 着払い(購入者負担)
+      .sell-main__product-delivery__where-from
+        = f.label :wherefrom, "配送元の地域", class: "sell-main__product-delivery__where-from__title"
+        %select{name: 'wherefrom', class: "sell-main__product-delivery__where-from__lists"}
+          %option{:value => "0"} 選択してください
+          %option{:value => "1"} 北海道
+          %option{:value => "2"} 青森県
+      .sell-main__product-delivery__how-long
+        = f.label :howlong, "発送までの日数", class: "sell-main__product-delivery__how-long__title"
+        %select{name: 'wherefrom', class: "sell-main__product-delivery__how-long__lists"}
+          %option{:value => "0"} 選択してください
+          %option{:value => "1"} 1~2日で発送
+          %option{:value => "2"} 2~3日で発送
+          %option{:value => "3"} 4~7日で発送
 
-    -# .sell-main__product-details
-    -#   商品の詳細
-    -#   .sell-main__product-details__category
-    -#     .sell-main__product-details__category__title
-    -#       カテゴリー
-    -#     %select{name: 'category', class: 'sell-main__product-details__category__lists'}
-    -#       %option{:value => "0"} 選択してください
-    -#       %option{:value => "1"} メンズ
-    -#       %option{:value => "2"} レディース
-    -#       %option{:value => "3"} ベビー・キッズ
-    -#       %option{:value => "4"} インテリア・住まい・小物
-    -#   .sell-main__product-details__brand 
-    -#     .sell-main__product-details__brand__title
-    -#       ブランド
-    -#     %input.sell-main__product-details__brand__lists{type: 'text', placeholder: '例）シャネル'}
-    -#   .sell-main__product-details__condition
-    -#     .sell-main__product-details__condition__title
-    -#       商品の状態
-    -#     %select{name: 'condition', class: 'sell-main__product-details__condition__lists'}
-    -#       %option{:value => "0"} 選択してください
-    -#       %option{:value => "1"} 新品、未使用
-    -#       %option{:value => "2"} 未使用に近い
-    -#       %option{:value => "3"} 目立った傷や汚れなし
-    -#       %option{:value => "4"} やや傷や汚れあり
-    -#       %option{:value => "5"} 傷や汚れあり
-    -#       %option{:value => "6"} 全体的に状態が悪い
-    -# .sell-main__product-delivery
-    -#   配送について
-    -#   .sell-main__product-delivery__who-cares
-    -#     .sell-main__product-delivery__who-cares__title
-    -#       配送料の負担
-    -#     %select{name: 'condition', class: 'sell-main__product-delivery__who-cares__lists'}
-    -#       %option{:value => "0"} 選択してください
-    -#       %option{:value => "1"} 送料込み(出品者負担)
-    -#       %option{:value => "2"} 着払い(購入者負担)
-    -#   .sell-main__product-delivery__where-from
-    -#     .sell-main__product-delivery__where-from__title
-    -#       配送元の地域
-    -#     %select{name: 'delivery-from', class: 'sell-main__product-delivery__where-from__lists'}
-    -#       %option{:value => "0"} 選択してください
-    -#       %option{:value => "1"} 北海道
-    -#       %option{:value => "2"} 青森県
-    -#   .sell-main__product-delivery__how-long
-    -#     .sell-main__product-delivery__how-long__title
-    -#       発送までの日数
-    -#     %select{name: 'derivery-days', class: 'sell-main__product-delivery__how-long__lists'}
-    -#       %option{:value => "0"} 選択してください
-    -#       %option{:value => "1"} 1~2日で発送
-    -#       %option{:value => "2"} 2~3日で発送
-    -#       %option{:value => "3"} 4~7日で発送
-    -#   .sell-main__product-price
-    -#     価格（¥300〜9,999,999）
-    -#   .sell-main__product-price__selling-price
-    -#     .sell-main__product-price__selling-price__title
-    -#       販売価格
-    -#     %input.sell-main__product-price__selling-price__box{type: 'text', placeholder: '0'}
-    -#   .sell-main__product-price__sales-commission
-    -#     .sell-main__product-price__sales-commission__title
-    -#       販売手数料（10%）
-    -#     .sell-main__product-price__sales-commission__price
-    -#       ー
-    -#   .sell-main__product-price__sales-profit
-    -#     .sell-main__product-price__sales-profit__title
-    -#       販売利益
-    -#     .sell-main__product-price__sales-profit__price
-    -#       ー
-    -# .sell-main__button
-    -#   .sell-main__button--sell
-    -#     = link_to "#" do
-    -#       出品する
-    -#   .sell-main__button--back
-    -#     = link_to "#" do
-    -#       もどる
+    .sell-main__product-price
+      価格（¥300〜9,999,999）
+      .sell-main__product-name
+        = f.label :name, "販売価格", class: "sell-main__product-price__selling-price__title"
+        = tag.span("¥")
+        = f.text_field :name, class:"sell-main__product-price__selling-price__box", placeholder: "0"
+      .sell-main__product-price__sales-commission
+        = f.label :name, "販売価格", class: "sell-main__product-price__sales-commission__title"
+        = tag.span("ー", class:"sell-main__product-price__selling-price__box")
+      .sell-main__product-price__sales-profit
+        = f.label :name, "販売利益", class: "sell-main__product-price__sales-profit__title"
+        = tag.span("ー", class: "sell-main__product-price__sales-profit__price")
+
+    .sell-main__button
+      = f.submit "出品する", class: "sell-main__button__sell"
+      = tag.br
+      = link_to "#", class: "sell-main__button--back" do
+        もどる
     .sell-main__caution
       - my_action = link_to '行為', '#'
       - my_products = link_to '出品物', '#'
@@ -107,6 +94,7 @@
       - my_swag = link_to '偽ブランド品', '#'
       - my_terms = link_to '加盟店規約', '#'
       禁止されている#{my_action}および#{my_products}を必ずご確認ください。#{my_imitation}や#{my_swag}などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして#{my_terms}に同意したことになります。
+
   .sell-footer
     .sell-footer__cautions
       .sell-footer__cautions__privacy-policy

@@ -22,6 +22,14 @@ $font-color-blue: #0095ee;
   background-color: $background-color-white;
   max-width: 700px;
   margin: 0 auto;
+  &__title {
+    height: 100px;
+    font-size: 22px;
+    color: $font-color-black;
+    line-height: 100px;
+    text-align: center;
+    border-bottom: 1px solid $font-color-gray;
+  }
   &__image {
     padding: 40px;
     &__title {
@@ -29,12 +37,15 @@ $font-color-blue: #0095ee;
       color: $font-color-black;
     }
     &__caution {
+      margin-top: 16px;
       font-size: 14px;
       color: $font-color-gray;
       margin-top: 16px;
     }
     &__photos-box {
+      margin-top: 16px;
       height: 150px;
+      width: 620px;
       background-color: $background-color-lightgray;
     }
   }
@@ -66,6 +77,7 @@ $font-color-blue: #0095ee;
   }
 
   &__product-details {
+    &
     font-size: 14px;
     color: $font-color-gray;
     padding: 40px;
@@ -184,7 +196,7 @@ $font-color-blue: #0095ee;
   &__button {
     text-align: center;
     width: 360px;
-    &--sell {
+    &__sell {
       background-color: $background-color-red;
       color: $font-color-white;
       font-size: 17px;
@@ -192,7 +204,7 @@ $font-color-blue: #0095ee;
       margin-bottom: 24px;
       line-height: 48px;
     }
-    &--back {
+    &__back {
       background-color: $background-color-gray;
       color: $font-color-black;  
       font-size: 17px;
