@@ -1,0 +1,26 @@
+.header
+  .header__inner
+    .header__inner__main
+      .header__inner__main__icon
+        = link_to image_tag('/material/logo/logo.png', size: "100x29"), root_path
+      .header__inner__main__seach
+        = form_with(url: "#", local: true, method: :get, class: "header__inner__main__seach__form") do |form|
+          = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__inner__main__seach__form__input"
+          = form.submit "", class: "header__inner__main__seach__form__btn"
+    .header__inner__nav
+      .header__inner__nav__left
+        %li.header__inner__nav__left__categorize
+          = link_to "#" do
+            カテゴリー
+          %li.header__inner__nav__left__categorize__tree
+            %li.header__inner__nav__left__categorize__tree__brancn
+        .header__inner__nav__left__burando
+          = link_to "#" do
+            ブランド
+      .header__inner__nav__right
+        .header__inner__nav__right__log-in
+          = link_to "#" do
+            ログイン
+        .header__inner__nav__right__sign-up
+          = link_to "#" do
+            新規会員登録

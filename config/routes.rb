@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'temporarys#index'
+  root 'mypages#index'
 
   resources :sells, only: [:index, :new] 
 end

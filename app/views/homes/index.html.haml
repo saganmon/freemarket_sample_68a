@@ -1,33 +1,4 @@
-.header
-  .header__inner
-    .header__inner__main
-      .header__inner__main__icon
-        = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
-      .header__inner__main__seach
-        = form_with(url: "#", local: true, method: :get, class: "header__inner__main__seach__form") do |form|
-          = form.text_field :keyword, placeholder: "キーワードから探す", class: "header__inner__main__seach__form__input"
-          = form.submit "", class: "header__inner__main__seach__form__btn"
-    .header__inner__nav
-      .header__inner__nav__left
-        %li.header__inner__nav__left__categorize
-          = link_to "#" do
-            カテゴリー
-          %li.header__inner__nav__left__categorize__tree
-            %li.header__inner__nav__left__categorize__tree__brancn
-        .header__inner__nav__left__burando
-          = link_to "#" do
-            ブランド
-      .header__inner__nav__right
-        .header__inner__nav__right__log-in
-          = link_to "#" do
-            ログイン
-        .header__inner__nav__right__sign-up
-          = link_to "#" do
-            新規会員登録
-
-
-
-
+= render partial: 'shared/header'
 
 .main
   .main__visual
@@ -40,11 +11,9 @@
           フリマアプリです
       .main__visual__inner__icon
         .main__visual__inner__icon__apple
-          = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', width: '186'), "#"
+          = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', size: "210x60"), "#"
         .main__visual__inner__icon__google
-          = link_to image_tag('/material/logo/unnamed.png', width: '200'), "#"
-
-
+          = link_to image_tag('/material/logo/unnamed.png', size: "220x60"), "#"
 
   .main__introduction
     .main__introduction__text
@@ -88,8 +57,6 @@
         .main__introduction__list__right__text
           最大3%でお得に出品&購入！
 
-
-
   .main__middle-dl
     .main__middle-dl__inner
       .main__middle-dl__inner__title
@@ -102,11 +69,9 @@
             ほしかったあの商品に出会えるかもしれません。
       .main__middle-dl__inner__icon
         .main__middle-dl__inner__icon__apple
-          = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', width: '186'), "#"
+          = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', size: "210x60"), "#"
         .main__middle-dl__inner__icon__google
-          = link_to image_tag('/material/logo/unnamed.png', width: '200'), "#"
-
-
+          = link_to image_tag('/material/logo/unnamed.png', size: "220x60"), "#"
 
   .main__features
     .main__features__text
@@ -135,10 +100,6 @@
         .main__features__img__right__text
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
-
-
-
-
   .main__pickup-categorize
     .main__pickup-categorize__title
       ピックアップカテゴリー
@@ -160,7 +121,7 @@
                 (税込)
             .main__pickup-categorize__item__left__introduction__right
               .main__pickup-categorize__item__left__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-categorize__item__left__introduction__right__num
                 0
       .main__pickup-categorize__item__center
@@ -177,7 +138,7 @@
                 (税込)
             .main__pickup-categorize__item__center__introduction__right
               .main__pickup-categorize__item__center__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-categorize__item__center__introduction__right__num
                 2
       .main__pickup-categorize__item__right
@@ -194,13 +155,9 @@
                 (税込)
             .main__pickup-categorize__item__right__introduction__right
               .main__pickup-categorize__item__right__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-categorize__item__right__introduction__right__num
                 10
-
-
-
-
 
   .main__pickup-burand
     .main__pickup-burand__title
@@ -223,7 +180,7 @@
                 (税込)
             .main__pickup-burand__item__left__introduction__right
               .main__pickup-burand__item__left__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-burand__item__left__introduction__right__num
                 34
       .main__pickup-burand__item__center
@@ -240,7 +197,7 @@
                 (税込)
             .main__pickup-burand__item__center__introduction__right
               .main__pickup-burand__item__center__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-burand__item__center__introduction__right__num
                 90
       .main__pickup-burand__item__right
@@ -257,69 +214,9 @@
                 (税込)
             .main__pickup-burand__item__right__introduction__right
               .main__pickup-burand__item__right__introduction__right__icon
-                ⭐️
+                = icon('far', 'star')
               .main__pickup-burand__item__right__introduction__right__num
                 87
 
-
-
-
-
-.banner
-  .banner__inner
-    .banner__inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    .banner__inner__text
-      今すぐ無料ダウンロード！
-    .banner__inner__icon
-      .banner__inner__icon__apple
-        = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', width: '186'), "#"
-      .banner__inner__icon__google
-        = link_to image_tag('/material/logo/unnamed.png', width: '200'), "#"
-
-
-.footer
-  %ul.footer__contents
-    %li.footer__contents__title
-      %h1.footer__contents__title__name FURIMAについて
-      %ul.footer__contents__title__name__lists
-        %li.footer__contents__title__name__lists__list
-          = link_to '会社概要（運営会社)','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'プライバシーポリシー','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'FURIMA利用規約','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'ポイントに関する特約','#'
-    %li.footer__contents__title
-      %h2.footer__contents__title__name FURIMAを見る
-      %ul.footer__contents__title__name__lists
-        %li.footer__contents__title__name__lists__list
-          = link_to 'カテゴリー一覧','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'ブランド一覧','#'
-    %li.footer__contents__title
-      %h3.footer__contents__title__name ヘルプ＆ガイド
-      %ul.footer__contents__title__name__lists
-        %li.footer__contents__title__name__lists__list
-          = link_to 'FURIMAガイド','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'FURIMAロゴ利用ガイドライン','#'
-        %li.footer__contents__title__name__lists__list
-          = link_to 'お知らせ','#'
-  .footer__logo
-    = link_to image_tag('/material/logo/logo-white.png', width: '160'), root_path
-  .footer__display
-    © FURIMA
-      
-
-
-
-.camera-form
-  = link_to "#" do
-    .camera-form__text
-      出品する
-    .camera-form__text
-      = image_tag("/material/icon/icon_camera.png",width: "70%")
-
+= render partial: 'shared/lower-part'
 

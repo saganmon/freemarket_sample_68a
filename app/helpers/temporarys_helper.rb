@@ -1,2 +1,0 @@
-module TemporarysHelper
-end
