@@ -1,0 +1,334 @@
+.wrapper {
+  background-color: $background-color-lightgray;
+}
+
+.must {
+  font-size: 10px;
+  color: $font-color-white;
+  background-color: $background-color-red;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+
+.sell-header {
+  height: 120px;
+  text-align: center;
+  line-height: 120px;
+}
+
+.sell-main {
+  background-color: $background-color-white;
+  max-width: 700px;
+  margin: 0 auto;
+  &__title {
+    height: 100px;
+    font-size: 22px;
+    color: $font-color-black;
+    line-height: 100px;
+    text-align: center;
+    border-bottom: 1px solid $font-color-gray;
+  }
+  &__image {
+    padding: 40px;
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
+    }
+    &__caution {
+      margin-top: 16px;
+      font-size: 14px;
+      color: $font-color-gray;
+      margin-top: 16px;
+    }
+    &__photos-box {
+      margin-top: 16px;
+      height: 150px;
+      width: 620px;
+      background-color: $background-color-lightgray;
+    }
+  }
+
+  &__product-name {
+    padding: 40px;
+    &__title {
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
+      &--must {
+        font-size: 10px;
+        color: $font-color-white;
+        background-color: $background-color-red;
+        padding: 2px 5px;
+        font-weight: bold;
+      }
+    }
+    &__box {
+      margin-top: 16px;
+      width: 620px;
+      height: 48px;
+    }
+  }
+
+  &__product-description {
+    padding: 40px;
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-black;
+        margin-right: 10px;
+      }
+    }
+    &__box {
+      margin-top: 16px;
+      width: 620px;
+      height: 150px;
+    }
+  }
+
+  &__product-details {
+    display: flex;
+    justify-content: space-between;
+    padding: 40px;
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      font-size: 14px;
+      color: $font-color-gray;
+    }
+    &__contents {
+      &__category {
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
+      }
+      &__brand {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;  
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
+      }
+      &__condition {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
+      }
+    }
+  }
+
+  &__product-delivery {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $font-color-gray;
+    &__title {
+      font-size: 14px;
+      color: $font-color-gray;
+    }
+    &__contents {
+      &__who-cares {
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;  
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
+      }
+      &__where-from {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
+      }
+      &__how-long {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
+      }
+    }
+  }
+  &__product-price {
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    &__title {
+      display: flex;
+      &--text {
+        font-size: 14px;
+        color: $font-color-gray;
+        margin-right: 10px;
+      }
+    }
+    &__contents {
+      width: 300px;
+      &__selling-price {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+        &__box {
+          width: 150px;
+          height: 48px;
+          margin-bottom: 10px;
+        }
+      }
+      &__sales-commission {
+        padding-top: 12px;
+        display: flex;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-gray;
+        }
+        &__price {
+          font-size: 14px;
+          color: $font-color-black;
+        }
+      }
+      &__sales-profit {
+        padding-top: 12px;
+        display: flex;
+        border-bottom: 1px solid $font-color-gray;
+        &__title {
+          font-size: 14px;
+          color: $font-color-gray;
+        }
+        &__price {
+          font-size: 14px;
+          color: $font-color-black;  
+        }
+      }
+    }
+  }
+  &__button {
+    text-align: center;
+    width: 360px;
+    padding: 40px 0px 40px 150px;
+    &__sell {
+      background-color: $background-color-red;
+      color: $font-color-white;
+      font-size: 17px;
+      min-height: 48px;
+      margin-bottom: 24px;
+      line-height: 48px;
+      width: 150px;
+      height: 48px;
+    }
+    &__back {
+      background-color: $background-color-gray;
+      width: 150px;
+      height: 48px;
+      padding: 14px 48px 14px;
+      font-size: 17px;
+      a {
+        color: $font-color-white;  
+        line-height: 48px;
+      }
+    }
+  }
+  &__caution {
+    font-size: 12px;
+    color: $font-color-gray;
+    padding: 40px;
+    a {
+      color: $font-color-blue;
+    }
+  }
+}
+
+.sell-footer {
+  padding: 40px 0;
+  &__cautions {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    &__privacy-policy {
+      font-size: 12px;
+      color: $font-color-gray;
+      margin-right: 15px;
+    }
+    &__terms-of-service {
+      font-size: 12px;
+      color: $font-color-gray;
+      margin-right: 15px;
+    }
+    &__notation {
+      font-size: 12px;
+      color: $font-color-gray;
+    }
+  }
+  &__icons {
+    text-align: center;
+    &--logo {
+
+    }
+    &--text {
+      font-size: 12px;
+      color: $font-color-gray;
+    }
+  }
+}
