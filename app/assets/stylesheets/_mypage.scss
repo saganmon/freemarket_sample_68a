@@ -51,7 +51,6 @@ $font-color-red: #ff0211;$font-color-blue: #0095ee;
       }
     }
     &__information {
-      
       width: 700px;
       &__image {
         position: relative;
@@ -182,9 +181,176 @@ $font-color-red: #ff0211;$font-color-blue: #0095ee;
         margin: 60px 180px;
         background-color: $font-color-red;
         color: $font-color-white;
+      } 
+    }
+    &__card {
+      display: none;
+      width: 700px;
+      height: 300px;
+      background-color: $background-color-white;
+      &__title {
+        height: 50px;
+        border-bottom: 1px solid $background-color-lightgray;
+        line-height: 50px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: 700;
       }
-    
-      
+      &__inner {
+        height: 100px;
+        padding: 64px;
+        text-align: center;
+        border-bottom: 1px solid $background-color-lightgray;
+        &__text {
+          margin-bottom: 20px;
+          font-size: 20px;
+          font-size: 800;
+        }
+        &__btn {
+          margin: 0 40px;
+          background-color: $background-color-red;
+          line-height: 50px;
+          a {
+            text-align: center;
+            display: flex;
+            padding-left: 140px;
+          }
+          &__icon {
+            color: $font-color-white;
+          }
+          &__text {
+            color: $font-color-white;
+          }
+        }
+      }
+      &__description {
+        height: 40px;
+        width: 700px;
+        background-color: $background-color-white;
+        margin: 0;
+        a {
+          padding-right: 20px;
+          float: right;
+          display: flex;
+          text-align: center;
+          line-height: 40px;
+        }
+        &__text {
+          margin-right: 20px;
+          color: $font-color-blue;
+        }
+        &__icon {
+          color: $font-color-blue;
+        }
+      }
+    }
+
+    &__card-form {
+      display: none;
+      width: 700px;
+      height: 590px;
+      background-color: $background-color-white;
+      &__title {
+        line-height: 40px;
+        text-align: center;
+        font-size: 24px;
+        padding: 8px 24px;
+        height: 40px;
+        border-bottom: 1px solid $background-color-lightgray;
+      }
+      &__inner {
+        height: 550px;
+        padding: 40px 190px 64px;
+        &__numform {
+          &__title {
+            display: flex;
+            &__text {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+          &__form {
+            .form__number {
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              width: 97%;
+              height: 48px;
+              margin: 8px 0 0;
+              border-radius: 1px;
+              padding-left: 5px;
+            }
+          }
+          &__images {
+            margin: 10px 0 30px 0;
+          }
+        }
+        &__dateform {
+          &__title {
+            display: flex;
+            margin-bottom: 10px;
+            &__text {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+          &__form {
+            margin-bottom: 30px;
+            display: flex;
+            .form__date {
+              height: 48px;
+              width: 44%;
+            }
+          }
+        }
+        &__code {
+          &__title {
+            display: flex;
+            margin-bottom: 10px;
+            &__text {
+              font-size: 16px;
+              font-weight: 600;
+            }
+          }
+          &__form {
+            .form__code {
+              font-family: inherit;
+              font-size: inherit;
+              font-weight: inherit;
+              width: 97%;
+              height: 48px;
+              margin: 8px 0 0;
+              border-radius: 1px;
+              padding-left: 5px;
+            }
+            .form__btn {
+              margin-top: 30px;
+              display: block;
+              width: 99%;
+              padding: 15px 0;
+              color: $font-color-white;
+              background-color: $background-color-red;
+            }
+          }
+        }
+      }
     }
   }
+}
+
+.mast {
+  font-size: 10px;
+  font-weight: 800;
+  color: $font-color-white;
+  background-color: $background-color-red;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.month-day {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 48px;
+  padding: 0 10px;
 }
