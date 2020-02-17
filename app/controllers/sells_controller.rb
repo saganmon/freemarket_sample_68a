@@ -8,4 +8,8 @@ class SellsController < ApplicationController
     
   end
 
+  def show
+    
+  end
+
 end
