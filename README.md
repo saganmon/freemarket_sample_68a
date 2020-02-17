@@ -78,6 +78,7 @@
 |name|stirng||
 ### Association
  - has_many :small_categories through: :medium-small_categories
+ - has_many :large_categories through: :large-medium_categories
  - has_many :large-medium_categories
  - has_many :medium-small_categories
 
@@ -96,16 +97,9 @@
 |------|----|-------|
 |name|string|null :false|
 ### Association
- - belongs_to :medium-small_category
+ - has_many :medium-small_categories
+ - has_many :medium_categories through ::medium-small_categories
 
- ## medium_category-sizes中間テーブル
-|Column|Type|Options|
-|------|----|-------|
-|sizes_id|integer|foreign_key: true|
-|medium_categories_id|integer|foreign_key: true|
-### Association
- - belongs_to :medium_category
- - belongs_to :size
 
  ## sizesテーブル
 |Column|Type|Options|
@@ -115,7 +109,6 @@
  - belongs_to :product
 
 
-
  ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -123,12 +116,14 @@
 ### Association
  - belongs_to :product
 
+
  ## statusテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
  - belongs_to :product
+
 
  ## send_priceburdensテーブル
 |Column|Type|Options|
@@ -138,7 +133,6 @@
  - belongs_to :product
 
 
-
 ## send_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
@@ -146,12 +140,14 @@
 ### Association
  - belongs_to :product
 
+
 ## send_daysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
   - belongs_to :product
+
 
  ## purchase_creditsテーブル
 |Column|Type|Options|
@@ -161,23 +157,24 @@
 |valid_year|integer|null :false|
 |valid_month|integer|null :false|
 ### Association
- - has_many :products
+ - has_many :users
+
 
  ## purchase_destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |users_id|reference|foreign_key: true|
-|last_name|string|null :false|
-|first_name|string|null :false|
-|first_name_kana|string|null :false|
-|last_name_kana|string|null :false|
-|postcode|string|null :false|
-|prefecture|string|null :false|
-|city|string|null :false|
-|block|string|null :false|
-|building|string||
-|phone_number|string||
+|p_last_name|string|null :false|
+|p_first_name|string|null :false|
+|p_first_name_kana|string|null :false|
+|p_last_name_kana|string|null :false|
+|p_postcode|string|null :false|
+|p_prefecture|string|null :false|
+|p_city|string|null :false|
+|p_block|string|null :false|
+|p_building|string||
+|p_phone_number|string||
 ### Association
- - has_many :products
+ - has_many :users
 
  
