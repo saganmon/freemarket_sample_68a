@@ -1,9 +1,9 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|nickname|string|null: false, add_index|
-|email|string|null: false, unique: true|
-|password|string|null: false, unique: true|
+|nickname|string|null: false, index: true|
+|email|string|null: false, unique: true, index: true|
+|password|string|null: false, unique: true, index: true|
 |first_name|string|null :false|
 |last_name|string|null :false|
 |first_name_kana|string|null :false|
@@ -21,22 +21,22 @@
 |Column|Type|Options|
 |------|----|-------|
 |users_id|reference|foreign_key: true|
-|large_categories_id|integer|foreign_key: true|
+|large_categories_id|reference|foreign_key: true|
 |name|string|null :false|
 |description|sgring|null :false|
 |price|integer|null :false|
 |status_id|reference|foreign_key: true|
-|send_priceburden_id|integer|foreign_key: true|
+|send_priceburden_id|reference|foreign_key: true|
 |send_selfprefecture|string|null :false|
-|send_mesthods_id|string|foreign_key: true|
+|send_methods_id|reference|foreign_key: true|
 |send_days_id|string|foreign_key: true|
 |sizes_id|reference|foreign_key: true|
 |brands_id|reference|foreign_key: true|
 ### Association
  - belongs_to :user
  - has_many :images
- - has_many :products-large_categories
- - belongs_to :large_categories
+ - belongs_to :products-large_categories
+ <!-- - belongs_to :large_categories -->
  - belongs_to :statu
  - belongs_to :send_priceburden
  - belongs_to :send_day
@@ -58,8 +58,8 @@
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :large-midium_categories
- - has_many :midium_categories through: :large-midium_categories
+ - has_many :large-medium_categories
+ - has_many :medium_categories through: :large-medium_categories
  - belongs_to :product
 
 
@@ -67,27 +67,27 @@
 |Column|Type|Options|
 |------|----|-------|
 |large_categories.id|integer|foreign_key: true, add_index|
-|midium_categories.id|integer|foreign_key: true, add_index|
+|medium_categories.id|integer|foreign_key: true, add_index|
 ### Association
  - belongs_to :large_category
- - belongs_to :midium_category
+ - belongs_to :medium_category
 
-## midium_categoriesテーブル
+## medium_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|stirng||
 ### Association
- - has_many :large-midium_categories
- - has_many :midium-small_categories
+ - has_many :large-medium_categories
+ - has_many :medium-small_categories
 
 
- ## midium-small_categories中間テーブル
+ ## medium-small_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|midium_categories.id|integer|null :false,foreign_key: true, add_index|
+|medium_categories.id|integer|null :false,foreign_key: true, add_index|
 |small_categories.id|integer|null :false,foreign_key: true, add_index|
 ### Association
- - belong_to :midium_category
+ - belong_to :medium_category
  - belong_to :small_category
  
  ## small_categoriesテーブル
@@ -95,15 +95,15 @@
 |------|----|-------|
 |name|string|null :false|
 ### Association
- - belongs_to :midium-small_category
+ - belongs_to :medium-small_category
 
- ## midium_category-sizes中間テーブル
+ ## medium_category-sizes中間テーブル
 |Column|Type|Options|
 |------|----|-------|
 |sizes.id|integer|null :false,foreign_key: true, add_index|
-|midium_categories.id|integer|null :false,foreign_key: true, add_index|
+|medium_categories.id|integer|null :false,foreign_key: true, add_index|
 ### Association
- - belongs_to :midium_category
+ - belongs_to :medium_category
  - belongs_to :size
 
  ## sizesテーブル
