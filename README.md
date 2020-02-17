@@ -37,7 +37,7 @@
  - has_many :images
  - belongs_to :products-large_categories
  <!-- - belongs_to :large_categories -->
- - belongs_to :statu
+ - belongs_to :status
  - belongs_to :send_priceburden
  - belongs_to :send_day
  - belongs_to :size
@@ -47,7 +47,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|products_id|intger|foreign_key: true|
+|products_id|reference|foreign_key: true|
 |image|string|null :false|
 ### Association
  - belongs_to :product
@@ -66,8 +66,8 @@
 ## large-midium_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|large_categories.id|integer|foreign_key: true, add_index|
-|medium_categories.id|integer|foreign_key: true, add_index|
+|large_categories_id|reference|foreign_key: true|
+|medium_categories_id|reference|foreign_key: true|
 ### Association
  - belongs_to :large_category
  - belongs_to :medium_category
@@ -77,6 +77,7 @@
 |------|----|-------|
 |name|stirng||
 ### Association
+ - has_many :small_categories through: :medium-small_categories
  - has_many :large-medium_categories
  - has_many :medium-small_categories
 
@@ -84,8 +85,8 @@
  ## medium-small_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|medium_categories.id|integer|null :false,foreign_key: true, add_index|
-|small_categories.id|integer|null :false,foreign_key: true, add_index|
+|medium_categories_id|reference|foreign_key: true|
+|small_categories_id|reference|foreign_key: true|
 ### Association
  - belong_to :medium_category
  - belong_to :small_category
@@ -100,8 +101,8 @@
  ## medium_category-sizes中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|sizes.id|integer|null :false,foreign_key: true, add_index|
-|medium_categories.id|integer|null :false,foreign_key: true, add_index|
+|sizes_id|integer|foreign_key: true|
+|medium_categories_id|integer|foreign_key: true|
 ### Association
  - belongs_to :medium_category
  - belongs_to :size
@@ -155,7 +156,7 @@
  ## purchase_creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|users_id|integer|null :false,foreign_key: true|
+|users_id|reference|foreign_key: true|
 |credit_number|string|null :false|
 |valid_year|integer|null :false|
 |valid_month|integer|null :false|
@@ -165,7 +166,7 @@
  ## purchase_destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|users_id|integer|null :false,foreign_key: true|
+|users_id|reference|foreign_key: true|
 |last_name|string|null :false|
 |first_name|string|null :false|
 |first_name_kana|string|null :false|
