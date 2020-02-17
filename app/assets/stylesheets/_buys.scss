@@ -1,0 +1,143 @@
+.buys-new {
+  background-color: $background-color-lightgray;
+  width: 100%;
+  &__headicon {
+    height: 120px;
+    text-align: center;
+    line-height: 120px;
+  }
+  &__main {
+    background-color: $background-color-white;
+    max-width: 700px;
+    margin: 0 auto;
+    &__title {
+      height: 100px;
+      font-weight: 600;
+      font-size: 22px;
+      color: $font-color-black;
+      line-height: 100px;
+      text-align: center;
+      border-bottom: 1px solid $font-color-gray;
+    }
+    &__image {
+      padding: 40px;
+      display: flex;
+      border-bottom: 1px solid $font-color-gray;
+      &__information {
+        margin-left: 20px;
+        &__text {
+          display: flex;
+          font-size: 16px;
+          &__burand {
+            margin-right: 10px;
+          }
+          &__genre {
+            margin-right: 10px;
+          }
+        }
+        &__price {
+          display: flex;
+          line-height: 20px;
+          margin-top: 30px;
+          font-weight: 700;
+          &__icon {
+
+          }
+          &__money {
+            margin-right: 10px;
+          }
+          &__text1 {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+    &__price {
+      border-bottom: 1px solid $font-color-gray;
+      max-width: 343px;
+      margin: 0 auto;
+      padding:30px 0;
+      &__title {
+        display: flex;
+        justify-content: space-between;
+        &__text {
+          font-size: 18px;
+          font-weight: 800;
+        }
+        &__money {
+          display: flex;
+          font-size: 30px;
+          font-weight: 900;
+          &__icon {
+            margin-right: 10px;
+          }
+        }
+      } 
+      &__point {
+        margin-top: 20px;
+        line-height: 20px;
+        display: flex;
+        color: $font-color-gray;
+      }
+    }
+    &__way {
+      max-width: 343px;
+      margin: 0 auto;
+      padding:30px 0;
+      border-bottom: 1px solid $font-color-gray;
+      &__text {
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      &__link {
+        line-height: 20px;
+        font-size: 15px;
+        a {
+          display: flex;
+          color: $font-color-blue;
+        }
+        &__icon {
+          margin-right: 5px;
+        }
+      }
+    }
+    &__address {
+      max-width: 343px;
+      margin: 0 auto;
+      padding:30px 0;
+      border-bottom: 1px solid $font-color-gray;
+      &__text {
+        margin-bottom: 5px;
+        font-size: 16px;
+        font-weight: 600;
+      }
+      &__link {
+        line-height: 20px;
+        font-size: 15px;
+        a {
+          display: flex;
+          color: $font-color-blue;
+        }
+        &__icon {
+          margin-right: 5px;
+        }
+      }
+    }
+    &__btn {
+      max-width: 343px;
+      margin: 0 auto;
+      padding:30px 0;
+      text-align: center;
+      a {
+        color: $font-color-white;
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        background-color: $font-color-gray;
+        font-weight: 600;
+      }
+    }
+  }
+}
