@@ -1,0 +1,29 @@
+.select-signup
+  .select-signup__image
+    %h1
+      = link_to image_tag('/material/logo/logo.png', width: '185px', height: '49px'), root_path
+  
+  .select-signup__main
+    .select-signup__main__title
+      %h2 新規会員登録
+    .select-signup__main__email
+      = link_to new_user_registration_path do
+        .select-signup__main__email__icon
+          = icon("fas", "envelope")
+        .select-signup__main__email__text
+          メールアドレスで登録する
+    .select-signup__main__facebook
+      = link_to "#" do
+        .select-signup__main__facebook__icon
+          = icon("fab", "facebook-square")
+        .select-signup__main__facebook__text
+          Facebookで登録する
+    .select-signup__main__google
+      = link_to "#" do
+        .select-signup__main__google__icon
+          = icon("fab", "google")
+        .select-signup__main__google__text
+          Googleで登録する
+
+  .select-signup__header
+  = render 'shared/footer'

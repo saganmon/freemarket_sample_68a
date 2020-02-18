@@ -57,6 +57,23 @@ ActiveRecord::Schema.define(version: 2020_02_17_065719) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "purchase_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "p_last_name", null: false
+    t.string "p_first_name", null: false
+    t.string "p_first_name_kana", null: false
+    t.string "p_last_name_kana", null: false
+    t.string "p_postcode", null: false
+    t.string "p_prefecture", null: false
+    t.string "p_city", null: false
+    t.string "p_block", null: false
+    t.string "p_building"
+    t.string "p_phone_number"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchase_destinations_on_user_id"
+  end
+
   create_table "send_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "name"
     t.datetime "created_at", null: false
@@ -91,6 +108,27 @@ ActiveRecord::Schema.define(version: 2020_02_17_065719) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "first_name", null: false
+    t.string "last_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name_kana", null: false
+    t.string "birthday_year", null: false
+    t.string "birthday_month", null: false
+    t.string "birthday_date", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["nickname"], name: "index_users_on_nickname"
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "large_category_medium_categories", "large_categories"

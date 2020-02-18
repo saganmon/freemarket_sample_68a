@@ -1,0 +1,14 @@
+.signin-done
+  .signin-done__image
+    %h1
+      = link_to image_tag('/material/logo/logo.png', width: '185px', height: '49px'), root_path
+
+  .signin-done__main
+    .signin-done__main__text
+      登録が完了しました。
+    .signin-done__main__link-top
+      = link_to root_path do
+        .signin-done__main__link-top__text
+          トップページに戻る
+
+  = render partial: "shared/footer"
