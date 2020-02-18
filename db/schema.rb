@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_053732) do
+ActiveRecord::Schema.define(version: 2020_02_18_065848) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_images_on_product_id"
   end
 
   create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +63,22 @@ ActiveRecord::Schema.define(version: 2020_02_18_053732) do
     t.string "send_sellprefecture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "large_category_id"
+    t.bigint "status_id"
+    t.bigint "send_priceburden_id"
+    t.bigint "send_method_id"
+    t.bigint "send_day_id"
+    t.bigint "size_id"
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["large_category_id"], name: "index_products_on_large_category_id"
+    t.index ["send_day_id"], name: "index_products_on_send_day_id"
+    t.index ["send_method_id"], name: "index_products_on_send_method_id"
+    t.index ["send_priceburden_id"], name: "index_products_on_send_priceburden_id"
+    t.index ["size_id"], name: "index_products_on_size_id"
+    t.index ["status_id"], name: "index_products_on_status_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "purchase_credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -141,9 +165,18 @@ ActiveRecord::Schema.define(version: 2020_02_18_053732) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "images", "products"
   add_foreign_key "large_category_medium_categories", "large_categories"
   add_foreign_key "large_category_medium_categories", "medium_categories"
   add_foreign_key "medium_category_small_categories", "medium_categories"
   add_foreign_key "medium_category_small_categories", "small_categories"
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "large_categories"
+  add_foreign_key "products", "send_days"
+  add_foreign_key "products", "send_methods"
+  add_foreign_key "products", "send_priceburdens"
+  add_foreign_key "products", "sizes"
+  add_foreign_key "products", "statuses"
+  add_foreign_key "products", "users"
   add_foreign_key "purchase_credits", "users"
 end
