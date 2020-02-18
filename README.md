@@ -3,7 +3,7 @@
 |------|----|-------|
 |nickname|string|null: false, index: true|
 |email|string|null: false, unique: true, index: true|
-|encrypted_password|string|null: false, index: true|
+|password|string|null: false, unique: true, index: true|
 |first_name|string|null :false|
 |last_name|string|null :false|
 |first_name_kana|string|null :false|
@@ -20,45 +20,37 @@
 ## productsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|users_id|references|null: false|
+|users_id|reference|foreign_key: true|
+|large_categories_id|reference|foreign_key: true|
 |name|string|null :false|
-|description|string|null :false|
+|description|sgring|null :false|
 |price|integer|null :false|
-|status_id|references|null :false|
-|send_priceburden_id|references|null :false|
+|status_id|reference|foreign_key: true|
+|send_priceburden_id|reference|foreign_key: true|
 |send_selfprefecture|string|null :false|
-|send_days_id|references|null :false|
+|send_methods_id|reference|foreign_key: true|
+|send_days_id|string|foreign_key: true|
+|sizes_id|reference|foreign_key: true|
+|brands_id|reference|foreign_key: true|
 ### Association
  - belongs_to :user
  - has_many :images
- - has_many :products-large_categories
- - has_many :large_categories through: :products-large_categories
+ - belongs_to :products-large_categories
+ <!-- - belongs_to :large_categories -->
  - belongs_to :status
  - belongs_to :send_priceburden
- - belings_to :send_days
- - has_many :products-sizes
- - has_manu :sizes through: :products-sizes
- - has_many :products-blands
- - has_manu :sizes through: :products-brands
+ - belongs_to :send_day
+ - belongs_to :size
+ - belongs_to :brand
 
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|products_id|references|null: false|
+|products_id|reference|foreign_key: true|
 |image|string|null :false|
 ### Association
  - belongs_to :product
-
-
-## products-large_categories中間テーブル
-|Column|Type|Options|
-|------|----|-------|
-|products_id|references|null :false|
-|large_categories_id|references|null :false|
-### Association
- - belongs_to :large_category
- - belongs_to :midium_category
 
 
 ## large_categoriesテーブル
@@ -66,124 +58,87 @@
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :products-large_categories
- - has_many :products through: :products-large_categories
- - has_many :large-midium_categories
- - has_many :midium_categories through: :large-midium_categories
+ - has_many :large-medium_categories
+ - has_many :medium_categories through: :large-medium_categories
+ - belongs_to :product
 
 
 ## large-midium_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|large_categories_id|references|null :false|
-|midium_categories_id|references|null :false|
+|large_categories_id|reference|foreign_key: true|
+|medium_categories_id|reference|foreign_key: true|
 ### Association
  - belongs_to :large_category
- - belongs_to :midium_category
+ - belongs_to :medium_category
 
-
-## midium_categoriesテーブル
+## medium_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|stirng||
 ### Association
- - has_many :large-midium_categories
- - has_many :large_categories through: :large-midium_categories
- - has_many :midium-small_categories
- - has_many :small_categories through: :midium-small_categories
+ - has_many :small_categories through: :medium-small_categories
+ - has_many :large_categories through: :large-medium_categories
+ - has_many :large-medium_categories
+ - has_many :medium-small_categories
 
 
-## midium-small_categories中間テーブル
+ ## medium-small_categories中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|midium_categories_id|references|null :false|
-|small_categories_id|references|null :false|
+|medium_categories_id|reference|foreign_key: true|
+|small_categories_id|reference|foreign_key: true|
 ### Association
- - belong_to :midium_category
+ - belong_to :medium_category
  - belong_to :small_category
-
-
-## small_categoriesテーブル
+ 
+ ## small_categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null :false|
 ### Association
- - belongs_to :midium-small_category
+ - has_many :medium-small_categories
+ - has_many :medium_categories through ::medium-small_categories
 
 
-## products-sizes中間テーブル
+ ## sizesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|products_id|references|null :false|
-|sizes_id|references|null :false|
+|name|string||
 ### Association
  - belongs_to :product
- - belongs_to :size
 
 
-## sizesテーブル
+ ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
-### Association
- - has_many :midium_category-sizes
- - has_many :midium_category through: :midium_category-sizes
-
-
-## products-brands中間テーブル
-|Column|Type|Options|
-|------|----|-------|
-|midium_categories_id|references|foreign_key: true|
-|brands_id|references|foreign_key: true|
 ### Association
  - belongs_to :product
- - belongs_to :brand
 
 
-## brandsテーブル
+ ## statusテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :products
- - has_many :midium_categories through: :products
+ - belongs_to :product
 
 
-## statusテーブル
+ ## send_priceburdensテーブル
 |Column|Type|Options|
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :products
-
-
-## send_priceburdensテーブル
-|Column|Type|Options|
-|------|----|-------|
-|name|string||
-### Association
- - has_many :products
- - has_many :send_priceburden-methods
- - has_many :send_methods through: :send_priceburden-methods
-
-
-## send_priceburden-methods中間テーブル
-|Column|Type|Options|
-|------|----|-------|
-|send_priceburdens_id|references|null :false|
-|send_methods_id|references|null :false|
-### Association
- - belong_to :send_priceburden
- - belong_to :send_method
+ - belongs_to :product
 
 
 ## send_methodsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string||  
+|name|string||
 ### Association
- - has_many :send_priceburden-methods
- - has_many :send_priceburdens through: :send_priceburden-methods
+ - belongs_to :product
 
 
 ## send_daysテーブル
@@ -191,24 +146,24 @@
 |------|----|-------|
 |name|string||
 ### Association
- - has_many :products
+  - belongs_to :product
 
 
-## purchase_creditsテーブル
+ ## purchase_creditsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|users_id|references|null :false|
+|users_id|reference|foreign_key: true|
 |credit_number|string|null :false|
 |valid_year|integer|null :false|
 |valid_month|integer|null :false|
 ### Association
- - belongs_to :user
+ - has_many :users
 
 
-## purchase_destinationsテーブル
+ ## purchase_destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|users_id|references|null :false|
+|users_id|reference|foreign_key: true|
 |p_last_name|string|null :false|
 |p_first_name|string|null :false|
 |p_first_name_kana|string|null :false|
@@ -220,4 +175,6 @@
 |p_building|string||
 |p_phone_number|string||
 ### Association
- - belongs_to :user
+ - has_many :users
+
+ 
