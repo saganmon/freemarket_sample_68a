@@ -2,6 +2,7 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
+  -# = form_with(model: [@product, @image], local: true, html: { class: "sell-main" }) do |f|
   = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
