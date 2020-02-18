@@ -1,0 +1,67 @@
+.buys-new
+  .buys-new__headicon
+    = link_to image_tag('/material/logo/logo.png', size: "100x29"), root_path
+  .buys-new__main
+    .buys-new__main__title
+      購入内容の確認
+    .buys-new__main__image
+      .buys-new__main__image__pict
+        = image_tag("/material/pict/test-pict.jpg",size: "180x230")
+      .buys-new__main__image__information
+        .buys-new__main__image__information__text
+          .buys-new__main__image__information__text__burand
+            Dolce&Gabbana
+          .buys-new__main__image__information__text__genre
+            ミニワンピース
+          .buys-new__main__image__information__text__categorize
+            ワンピース
+        .buys-new__main__image__information__price
+          .buys-new__main__image__information__price__icon
+            = icon('fas', 'yen-sign')
+          .buys-new__main__image__information__price__money
+            5000
+          .buys-new__main__image__information__price__text1
+            (税込)
+          .buys-new__main__image__information__price__text2
+            送料込み
+
+    .buys-new__main__price
+      .buys-new__main__price__title
+        .buys-new__main__price__title__text
+          支払い金額
+        .buys-new__main__price__title__money
+          .buys-new__main__price__title__money__icon
+            = icon('fas', 'yen-sign')
+          .buys-new__main__price__title__money__number
+            5,600  
+      .buys-new__main__price__point
+        .buys-new__main__price__point__box
+          = icon('fas', 'stop')
+        .buys-new__main__price__point__text
+          ポイントを使用 (所持ポイント: P0)
+
+    .buys-new__main__way
+      .buys-new__main__way__text
+        支払い方法
+      .buys-new__main__way__link
+        = link_to "" do
+          .buys-new__main__way__link__icon
+            = icon('fas', 'plus-circle')
+          .buys-new__main__way__link__text
+            登録してください
+
+    .buys-new__main__address
+      .buys-new__main__address__text
+        配送先
+      .buys-new__main__address__link
+        = link_to "" do
+          .buys-new__main__address__link__icon
+            = icon('fas', 'plus-circle')
+          .buys-new__main__address__link__text
+            登録してください
+
+    .buys-new__main__btn
+      = link_to "#" do
+        購入する
+
+  = render partial: 'shared/footer'

@@ -1,8 +1,10 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "modules/fonts";
 @import "header";
 @import "main";
+@import "mypage";
 @import "banner";
 @import "modules/flash";
 @import "camera-form";
@@ -11,3 +13,7 @@
 @import "devise-signin";
 @import "config/colors";
 @import "sells";
+@import "footer";
+@import "camera-form";
+@import "sells";
+@import "buys";

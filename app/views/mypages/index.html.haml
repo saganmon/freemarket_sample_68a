@@ -1,0 +1,133 @@
+.wrapper
+  = render partial: 'shared/header'
+  .wrapper__main
+    = render partial: 'shared/mypage-list'
+
+    .wrapper__main__information
+      = link_to "#" do
+        %section.wrapper__main__information__image
+          .wrapper__main__information__image__icon
+            = image_tag("/material/icon/member_photo_noimage_thumb.png",size: "70")
+          .wrapper__main__information__image__name
+            name
+          
+      %section.wrapper__main__information__content
+        .wrapper__main__information__content__tabs
+          = link_to "#" do
+            .wrapper__main__information__content__tabs__left
+              お知らせ
+          = link_to "#" do
+            .wrapper__main__information__content__tabs__right
+              やることリスト
+            
+        %ul.wrapper__main__information__content__text1
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text1__sentence
+              🌹お知らせ
+        .wrapper__main__information__content__btn1
+          = link_to "#" do
+            一覧を見る
+
+        %ul.wrapper__main__information__content__text2
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+          = link_to "#" do
+            %li.wrapper__main__information__content__text2__sentence
+              🌹お知らせ
+        .wrapper__main__information__content__btn2
+          = link_to "#" do
+            一覧を見る
+        
+      %section.wrapper__main__information__sell-list
+        .wrapper__main__information__sell-list__title
+          購入した商品
+        .wrapper__main__information__sell-list__tabs
+          = link_to "#" do
+            .wrapper__main__information__sell-list__tabs__left
+              取引中
+          = link_to "#" do
+            .wrapper__main__information__sell-list__tabs__right
+              過去の取引
+        .wrapper__main__information__sell-list__box
+          .wrapper__main__information__sell-list__box__icon
+            = image_tag('/material/logo/logo.png', size: "100x29")
+          .wrapper__main__information__sell-list__box__text
+            現在取引中の商品はありません
+
+    .wrapper__main__logout
+      = link_to root_path  do
+        .wrapper__main__logout__inner
+          ログアウト
+
+    .wrapper__main__card
+      .wrapper__main__card__title
+        支払い方法
+      .wrapper__main__card__inner
+        .wrapper__main__card__inner__text
+          クレジットカード一覧
+        .wrapper__main__card__inner__btn
+          = link_to "#" do
+            .wrapper__main__card__inner__btn__icon
+              = icon('far', 'address-card')
+            .wrapper__main__card__inner__btn__text
+              クレジットカードを追加する
+      .wrapper__main__card__description
+        = link_to "#" do
+          .wrapper__main__card__description__text
+            支払い方法について
+          .wrapper__main__card__description__icon
+            = icon('fas', 'angle-right')
+
+    .wrapper__main__card-form
+      = form_with(url: "#", local: true, method: :get, class: "form") do |form|
+        .wrapper__main__card-form__title
+          クレジットカード情報入力
+        .wrapper__main__card-form__inner
+          .wrapper__main__card-form__inner__numform
+            .wrapper__main__card-form__inner__numform__title
+              .wrapper__main__card-form__inner__numform__title__text
+                カード番号
+              = tag.span("必須", class: "mast")
+            .wrapper__main__card-form__inner__numform__form
+              = form.text_field :keyword, placeholder: "半角数字のみ", class: "form__number"
+            .wrapper__main__card-form__inner__numform__images
+              = image_tag('/material/logo/visa-curved.png', class: "company", size: "40x20")
+              = image_tag('/material/logo/_Mastercard-256.png', class: "company", size: "30x20")
+              = image_tag('/material/logo/1200px-Saison_card_logo.svg.png', class: "company", size: "30x20")
+              = image_tag('/material/logo/jcb-256.png', class: "company", size: "30x20")
+              = image_tag('/material/logo/american-express-straight.png', class: "company", size: "30x20")
+              = image_tag('/material/logo/DinersClub.png', class: "company", size: "30x20")
+              = image_tag('/material/logo/discover-curved.png', class: "company", size: "30x20")
+          .wrapper__main__card-form__inner__dateform
+            .wrapper__main__card-form__inner__dateform__title
+              .wrapper__main__card-form__inner__dateform__title__text
+                有効期限
+              = tag.span("必須", class: "mast")
+            .wrapper__main__card-form__inner__dateform__form
+              = form.select :category, ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"], {include_blank: "---"}, class: "form__date"
+              = tag.span("月", class: "month-day")
+              = form.select :category, ["1日", "2日", "3日", "4日", "5日", "6日", "7日", "8日", "9日", "10日", "11日", "12日", "13日", "14日", "15日", "16日", "17日", "18日", "19日", "20日", "21日", "22日", "23日", "24日", "25日", "26日", "27日", "28日", "29日", "30日", "31日"], {include_blank: "---"}, class: "form__date"
+              = tag.span("日", class: "month-day")
+
+          .wrapper__main__card-form__inner__code
+            .wrapper__main__card-form__inner__code__title
+              .wrapper__main__card-form__inner__code__title__text
+                セキュリティコード
+              = tag.span("必須", class: "mast")
+            .wrapper__main__card-form__inner__code__form
+              = form.text_field :keyword, placeholder: "カード背面４桁桁もしくは３桁の番号", class: "form__code"
+              = form.submit "追加する", class: "form__btn"
+              
+
+
+  = render partial: 'shared/lower-part'
