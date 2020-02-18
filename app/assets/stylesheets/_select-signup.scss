@@ -1,0 +1,130 @@
+$background-color-lightgray: #f5f5f5;
+$background-color-gray: #cccccc;
+$background-color-white: #ffffff;
+$background-color-red: #ea352d;
+$font-color-black: #333333;
+$font-color-gray: #888888;
+$font-color-white: #ffffff;
+$font-color-red: #ff0211;
+$font-color-blue: #0095ee;
+
+.fas{
+  font-size: 18px;
+  margin-right:50px;
+}
+.fa-facebook-square{
+  font-size: 18px;
+  margin-right:70px;
+}
+
+.fa-google{
+  font-size: 18px;
+  margin-right:75px;
+}
+
+.select-signup{
+  height: 100vh;
+  width: 100%;
+  background-color: $background-color-lightgray;
+
+  &__image{
+    height: 128px;
+    h1{
+      text-align: center;
+      padding-top: 40px;
+    }
+  }
+
+  &__main{
+    width: 700px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: $background-color-white;
+    text-align: center;
+
+    &__title{
+      h2{
+        height: 100px;
+        line-height: 100px;
+        font-size: 22px;
+        font-weight: bold;
+        border-bottom: solid 1px $background-color-lightgray;
+      }
+    }
+
+    &__email{
+      color: $font-color-white;
+      margin: 0 auto;
+      max-width: 340px;
+      height: 50px;
+      text-align: center;
+      margin-top: 40px;
+      position: relative;
+
+        a{
+          display: block;
+          background-color:#ea352d;
+          color: $font-color-white;
+          line-height: 50px;
+          font-size: 14px;
+          border-radius: 5px;
+          display: flex;
+          padding-left: 20px;
+        }
+
+    }
+
+    &__facebook{
+      color: $font-color-white;
+      margin: 0 auto;
+      width: 340px;
+      height: 50px;
+      text-align: center;
+      margin-top: 15px;
+        a{
+          display: block;
+          background-color:#385185;
+          border-radius: 5px;
+          color: $font-color-white;
+          line-height: 50px;
+          font-size: 14px;
+          display: flex;
+          padding-left: 20px;
+        }
+    }
+
+    &__google{
+      color: $font-color-white;
+      margin: 0 auto;
+      width: 340px;
+      height: 50px;
+      text-align: center;
+      margin-top: 15px;
+      border: solid 1px $font-color-gray;
+      
+        a{
+          display: block;
+          background-color:$font-color-white;
+          color: $font-color-black;
+          line-height: 50px;
+          font-size: 14px;
+          border-radius: 5px;
+          display: flex;
+          padding-left: 20px;
+        
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+  }
+}

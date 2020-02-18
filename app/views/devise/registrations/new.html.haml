@@ -1,0 +1,115 @@
+.signup-first
+  .signup-first__image
+    %h1
+      = link_to image_tag('/material/logo/logo.png', width: '185px', height: '49px'), root_path
+
+  .signup-first__main
+    .signup-first__main__title
+      %h2 会員情報入力
+    .signup-first__main__form
+      = form_with model:@user,url:  user_registration_path, local:true do |f|
+        .signup-first__main__form__nickname
+          .signup-display-flex
+            = f.label "ニックネーム",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br 
+          = f.text_field :nickname, placeholder: "例)フリマ太郎",class: "signup-form"
+
+
+        .signup-first__main__form__email
+          .signup-display-flex
+            = f.label "メールアドレス",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          = f.email_field :email, placeholder: "PC・携帯どちらでも可",class: "signup-form"
+
+        .signup-first__main__form__password
+          .signup-display-flex
+            = f.label "パスワード",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          = f.password_field :password, placeholder: "7文字以上半角",class: "signup-form"
+
+        .signup-first__main__form__password-confirmation
+          .signup-display-flex
+            = f.label "パスワード(確認用)",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          = f.password_field :password_confirmation, placeholder: "7文字以上半角(再度入力)",class: "signup-form"
+          
+        .signup-first__main__form__person-check-first
+          = tag.br 
+          = tag.p "本人確認"
+
+        .signup-first__main__form__person-check-second
+          = tag.p "安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。"
+          = tag.br
+
+
+        .signup-first__main__form__name
+          .signup-display-flex
+            = f.label "氏名",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          .signup-display-flex
+            = f.text_field :first_name, placeholder: "例)山田",class: "signup-form-half-left"
+            = f.text_field :last_name, placeholder: "例)太郎",class: "signup-form-half-right"
+
+        .signup-first__main__form__name-kana
+          .signup-display-flex
+            = f.label "氏名かな",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          .signup-display-flex
+            = f.text_field  :first_name_kana, placeholder: "例)やまだ",class: "signup-form-half-left"
+            = f.text_field :last_name_kana, placeholder: "例)たろう",class: "signup-form-half-right"
+
+        .signup-first__main__form__birthday
+          .signup-display-flex
+            = f.label "生年月日",class: "signup-label"
+            = tag.span("必須", class: "signup-mast")
+            = tag.br
+          = f.select :birthday_year,["--"], {}, {class: "signup-birthday", id:"select_birth_year"}
+          = f.label "年"
+          = f.select :birthday_month, ["--"], {},{class: "signup-birthday", id:"select_birth_month"}
+          = f.label "月"
+          = f.select :birthday_date, ["--"], {},{class: "signup-birthday", id:"select_birth_day"}
+          = f.label "日"
+
+
+        .signup-first__main__form__birthday-check
+          = tag.p "※本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。"
+
+        .signup-first__main__form__submit
+          = tag.br
+          = tag.br
+          - signup_terms = link_to "利用契約", "/",class: "signup-link"
+          「次へ進む」のボタンを押すことにより、#{signup_terms}に同意したものとみなします。
+          = tag.br
+          = f.submit '次へ進む', class: "signup-submit"
+  = render partial: "shared/footer"
+
+
+
+-# デフォルト
+-# %h2 Sign up
+-# = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+-#   = render "devise/shared/error_messages", resource: resource
+-#   .field
+-#     = f.label :email
+-#     %br/
+-#     = f.email_field :email, autofocus: true, autocomplete: "email"
+-#   .field
+-#     = f.label :password
+-#     - if @minimum_password_length
+-#       %em
+-#         (#{@minimum_password_length} characters minimum)
+-#     %br/
+-#     = f.password_field :password, autocomplete: "new-password"
+-#   .field
+-#     = f.label :password_confirmation
+-#     %br/
+-#     = f.password_field :password_confirmation, autocomplete: "new-password"
+-#   .actions
+-#     = f.submit "Sign up"
+-# = render "devise/shared/links"

@@ -1,0 +1,37 @@
+.signin
+  .signin__image
+    %h1
+      = link_to image_tag('/material/logo/logo.png', width: '185px', height: '49px'), root_path
+
+  .signin__main
+    = tag.p "アカウントをお持ちでない方はこちらへ"
+    .signin__main__signup
+      .signin__main__signup__link
+        = link_to "新規会員登録", root_path
+
+    .signin__main__box
+      .signin__main__box__facebook
+        = link_to root_path do
+          .signin__main__box__facebook__icon
+            = icon("fab", "facebook-square")
+          .signin__main__box__facebook__text
+            Facebookでログイン
+
+
+      .signin__main__box__google
+        = link_to root_path do
+          .signin__main__box__google__icon
+            = icon("fab", "google")
+          .signin__main__box__google__text
+            Googleでログイン
+
+      .signin__main__box__devise
+        = form_with model: @user, url: new_user_session_path, local: true do |f|
+          .signin__main__box__devise__input
+            = f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class: "signin-form"
+            = tag.br
+            = f.password_field :password, autocomplete: "current-password",placeholder: "パスワード",class: "signin-form"
+          .signin__main__box__devise__submit
+            = f.submit "ログイン",class: "submit-button"
+
+  = render partial: "shared/footer"

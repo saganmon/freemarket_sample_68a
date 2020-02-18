@@ -1,0 +1,195 @@
+$background-color-lightgray: #f5f5f5;
+$background-color-gray: #cccccc;
+$background-color-white: #ffffff;
+$background-color-red: #ea352d;
+$font-color-black: #333333;
+$font-color-gray: #888888;
+$font-color-white: #ffffff;
+$font-color-red: #ff0211;
+$font-color-blue: #0095ee;
+
+
+.fa-facebook-square{
+  font-size: 18px;
+  margin-right:80px;
+}
+
+.fa-google{
+  font-size: 18px;
+  margin-right:85px;
+}
+
+.signin-form{
+  width: 91%;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 16px 8px 16px;
+  margin: 10px 0px 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+.signin-button{
+  background-color:#0099e8;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 15px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  padding-left: 100px;
+  color: #fff;
+  a{
+    margin-top: 40px;
+    display: block;
+    border: 1px solid #0099e8;
+    background: #0099e8;
+  }
+}
+
+.submit-button{
+  background-color:$background-color-red;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  text-align: center;
+  padding-top: 15px;
+  padding-right: 100px;
+  padding-bottom: 15px;
+  padding-left: 100px;
+  color: #fff;
+  margin-top: 40px;
+  width: 100%;
+  a{
+    margin-top: 40px;
+    display: block;
+    border: 1px solid #0099e8;
+    background: #0099e8;
+  }
+}
+
+.signin{
+  width: 100%;
+  height: 100vh;
+  background-color: $background-color-lightgray;
+  font-size: 14px;
+    &__image{
+      height: 128px;
+      h1{
+        text-align: center;
+        padding-top: 40px;
+      }
+    }
+
+    &__main{
+      width: 450px;
+      margin: 0 auto;
+      background-color: $background-color-white;
+      text-align: center;
+      padding-top: 30px;
+
+      &__signup{
+        padding-bottom: 40px;
+        border-bottom: solid 1px $background-color-lightgray;
+
+        &__link{
+        max-width: 350px;
+        margin: 0 auto;
+        background-color:#0099e8;
+          a{
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            width: 100%;
+            display: block;
+            border: 1px solid #0099e8;
+            background: #0099e8;
+          }
+        }
+      }
+
+
+      &__box{
+        max-width: 350px;
+        margin: 0 auto;
+        &__facebook{
+          margin-top: 40px;
+          background-color:#385185;
+          
+            a{
+              height: 40px;
+              line-height: 40px;
+              color: #fff;
+              width: 100%;
+              margin-top: 40px;
+              display: block;
+              border: 1px solid #385185;
+              background: #385185;
+              display: flex;
+              padding-left: 20px;
+            }
+        }
+        &__google{
+          margin-top: 10px;
+          background-color:$background-color-white;
+          padding-bottom: 30px;
+            a{
+              height: 40px;
+              line-height: 40px;
+              color: $font-color-black;
+              width: 100%;
+              margin-top: 10px;
+              display: block;
+              border: 1px solid $background-color-gray;
+              background: $background-color-white;
+              display: flex;
+              padding-left: 20px;
+            }
+        }
+
+        &__devise{
+          
+        }
+      }
+    }
+}
+
+
+.signin-done{
+  width: 100%;
+  height: 100vh;
+  background-color: $background-color-lightgray;
+  font-size: 14px;
+  text-align: center;
+    &__image{
+      height: 128px;
+      h1{
+        text-align: center;
+        padding-top: 40px;
+      }
+    }
+    &__main{
+      width: 450px;
+      height: 30%;
+      margin: 0 auto;
+      background-color: $background-color-white;
+      text-align: center;
+      padding-top: 30px;
+
+      &__text{
+        padding-top: 40px;
+        margin-bottom: 30px;
+      }
+      &__link-top{
+        max-width: 350px;
+        margin: 0 auto;
+          a{
+            height: 40px;
+            line-height: 40px;
+            color: #fff;
+            width: 100%;
+            display: block;
+            border: 1px solid $background-color-red;
+            background: $background-color-red;
+          }
+      }
+    }
+  }

@@ -1,0 +1,282 @@
+$background-color-lightgray: #f5f5f5;
+$background-color-gray: #cccccc;
+$background-color-white: #ffffff;
+$background-color-red: #ea352d;
+$font-color-black: #333333;
+$font-color-gray: #888888;
+$font-color-white: #ffffff;
+$font-color-red: #ff0211;
+$font-color-blue: #0095ee;
+
+.signup-label{
+  display: inline-block;
+  font-size: 14px;
+  padding-top: 5px;
+  font-weight: 800;
+}
+
+.signup-mast{
+  font-size: 12px;
+  color: $font-color-white;
+  background-color: $background-color-red;
+  padding: 4px 4px 4px 4px;
+  border-radius: 2px;
+  margin: 0px 0px 0px 8px;
+  vertical-align: top;
+}
+
+.signup-option{
+  font-size: 12px;
+  color: $font-color-white;
+  background-color: $background-color-gray;
+  padding: 4px 4px 4px 4px;
+  border-radius: 2px;
+  margin: 0px 0px 0px 8px;
+  vertical-align: top;
+}
+
+
+.signup-form{
+  width: 90%;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 16px 8px 16px;
+  margin: 8px 0px 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+.signup-form-half-left{
+  width: calc(50% - 6px);
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 16px 8px 16px;
+  margin: 8px 8px 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+.signup-form-half-right{
+  width: calc(50% - 6px);
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 16px 8px 16px;
+  margin: 8px 0px 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+}
+
+
+.signup-display-flex{
+  display: flex;
+
+}
+
+.signup-submit{
+  background-color:#ea352d;
+  color: $font-color-white;
+  margin: 0 auto;
+  width: 340px;
+  height: 50px;
+  text-align: center;
+  margin-top: 40px;
+  border-radius: 5px;
+}
+
+
+
+
+.signup-form-select-font.fas.fa-chevron-down{
+  position: absolute;
+  right: 10px;
+  top: 53%;
+  z-index: 2;
+  color: $font-color-gray;
+  font-size: 18px;
+}
+
+.signup-link{
+  color: #0099e8;
+}
+
+.signup-first{
+  width: 100%;
+  background-color: $background-color-lightgray;
+  font-size: 14px;
+  &__image{
+    height: 128px;
+    h1{
+      text-align: center;
+      padding-top: 40px;
+    }
+  }
+  &__main{
+    width: 700px;
+    margin: 0 auto;
+    background-color: $background-color-white;
+    text-align: center;
+      
+      &__title{
+        border-bottom: solid 1px $background-color-lightgray;
+        h2{
+          height: 100px;
+          line-height: 100px;
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
+      
+      &__form{
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 40px 40px 64px 40px;
+
+        &__email{
+          margin-top: 20px;
+        }
+
+        &__password{
+          margin-top: 20px;
+        }
+
+        &__password-confirmation{
+          margin-top: 20px;
+        }
+
+        &__name{
+          margin-top: 20px;
+        }
+
+        &__name-kana{
+          margin-top: 20px;
+        }
+        &__birthday{
+          margin-top: 20px;
+        }
+
+        &__person-check-first{
+          p{
+            text-align: left;
+            font-weight: 800;
+          }
+        }
+        &__person-check-second{
+          p{
+            text-align: left;
+            font-weight: normal;
+          }
+        }
+
+        &__birthday{
+          .signup-birthday{
+            width: calc(90% / 3 - 15px);
+            height: 48px;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px 16px 8px 16px;
+            margin: 8px 0px 8px 0px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            font-weight: normal;
+            background-color: $background-color-white;
+          }
+        }
+        
+        &__birthday-check{
+          p{
+            text-align: left;
+            color: $background-color-gray;
+          }
+        }
+
+
+
+      }
+  }
+}
+
+.signup-second{
+  width: 100%;
+  background-color: $background-color-lightgray;
+  font-size: 14px;
+  &__image{
+    height: 128px;
+    h1{
+      text-align: center;
+      padding-top: 40px;
+    }
+  }
+  &__main{
+    width: 700px;
+    margin: 0 auto;
+    background-color: $background-color-white;
+    text-align: center;
+      
+      &__title{
+        border-bottom: solid 1px $background-color-lightgray;
+        h2{
+          height: 100px;
+          line-height: 100px;
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
+      
+      &__form{
+        max-width: 340px;
+        margin: 0 auto;
+        padding: 40px 40px 64px 40px;
+
+        &__name{
+          margin-top: 20px;
+        }
+
+        &__name-kana{
+          margin-top: 20px;
+        }
+
+        &__postcode{
+          margin-top: 20px;
+        }
+
+        &__prefecture{
+          margin-top: 20px;
+        }
+
+        &__city{
+          margin-top: 20px;
+        }
+
+        &__block{
+          margin-top: 20px;
+        }
+
+        &__building{
+          margin-top: 20px;
+        }
+
+        &__phone-number{
+          margin-top: 20px;
+        }
+
+        &__prefecture{
+          position: relative;
+
+          .signup-form-prefecture{
+            height: 50px;
+            width: 100%;
+            font-size: 16px;
+            line-height: 1.5;
+            padding: 10px 16px 8px 16px;
+            margin: 8px 0px 8px 0px;
+            border-radius: 4px;
+            border: 1px solid #cccccc;
+            background-color: $background-color-white;
+            -webkit-appearance: none;
+            
+          }
+        }
+
+      }
+  }
+}
