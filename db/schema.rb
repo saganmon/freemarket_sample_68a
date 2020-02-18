@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_17_065719) do
+ActiveRecord::Schema.define(version: 2020_02_18_053732) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_02_17_065719) do
     t.string "send_sellprefecture", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "purchase_credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "credit_number", null: false
+    t.integer "valid_year", null: false
+    t.integer "valid_month", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchase_credits_on_user_id"
   end
 
   create_table "purchase_destinations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -135,4 +145,5 @@ ActiveRecord::Schema.define(version: 2020_02_17_065719) do
   add_foreign_key "large_category_medium_categories", "medium_categories"
   add_foreign_key "medium_category_small_categories", "medium_categories"
   add_foreign_key "medium_category_small_categories", "small_categories"
+  add_foreign_key "purchase_credits", "users"
 end

@@ -63,11 +63,11 @@
  - belongs_to :product
 
 
-## large-midium_categories中間テーブル
+## large_category-midium_category中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|large_categories_id|reference|foreign_key: true|
-|medium_categories_id|reference|foreign_key: true|
+|large_category_id|reference|foreign_key: true|
+|medium_category_id|reference|foreign_key: true|
 ### Association
  - belongs_to :large_category
  - belongs_to :medium_category
@@ -83,11 +83,11 @@
  - has_many :medium-small_categories
 
 
- ## medium-small_categories中間テーブル
+ ## medium_category-small_category中間テーブル
 |Column|Type|Options|
 |------|----|-------|
-|medium_categories_id|reference|foreign_key: true|
-|small_categories_id|reference|foreign_key: true|
+|medium_category_id|reference|foreign_key: true|
+|small_category_id|reference|foreign_key: true|
 ### Association
  - belong_to :medium_category
  - belong_to :small_category
@@ -157,7 +157,7 @@
 |valid_year|integer|null :false|
 |valid_month|integer|null :false|
 ### Association
- - has_many :users
+  - belongs_to :user
 
 
  ## purchase_destinationsテーブル
@@ -175,6 +175,5 @@
 |p_building|string||
 |p_phone_number|string||
 ### Association
- - has_many :users
-
+  - belongs_to :user
  
