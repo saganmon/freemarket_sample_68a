@@ -2,8 +2,9 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  -# = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
-  = form_with(model: @product, local: true, html: { class: "sell-main" }) do |f|
+  -# = form_with(model: @product, local: true, html: { class: "sell-main" }) do |f|
+
+  = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
       .sell-main__image__title
@@ -34,8 +35,13 @@
           .sell-main__product-details__contents__category__title
             = f.label :category, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
             = tag.span("必須", class: "must")
-          = tag.br
-          = f.select :category, ["メンズ", "レディース", "ベビー・キッズ"], {include_blank: "---"}, class: "sell-main__product-details__contents__category__lists"
+            = tag.br
+            = select :category_1,:category_1, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+            = tag.br
+            = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_child'}
+            -# = tag.br
+            -# = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_grandchild'}
+
         .sell-main__product-details__contents__brand
           .sell-main__product-details__contents__brand__title
             = f.label :brand, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
