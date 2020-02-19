@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_065848) do
+ActiveRecord::Schema.define(version: 2020_02_18_144802) do
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+    t.index ["name"], name: "index_categories_on_name"
   end
 
   create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -26,36 +35,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_065848) do
     t.index ["product_id"], name: "index_images_on_product_id"
   end
 
-  create_table "large_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "large_category_medium_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "large_category_id"
-    t.bigint "medium_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["large_category_id"], name: "index_large_category_medium_categories_on_large_category_id"
-    t.index ["medium_category_id"], name: "index_large_category_medium_categories_on_medium_category_id"
-  end
-
-  create_table "medium_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "medium_category_small_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "medium_category_id"
-    t.bigint "small_category_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["medium_category_id"], name: "index_medium_category_small_categories_on_medium_category_id"
-    t.index ["small_category_id"], name: "index_medium_category_small_categories_on_small_category_id"
-  end
-
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.string "description", null: false
@@ -64,15 +43,15 @@ ActiveRecord::Schema.define(version: 2020_02_18_065848) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "large_category_id"
     t.bigint "status_id"
     t.bigint "send_priceburden_id"
     t.bigint "send_method_id"
     t.bigint "send_day_id"
     t.bigint "size_id"
     t.bigint "brand_id"
+    t.bigint "category_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
-    t.index ["large_category_id"], name: "index_products_on_large_category_id"
+    t.index ["category_id"], name: "index_products_on_category_id"
     t.index ["send_day_id"], name: "index_products_on_send_day_id"
     t.index ["send_method_id"], name: "index_products_on_send_method_id"
     t.index ["send_priceburden_id"], name: "index_products_on_send_priceburden_id"
@@ -132,12 +111,6 @@ ActiveRecord::Schema.define(version: 2020_02_18_065848) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "small_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -166,12 +139,8 @@ ActiveRecord::Schema.define(version: 2020_02_18_065848) do
   end
 
   add_foreign_key "images", "products"
-  add_foreign_key "large_category_medium_categories", "large_categories"
-  add_foreign_key "large_category_medium_categories", "medium_categories"
-  add_foreign_key "medium_category_small_categories", "medium_categories"
-  add_foreign_key "medium_category_small_categories", "small_categories"
   add_foreign_key "products", "brands"
-  add_foreign_key "products", "large_categories"
+  add_foreign_key "products", "categories"
   add_foreign_key "products", "send_days"
   add_foreign_key "products", "send_methods"
   add_foreign_key "products", "send_priceburdens"
