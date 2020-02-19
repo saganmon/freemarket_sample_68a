@@ -107,57 +107,60 @@
       = link_to "#" do
         新規投稿商品
     .main__pickup-categorize__item
-      .main__pickup-categorize__item__left
-        = link_to "#" do
-          .main__pickup-categorize__item__left__pic
-            = image_tag("/material/pict/a002.png", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
-          .main__pickup-categorize__item__left__introduction
-            .main__pickup-categorize__item__left__introduction__left
-              .main__pickup-categorize__item__left__introduction__left__name
-                商品名
-              .main__pickup-categorize__item__left__introduction__left__price
-                30000円
-              .main__pickup-categorize__item__left__introduction__left__display
-                (税込)
-            .main__pickup-categorize__item__left__introduction__right
-              .main__pickup-categorize__item__left__introduction__right__icon
-                = icon('far', 'star')
-              .main__pickup-categorize__item__left__introduction__right__num
-                0
-      .main__pickup-categorize__item__center
-        = link_to "#" do
-          .main__pickup-categorize__item__center__pic
-            = image_tag("/material/pict/a004.png", width: "220px", height: "150px", class: '.main__pickup-categorize__item__center__pic__left') 
-          .main__pickup-categorize__item__center__introduction
-            .main__pickup-categorize__item__center__introduction__left
-              .main__pickup-categorize__item__center__introduction__left__name
-                商品名
-              .main__pickup-categorize__item__center__introduction__left__price
-                40000円
-              .main__pickup-categorize__item__center__introduction__left__display
-                (税込)
-            .main__pickup-categorize__item__center__introduction__right
-              .main__pickup-categorize__item__center__introduction__right__icon
-                = icon('far', 'star')
-              .main__pickup-categorize__item__center__introduction__right__num
-                2
-      .main__pickup-categorize__item__right
-        = link_to "#" do
-          .main__pickup-categorize__item__right__pic
-            = image_tag("/material/pict/a007.png", width: "220px", height: "150px", class: '.main__pickup-categorize__item__right__pic__left') 
-          .main__pickup-categorize__item__right__introduction
-            .main__pickup-categorize__item__right__introduction__left
-              .main__pickup-categorize__item__right__introduction__left__name
-                商品名
-              .main__pickup-categorize__item__right__introduction__left__price
-                10000円
-              .main__pickup-categorize__item__right__introduction__left__display
-                (税込)
-            .main__pickup-categorize__item__right__introduction__right
-              .main__pickup-categorize__item__right__introduction__right__icon
-                = icon('far', 'star')
-              .main__pickup-categorize__item__right__introduction__right__num
-                10
+      - @products.each do |product|
+        .main__pickup-categorize__item__left
+          = link_to "#" do
+            .main__pickup-categorize__item__left__pic
+              = image_tag("/material/pict/a002.png", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+            .main__pickup-categorize__item__left__introduction
+              .main__pickup-categorize__item__left__introduction__left
+                .main__pickup-categorize__item__left__introduction__left__name
+                  = product.name
+                .main__pickup-categorize__item__left__introduction__left__price
+                  = product.price
+                  
+                .main__pickup-categorize__item__left__introduction__left__display
+                  (税込)
+              .main__pickup-categorize__item__left__introduction__right
+                .main__pickup-categorize__item__left__introduction__right__icon
+                  = icon('far', 'star')
+                .main__pickup-categorize__item__left__introduction__right__num
+                  0
+
+      -# .main__pickup-categorize__item__center
+      -#   = link_to "#" do
+      -#     .main__pickup-categorize__item__center__pic
+      -#       = image_tag("/material/pict/a004.png", width: "220px", height: "150px", class: '.main__pickup-categorize__item__center__pic__left') 
+      -#     .main__pickup-categorize__item__center__introduction
+      -#       .main__pickup-categorize__item__center__introduction__left
+      -#         .main__pickup-categorize__item__center__introduction__left__name
+      -#           商品名
+      -#         .main__pickup-categorize__item__center__introduction__left__price
+      -#           40000円
+      -#         .main__pickup-categorize__item__center__introduction__left__display
+      -#           (税込)
+      -#       .main__pickup-categorize__item__center__introduction__right
+      -#         .main__pickup-categorize__item__center__introduction__right__icon
+      -#           = icon('far', 'star')
+      -#         .main__pickup-categorize__item__center__introduction__right__num
+      -#           2
+      -# .main__pickup-categorize__item__right
+      -#   = link_to "#" do
+      -#     .main__pickup-categorize__item__right__pic
+      -#       = image_tag("/material/pict/a007.png", width: "220px", height: "150px", class: '.main__pickup-categorize__item__right__pic__left') 
+      -#     .main__pickup-categorize__item__right__introduction
+      -#       .main__pickup-categorize__item__right__introduction__left
+      -#         .main__pickup-categorize__item__right__introduction__left__name
+      -#           商品名
+      -#         .main__pickup-categorize__item__right__introduction__left__price
+      -#           10000円
+      -#         .main__pickup-categorize__item__right__introduction__left__display
+      -#           (税込)
+      -#       .main__pickup-categorize__item__right__introduction__right
+      -#         .main__pickup-categorize__item__right__introduction__right__icon
+      -#           = icon('far', 'star')
+      -#         .main__pickup-categorize__item__right__introduction__right__num
+      -#           10
 
   .main__pickup-burand
     .main__pickup-burand__title
