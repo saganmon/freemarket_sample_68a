@@ -7,5 +7,5 @@ class Product < ApplicationRecord
   belongs_to  :send_day
   belongs_to  :size
   belongs_to  :brand
-  belongs_to  :category
+  has_many    :categories
 end
