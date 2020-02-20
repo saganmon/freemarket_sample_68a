@@ -20,7 +20,7 @@
         = tag.li image_tag "/material/pict/puppy-3842997_640.png", class: "sell-product-detail__items__sub-image"
 
     .sell-product-detail__price
-      = tag.span("¥30000")
+      = tag.span("¥ "+"30000")
       .sell-product-detail__price__detail
         = tag.span("(税込)")
         = tag.span("送料込み")
@@ -79,7 +79,7 @@
         = tag.li icon('fas', 'star')
         = tag.li "お気に入り 0"
       = tag.ul class: "sell-product-detail__option__buy" do
-        = tag.li link_to('購入画面に進む', "#")
+        = tag.li link_to('購入画面に進む', new_buy_path)
       = tag.ul class: "sell-product-detail__option__report" do
         = tag.li icon('fas', 'flag')
         = tag.li link_to('不適切な商品の通報', "#")
