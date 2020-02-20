@@ -8,4 +8,5 @@ class Product < ApplicationRecord
   belongs_to  :size
   belongs_to  :brand
   belongs_to  :category
+  belongs_to  :shipping
 end
