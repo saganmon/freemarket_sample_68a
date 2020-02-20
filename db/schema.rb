@@ -43,21 +43,13 @@ ActiveRecord::Schema.define(version: 2020_02_19_104856) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.bigint "status_id"
-    t.bigint "send_priceburden_id"
-    t.bigint "send_method_id"
-    t.bigint "send_day_id"
-    t.bigint "size_id"
     t.bigint "brand_id"
     t.bigint "category_id"
     t.boolean "status"
+    t.bigint "shipping_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["category_id"], name: "index_products_on_category_id"
-    t.index ["send_day_id"], name: "index_products_on_send_day_id"
-    t.index ["send_method_id"], name: "index_products_on_send_method_id"
-    t.index ["send_priceburden_id"], name: "index_products_on_send_priceburden_id"
-    t.index ["size_id"], name: "index_products_on_size_id"
-    t.index ["status_id"], name: "index_products_on_status_id"
+    t.index ["shipping_id"], name: "index_products_on_shipping_id"
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
@@ -88,34 +80,13 @@ ActiveRecord::Schema.define(version: 2020_02_19_104856) do
     t.index ["user_id"], name: "index_purchase_destinations_on_user_id"
   end
 
-  create_table "send_days", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "send_methods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "shippings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
+    t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "send_priceburdens", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "sizes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_shippings_on_ancestry"
+    t.index ["name"], name: "index_shippings_on_name"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -142,11 +113,7 @@ ActiveRecord::Schema.define(version: 2020_02_19_104856) do
   add_foreign_key "images", "products"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
-  add_foreign_key "products", "send_days"
-  add_foreign_key "products", "send_methods"
-  add_foreign_key "products", "send_priceburdens"
-  add_foreign_key "products", "sizes"
-  add_foreign_key "products", "statuses"
+  add_foreign_key "products", "shippings"
   add_foreign_key "products", "users"
   add_foreign_key "purchase_credits", "users"
 end

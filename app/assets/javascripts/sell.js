@@ -59,6 +59,7 @@ $(function () {
     });
   
   // 大カテゴリにプルダウンを「---」に変更する
+
   $('.sell-main__product-details__contents__category__lists').prepend(
     `<option value="" >---</option>`
     ).val("");
@@ -107,16 +108,6 @@ $(function () {
     });
     
   });
-
-
-
-
-
-
-
-
-
-
 
 });
 
