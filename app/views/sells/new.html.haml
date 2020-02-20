@@ -2,9 +2,9 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  -# = form_with(model: @product, local: true, html: { class: "sell-main" }) do |f|
 
-  = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
+  -# = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
+  = form_with(model: @sell, url: sells_path, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
       .sell-main__image__title
@@ -36,40 +36,40 @@
             = f.label :category, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
             = tag.span("必須", class: "must")
             = tag.br
-            = select :category_1,:category_1, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
-            = tag.br
-            = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_child'}
+            = select :category, :category, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+            -# = tag.br
+            -# = select :category_2, :category_2, options_from_collection_for_select(Category.where(id: @sell.category.parent.id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_child'}
             -# = tag.br
             -# = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_grandchild'}
 
         .sell-main__product-details__contents__brand
           .sell-main__product-details__contents__brand__title
-            = f.label :brand, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+            = f.label :brand_id, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+          = f.text_field :brand_id, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
         .sell-main__product-details__contents__condition
           .sell-main__product-details__contents__condition__title
-            = f.label :condition, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
+            = f.label :status_id, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :condition, ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {include_blank: "選択してください"}, class: "sell-main__product-details__contents__condition__lists"
+          = f.select :status_id, ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {include_blank: "選択してください"}, class: "sell-main__product-details__contents__condition__lists"
     .sell-main__product-delivery
       .sell-main__product-delivery__title
         配送について
       .sell-main__product-delivery__contents
         .sell-main__product-delivery__contents__who-cares
           .sell-main__product-delivery__contents__who-cares__title
-            = f.label :whocares, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
+            = f.label :send_priceburden_id, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :whocares, ["送料込み(出品者負担)", "着払い(購入者負担)"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__who-cares__lists"
+          = f.select :send_priceburden_id, ["送料込み(出品者負担)", "着払い(購入者負担)"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__who-cares__lists"
         .sell-main__product-delivery__contents__where-from
           .sell-main__product-delivery__contents__where-from__title
-            = f.label :wherefrom, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
+            = f.label :send_sellprefecture, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :wherefrom, ["北海道", "青森"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
+          = f.select :send_sellprefecture, ["北海道", "青森"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
         .sell-main__product-delivery__contents__how-long
           .sell-main__product-delivery__contents__how-long__title
             = f.label :howlong, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
@@ -82,10 +82,10 @@
       .sell-main__product-price__contents
         .sell-main__product-price__contents__selling-price
           .sell-main__product-price__contents__selling-price__title
-            = f.label :name, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
+            = f.label :price, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
             = tag.span("必須", class: "must")
           = tag.span("¥")
-          = f.text_field :name, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
+          = f.text_field :price, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
         .sell-main__product-price__contents__sales-commission
           = f.label :name, "販売価格", class: "sell-main__product-price__contents__sales-commission__title"
           = tag.span("ー", class:"sell-main__product-price__contents__selling-price__box")
