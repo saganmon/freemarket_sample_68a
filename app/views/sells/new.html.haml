@@ -2,18 +2,17 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  -# = form_with(model: @product, local: true, html: { class: "sell-main" }) do |f|
 
-  = form_with(model: nil, url: nil, local: true, html: { class: "sell-main" }) do |f|
+  = form_with(model: @sell, url: sells_path, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .sell-main__image
       .sell-main__image__title
-        = f.label :photos, "出品画像", class: "sell-main__image__title--text"
+        = f.label :image, "出品画像", class: "sell-main__image__title--text"
         = tag.span("必須", class: "must")
       = tag.br
       = tag.span("最大4枚までアップロードできます", class: "sell-main__image__caution")
       = tag.br
-      = f.file_field(:photos, multiple: true, class: "sell-main__image__photos-box", accept: 'image/png,image/gif,image/jpeg')
+      = f.file_field(:image, multiple: true, class: "sell-main__image__photos-box", accept: 'image/png,image/gif,image/jpeg')
     .sell-main__product-name
       .sell-main__product-name__title
         = f.label :name, "商品名", class: "sell-main__product-name__title--text"
@@ -33,14 +32,30 @@
       .sell-main__product-details__contents
         .sell-main__product-details__contents__category
           .sell-main__product-details__contents__category__title
-            = f.label :category, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
+            = f.label :category_id, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
             = tag.span("必須", class: "must")
             = tag.br
-            = select :category_1,:category_1, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
-            = tag.br
-            = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_child'}
-            -# = tag.br
-            -# = select :category_2,:category_2, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists category-box_grandchild'}
+          - if @sell
+            .sell-main__product-details__contents__category__title.category-box__large
+              = select :category_small,:category_small, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = tag.br
+            .sell-main__product-details__contents__category__title.category-box__middle
+              = tag.br
+              -# = select :category_middle,:category_middle, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = select :category_middle,:category_middle, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+            .sell-main__product-details__contents__category__title.category-box__small
+              = tag.br
+              = select :category_id,:category_id, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+          - else
+            .sell-main__product-details__contents__category__title.category-box__large
+              = select :category_small,:category_small, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = tag.br
+            .sell-main__product-details__contents__category__title.category-box__middle
+              = select :category_middle,:category_middle, options_from_collection_for_select(@categories.where(id: @sell.category.parent.id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = tag.br
+            .sell-main__product-details__contents__category__title.category-box__small
+              = tag.br
+              = select :item,:category_id, options_from_collection_for_select(@categories.where(id: @sell.category_id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
 
         .sell-main__product-details__contents__brand
           .sell-main__product-details__contents__brand__title
@@ -82,16 +97,17 @@
       .sell-main__product-price__contents
         .sell-main__product-price__contents__selling-price
           .sell-main__product-price__contents__selling-price__title
-            = f.label :name, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
+            = f.label :price, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
             = tag.span("必須", class: "must")
-          = tag.span("¥")
-          = f.text_field :name, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
+            = tag.span("¥")
+          = f.text_field :price, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
         .sell-main__product-price__contents__sales-commission
-          = f.label :name, "販売価格", class: "sell-main__product-price__contents__sales-commission__title"
-          = tag.span("ー", class:"sell-main__product-price__contents__selling-price__box")
+          = f.label :name, "販売手数料（10%）", class: "sell-main__product-price__contents__sales-commission__title"
+          = tag.span("---", class:"sell-main__product-price__contents__sales-commission__price")
+
         .sell-main__product-price__contents__sales-profit
           = f.label :name, "販売利益", class: "sell-main__product-price__contents__sales-profit__title"
-          = tag.span("ー", class: "sell-main__product-price____contentssales-profit__price")
+          = tag.span("---", class: "sell-main__product-price__contents__sales-profit__price")
 
     .sell-main__button
       = f.submit "出品する", class: "sell-main__button__sell"

@@ -11,7 +11,12 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   resources :mypages, only: [:index]
-  resources :sells, only: [:new, :create, :show, :edit]
+  resources :sells, only: [:new, :create, :show, :edit] do
+    collection do
+      get 'select_category_middle' 
+      get 'select_category_small'
+    end
+  end
   resources :buys, only: [:new, :create]
   resources :homes, only: [:index]
 

@@ -16,11 +16,25 @@ class SellsController < ApplicationController
   end
 
   def edit
-    @child_categories = Category.where(ancestry: params[:keyword])
+
+  end
+
+  def select_category_middle
+    @middle_categories = Category.where(ancestry: params[:keyword])
     respond_to do |format|
       format.html
       format.json
     end
+
+  end
+
+  def select_category_small
+    @small_categories = Category.find(params[:keyword]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+
   end
 
   private
