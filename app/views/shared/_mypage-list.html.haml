@@ -1,57 +1,56 @@
 .wrapper__main__list
   %nav.wrapper__main__list__nav
     %ul.wrapper__main__list__nav__box
+      %li.wrapper__main__list__nav__box__text__home
+        マイページ
+      %li.wrapper__main__list__nav__box__text
+        = link_to 'お知らせ',''
+      %li.wrapper__main__list__nav__box__text
+        = link_to 'やることリスト',''
+      %li.wrapper__main__list__nav__box__text
+        = link_to 'いいね！一覧',''
       %li.wrapper__main__list__nav__box__text
         -# ここはリンクを貼る
-        = link_to 'マイページ','#'
+        = link_to '出品する', new_sell_path
       %li.wrapper__main__list__nav__box__text
-        = link_to 'お知らせ','#'
+        = link_to '出品した商品-出品中',''
       %li.wrapper__main__list__nav__box__text
-        = link_to 'やることリスト','#'
+        = link_to '出品した商品-取引中',''
       %li.wrapper__main__list__nav__box__text
-        = link_to 'いいね！一覧','#'
+        = link_to '出品した商品-売却済',''
       %li.wrapper__main__list__nav__box__text
-        -# ここはリンクを貼る
-        = link_to '出品する','#'
+        = link_to '購入した商品-取引中',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '出品した商品-出品中','#'
+        = link_to '出品した商品-過去の取引',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '出品した商品-取引中','#'
+        = link_to 'ニュース一覧',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '出品した商品-売却済','#'
+        = link_to '評価一覧',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '購入した商品-取引中','#'
+        = link_to 'ガイド',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '出品した商品-過去の取引','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to 'ニュース一覧','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to '評価一覧','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to 'ガイド','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to 'お問い合わせ','#'
+        = link_to 'お問い合わせ',''
     %h1.wrapper__main__list__nav__title メルペイ
     %ul.wrapper__main__list__nav__box
       %li.wrapper__main__list__nav__box__text
-        = link_to '売上・振込申請','#'
+        = link_to '売上・振込申請',''
       %li.wrapper__main__list__nav__box__text
-        = link_to 'ポイント','#'
+        = link_to 'ポイント',''
     %ul.wrapper__main__list__nav__box
     %h1.wrapper__main__list__nav__title 設定
     %ul.wrapper__main__list__nav__box
       %li.wrapper__main__list__nav__box__text
-        = link_to 'プロフィール','#'
+        = link_to 'プロフィール',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '発送元・発送元・お届け先住所','#'
+        = link_to '発送元・発送元・お届け先住所',''
+      %li.wrapper__main__list__nav__box__text__card
+        支払い方法
       %li.wrapper__main__list__nav__box__text
-        = link_to '支払い方法','#'
+        = link_to 'メール/パスワード',''
       %li.wrapper__main__list__nav__box__text
-        = link_to 'メール/パスワード','#'
+        = link_to '本人情報',''
       %li.wrapper__main__list__nav__box__text
-        = link_to '本人情報','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to '電話番号の確認','#'
-      %li.wrapper__main__list__nav__box__text
-        = link_to 'ログアウト', "#"
+        = link_to '電話番号の確認',''
+      %li.wrapper__main__list__nav__box__text__logout
+        ログアウト
     %ul.wrapper__main__list__nav__box
