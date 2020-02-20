@@ -37,13 +37,13 @@
         %ul.wrapper__main__information__content__text2
           = link_to "#" do
             %li.wrapper__main__information__content__text2__sentence
-              🌹お知らせ
+              🌖お知らせ
           = link_to "#" do
             %li.wrapper__main__information__content__text2__sentence
-              🌹お知らせ
+              🌖お知らせ
           = link_to "#" do
             %li.wrapper__main__information__content__text2__sentence
-              🌹お知らせ
+              🌖お知らせ
         .wrapper__main__information__content__btn2
           = link_to "#" do
             一覧を見る
@@ -65,7 +65,7 @@
             現在取引中の商品はありません
 
     .wrapper__main__logout
-      = link_to "#" do
+      = link_to root_path do
         .wrapper__main__logout__inner
           ログアウト
 
@@ -76,11 +76,10 @@
         .wrapper__main__card__inner__text
           クレジットカード一覧
         .wrapper__main__card__inner__btn
-          = link_to "#" do
-            .wrapper__main__card__inner__btn__icon
-              = icon('far', 'address-card')
-            .wrapper__main__card__inner__btn__text
-              クレジットカードを追加する
+          .wrapper__main__card__inner__btn__icon
+            = icon('far', 'address-card')
+          .wrapper__main__card__inner__btn__text
+            クレジットカードを追加する
       .wrapper__main__card__description
         = link_to "#" do
           .wrapper__main__card__description__text
