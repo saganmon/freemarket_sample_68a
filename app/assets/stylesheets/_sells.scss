@@ -449,17 +449,23 @@
       border: 1px solid orange;
       border-radius: 2em;
       padding: 10px;
+      line-height: 30px;
       li {
         color: $font-color-green;
       }  
     }
+    &__buy {
+      
+    }
     &__report {
+      line-height: 30px;
       display: flex;
       width: 170px;
       border: 1px solid $font-color-black;
       border-radius: 0.5em;
       padding: 10px;
       li {
+        margin-left: 2px;
         color: $font-color-black;
       }  
     }
