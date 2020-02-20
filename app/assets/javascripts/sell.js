@@ -59,7 +59,6 @@ $(function () {
     });
   
   // 大カテゴリにプルダウンを「---」に変更する
-
   $('.sell-main__product-details__contents__category__lists').prepend(
     `<option value="" >---</option>`
     ).val("");
@@ -108,6 +107,30 @@ $(function () {
     });
     
   });
+
+
+  // 配送料の負担・方法の表示
+
+  // 配送の方法
+  $(document).ready(function(){
+    $(window).load(function(){
+      $('.sell-main__product-delivery__contents__shipping-method').css('display', 'none');
+    });
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 });
 

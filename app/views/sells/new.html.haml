@@ -40,11 +40,10 @@
               = tag.br
             .sell-main__product-details__contents__category__title.category-box__middle
               = tag.br
-              -# = select :category_middle,:category_middle, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
               = select :category_middle,:category_middle, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
             .sell-main__product-details__contents__category__title.category-box__small
               = tag.br
-              = select :category_id,:category_id, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = select :category_id,:category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
           - else
             .sell-main__product-details__contents__category__title.category-box__large
               = select :category_small,:category_small, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
@@ -71,12 +70,23 @@
       .sell-main__product-delivery__title
         配送について
       .sell-main__product-delivery__contents
+
         .sell-main__product-delivery__contents__who-cares
           .sell-main__product-delivery__contents__who-cares__title
             = f.label :send_priceburden_id, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
             = tag.span("必須", class: "must")
           = tag.br
           = f.select :send_priceburden_id, ["送料込み(出品者負担)", "着払い(購入者負担)"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__who-cares__lists"
+
+
+        .sell-main__product-delivery__contents__shipping-method
+          .sell-main__product-delivery__contents__shipping-method__title
+            = f.label :shipping_id, "配送の方法", class: "sell-main__product-delivery__contents__shipping-method__title--text"
+            = tag.span("必須", class: "must")
+          = tag.br
+          = f.select :shipping_id, ["ゆうパック"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__shipping-method__lists"
+
+
         .sell-main__product-delivery__contents__where-from
           .sell-main__product-delivery__contents__where-from__title
             = f.label :send_sellprefecture, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
