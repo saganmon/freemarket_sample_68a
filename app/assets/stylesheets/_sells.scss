@@ -471,7 +471,16 @@
       }  
     }
     &__buy {
-      
+      line-height: 30px;
+      text-align: center;
+      width: 250px;
+      border-radius: 0.8em;
+      padding: 10px;
+      background-color: $background-color-red;
+      a {
+        font-weight: 600;
+        color: $font-color-white;
+      }
     }
     &__report {
       line-height: 30px;
