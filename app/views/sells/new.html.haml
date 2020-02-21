@@ -20,10 +20,10 @@
       = f.text_field :name, class:"sell-main__product-name__box", placeholder: "40文字まで"
     .sell-main__product-description
       .sell-main__product-description__title
-        = f.label :discription, "商品の説明", class: "sell-main__product-description__title--text"
+        = f.label :description, "商品の説明", class: "sell-main__product-description__title--text"
         = tag.span("必須", class: "must")
       = tag.br
-      = f.text_area :discription, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      = f.text_area :description, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
 
     .sell-main__product-details
       .sell-main__product-details__title
@@ -36,36 +36,42 @@
             = tag.br
           - if @sell
             .sell-main__product-details__contents__category__title.category-box__large
-              = select :category_small,:category_small, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
               = tag.br
             .sell-main__product-details__contents__category__title.category-box__middle
               = tag.br
               = select :category_middle,:category_middle, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
             .sell-main__product-details__contents__category__title.category-box__small
               = tag.br
-              = select :category_id,:category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = f.select :category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
           - else
             .sell-main__product-details__contents__category__title.category-box__large
-              = select :category_small,:category_small, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
               = tag.br
             .sell-main__product-details__contents__category__title.category-box__middle
               = select :category_middle,:category_middle, options_from_collection_for_select(@categories.where(id: @sell.category.parent.id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
               = tag.br
             .sell-main__product-details__contents__category__title.category-box__small
               = tag.br
-              = select :item,:category_id, options_from_collection_for_select(@categories.where(id: @sell.category_id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+              = f.select :category_id, options_from_collection_for_select(@categories.where(id: @sell.category_id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
         .sell-main__product-details__contents__brand
           .sell-main__product-details__contents__brand__title
             = f.label :brand_id, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
             = tag.span("必須", class: "must")
           = tag.br
           = f.text_field :brand_id, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+        .sell-main__product-details__contents__size
+          .sell-main__product-details__contents__size__title
+            = f.label :size, "サイズ", class: "sell-main__product-details__contents__size__title--text"
+            = tag.span("任意", class: "signup-option")
+          = tag.br
+          = f.select :size, Product.sizes_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-details__contents__size__lists"
         .sell-main__product-details__contents__condition
           .sell-main__product-details__contents__condition__title
-            = f.label :status_id, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
+            = f.label :condition, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :status_id, ["新品、未使用", "未使用に近い", "目立った傷や汚れなし", "やや傷や汚れあり", "傷や汚れあり", "全体的に状態が悪い"], {include_blank: "選択してください"}, class: "sell-main__product-details__contents__condition__lists"
+          = f.select :condition, Product.conditions_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-details__contents__condition__lists"
     .sell-main__product-delivery
       .sell-main__product-delivery__title
         配送について
@@ -73,32 +79,42 @@
 
         .sell-main__product-delivery__contents__who-cares
           .sell-main__product-delivery__contents__who-cares__title
-            = f.label :send_priceburden_id, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
+            = f.label :shipping_burden, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :send_priceburden_id, ["送料込み(出品者負担)", "着払い(購入者負担)"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__who-cares__lists"
-
-
+          = f.select :shipping_burden, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name),{include_blank: "選択してください"}, {class: "sell-main__product-delivery__contents__who-cares__lists"}
         .sell-main__product-delivery__contents__shipping-method
           .sell-main__product-delivery__contents__shipping-method__title
             = f.label :shipping_id, "配送の方法", class: "sell-main__product-delivery__contents__shipping-method__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-          = f.select :shipping_id, ["ゆうパック"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__shipping-method__lists"
-
-
+          = f.select :shipping_id, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name), {include_blank: "選択してください"}, {class: "sell-main__product-delivery__contents__shipping-method__lists"}
         .sell-main__product-delivery__contents__where-from
-          .sell-main__product-delivery__contents__where-from__title
-            = f.label :send_sellprefecture, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
-            = tag.span("必須", class: "must")
-          = tag.br
-          = f.select :send_sellprefecture, ["北海道", "青森"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
-        .sell-main__product-delivery__contents__how-long
-          .sell-main__product-delivery__contents__how-long__title
-            = f.label :howlong, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
-            = tag.span("必須", class: "must")
-          = tag.br
-          = f.select :howlong, ["1~2日で発送", "2~3日で発送", "4~7日で発送"], {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__how-long__lists"
+          - if @shipping
+            .sell-main__product-delivery__contents__where-from__title
+              = f.label :shipping_where, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
+              = tag.span("必須", class: "must")
+            = tag.br
+            = select :shipping_where, Product.shipping_wheres_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
+            .sell-main__product-delivery__contents__how-long
+              .sell-main__product-delivery__contents__how-long__title
+                = f.label :shipping_day, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
+                = tag.span("必須", class: "must")
+              = tag.br
+              = f.select :shipping_day, Product.shipping_days_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__how-long__lists"
+          - else
+            .sell-main__product-delivery__contents__where-from__title
+              = f.label :shipping_where, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
+              = tag.span("必須", class: "must")
+            = tag.br
+            = f.select :shipping_where, Product.shipping_wheres_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
+            .sell-main__product-delivery__contents__how-long
+              .sell-main__product-delivery__contents__how-long__title
+                = f.label :shipping_day, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
+                = tag.span("必須", class: "must")
+              = tag.br
+              = f.select :shipping_day, Product.shipping_days_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__how-long__lists"
+
     .sell-main__product-price
       .sell-main__product-price__title
         販売価格（¥300〜9,999,999）

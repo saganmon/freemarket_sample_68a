@@ -135,6 +135,22 @@
           height: 48px;
         }
       }
+      &__size {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
+      }
+
       &__condition {
         margin-top: 16px;
         &__title {

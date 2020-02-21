@@ -4,11 +4,13 @@ class SellsController < ApplicationController
     @sell = Product.new
     @image = Image.new
     @categories = Category.all
+    @shippings = Shipping.all
+    @sell.images.new
   end
 
   def create
-    Product.create(product_params)
-    Image.create(image_params)
+    Product.create!(product_params)
+    # Image.create(image_params)
   end
 
   def show
@@ -37,14 +39,30 @@ class SellsController < ApplicationController
 
   end
 
-  private
-  def product_params
-    params.require(:sell).permit(:name, :description, :category, :brand).merge(user_id: current_user.id)
+  def select_category_small
+    @small_categories = Category.find(params[:keyword]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
-  def image_params
-    params.require(:image).permit(:name).merge(product_id: sell.id)
+  def select_shipping_method
+    @shipping_method = Shipping.where(ancestry: params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
+
+  private
+  def product_params
+    params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :price, :condition).merge(user_id: current_user.id)
+  end
+
+  # def image_params
+  #   params.require(:product).require(:image).merge(product_id: sell.id)
+  # end
 
 
 end
