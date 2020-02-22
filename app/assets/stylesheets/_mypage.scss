@@ -28,7 +28,6 @@
             font-size: 14px;
             color: $font-color-black;
             border: 1px solid $background-color-lightgray;
-            font-weight: 600;
             
             &__home {
               padding-right: 5px;
@@ -54,7 +53,6 @@
               font-size: 14px;
               color: $font-color-black;
               border: 1px solid $background-color-lightgray;
-              font-weight: 600;
             }
             &__logout {
               padding-right: 5px;
@@ -67,10 +65,9 @@
               font-size: 14px;
               color: $font-color-black;
               border: 1px solid $background-color-lightgray;
-              font-weight: 600;
             }
             a {
-              font-weight: 600;
+
             }
           }
         }
