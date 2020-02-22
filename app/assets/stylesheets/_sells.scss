@@ -346,11 +346,11 @@
 
 .navigation-bar {
   height: 55px;
-  padding: 0px 60px;
   line-height: 55px;
+  align-items: center;
   &__contents {
-    padding: 0 380px;
     display: flex;
+    padding-left: 252px;
     &__root {
       font-size: 14px;
       color: $font-color-black;
@@ -433,6 +433,30 @@
       li {
         color: $font-color-green;
       }  
+    }
+    &__edit {
+      line-height: 30px;
+      text-align: center;
+      width: 120px;
+      border-radius: 0.8em;
+      padding: 10px;
+      background-color: $background-color-red;
+      a {
+        font-weight: 600;
+        color: $font-color-white;
+      }
+    }
+    &__destroy {
+      line-height: 30px;
+      text-align: center;
+      width: 120px;
+      border-radius: 0.8em;
+      padding: 10px;
+      background-color: $background-color-red;
+      a {
+        font-weight: 600;
+        color: $font-color-white;
+      }
     }
     &__buy {
       line-height: 30px;

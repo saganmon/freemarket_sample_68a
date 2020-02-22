@@ -12,7 +12,7 @@ class SellsController < ApplicationController
   end
 
   def show
-
+    @sell = Product.find(params[:id])
   end
 
   def edit

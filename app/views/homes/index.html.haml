@@ -110,7 +110,6 @@
           .main__pickup-categorize__item__left
             = link_to sell_path(product) do
               .main__pickup-categorize__item__left__pic
-                - product.images.first.name
                 = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
               .main__pickup-categorize__item__left__introduction
                 .main__pickup-categorize__item__left__introduction__left
@@ -139,7 +138,6 @@
           .main__pickup-burand__item__left
             = link_to sell_path(product) do
               .main__pickup-burand__item__left__pic
-                - product.images.first.name
                 = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
               .main__pickup-burand__item__left__introduction
                 .main__pickup-burand__item__left__introduction__left
