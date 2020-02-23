@@ -61,6 +61,7 @@
         &__categorize {
           padding: 0;
           list-style: none;
+          display: flex;
           a {
             color: black;
             text-decoration: none;
@@ -70,15 +71,20 @@
             background-size: 18px;
             padding-right: 30px;
           }
-          &__tree {
-            display: none;
+          &__big {
+            z-index: 1000;
+            list-style: none;
+          }
+          &__medium {
+            z-index: 1000;
             text-decoration: none;
             list-style: none;
-            &__branch {
-              display: none;
-              text-decoration: none;
-              list-style: none;
-            }
+          }
+          &__small {
+            z-index: 1000;
+            // display: none;
+            text-decoration: none;
+            list-style: none;
           }
         }
         &__burando {
