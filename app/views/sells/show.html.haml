@@ -81,7 +81,7 @@
         = tag.ul class: "sell-product-detail__option__edit" do
           = tag.li link_to('編集', "#")
         = tag.ul class: "sell-product-detail__option__destroy" do
-          = tag.li link_to('削除', "#")
+          = tag.li link_to('削除', sell_path, method: :delete)
       - else user_signed_in?
         = tag.ul class: "sell-product-detail__option__buy" do
           = tag.li link_to('購入画面に進む', new_buy_path)

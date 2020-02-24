@@ -23,6 +23,12 @@ class SellsController < ApplicationController
     end
   end
 
+
+  def destroy
+    sell = Product.find(params[:id])
+    sell.destroy
+  end
+  
   private
   def product_params
     params.require(:sell).permit(:name, :description, :category, :brand).merge(user_id: current_user.id)
