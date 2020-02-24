@@ -26,7 +26,11 @@ class SellsController < ApplicationController
 
   def destroy
     sell = Product.find(params[:id])
-    sell.destroy
+    if sell.destroy
+    else
+      flash.now[:alert] = '削除は完了していません。'
+      respond_to sell_path(sell)
+    end
   end
   
   private
