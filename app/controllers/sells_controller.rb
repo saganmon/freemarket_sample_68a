@@ -26,8 +26,7 @@ class SellsController < ApplicationController
 
   def destroy
     sell = Product.find(params[:id])
-    if sell.destroy
-    unless
+    unless sell.destroy
       flash.now[:alert] = '削除は完了していません。'
       respond_to sell_path(sell)
     end
@@ -41,6 +40,4 @@ class SellsController < ApplicationController
   def image_params
     params.require(:image).permit(:name).merge(product_id: sell.id)
   end
-
-
 end
