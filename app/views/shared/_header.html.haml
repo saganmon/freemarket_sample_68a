@@ -10,11 +10,12 @@
     .header__inner__nav
       .header__inner__nav__left
         %li.header__inner__nav__left__categorize
-          = link_to "#" do
+          = link_to "#" , id: "category_match" do
             カテゴリー
-          .header__inner__nav__left__categorize__big
-          .header__inner__nav__left__categorize__medium
-          .header__inner__nav__left__categorize__small
+          .header__inner__nav__left__categorize__tree
+            .header__inner__nav__left__categorize__tree__big
+            .header__inner__nav__left__categorize__tree__medium
+            .header__inner__nav__left__categorize__tree__small
         .header__inner__nav__left__burando
           = link_to "#" do
             ブランド

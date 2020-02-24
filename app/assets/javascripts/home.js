@@ -1,10 +1,10 @@
 $(function () {
 
   // 大カテゴリ表示メソッド
-  $(".header__inner__nav__left__categorize").on("mouseover", function() {
+  $("#category_match").on("mouseover", function() {
   // $(document).on("mouseover", ".header__inner__nav__left__categorize", function() {
   // // $(".header__inner__nav__left__categorize").on("mouseover", function() {
-    var list_id = 0;
+    var list_id = "none";
     $.ajax({
       type: 'GET',
       url: `homes/search`,
@@ -14,8 +14,8 @@ $(function () {
     .done(function (list_categories) {
       // $(".header__inner__nav__left__categorize__big").empty();
       $(list_categories).each(function (i, list) {
-        $(".header__inner__nav__left__categorize__big").append(
-          `<li value="${list.id}" class="header__inner__nav__left__categorize__big__list">
+        $(".header__inner__nav__left__categorize__tree__big").append(
+          `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__big__list">
             <a href="#">${list.name}</a>
           </li>`
         );
@@ -27,7 +27,8 @@ $(function () {
   });
 
   // 中カテゴリ表示メソッド
-  $(document).on("mouseover", ".header__inner__nav__left__categorize__big__list", function() {
+  // $(document).on("change", ".header__inner__nav__left__categorize__tree__big__list", function() {
+  $(document).on("mouseover", ".header__inner__nav__left__categorize__tree__big__list", function() {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
@@ -36,11 +37,11 @@ $(function () {
       dataType: 'json'
     })
     .done(function (list_categories) {
-      $(".header__inner__nav__left__categorize__medium").empty();
-      $(".header__inner__nav__left__categorize__small").empty();
+      $(".header__inner__nav__left__categorize__tree__medium").empty();
+      $(".header__inner__nav__left__categorize__tree__small").empty();
       $(list_categories).each(function (i, list) {
-        $(".header__inner__nav__left__categorize__medium").append(
-          `<li value="${list.id}" class="header__inner__nav__left__categorize__medium__list">
+        $(".header__inner__nav__left__categorize__tree__medium").append(
+          `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__medium__list">
             <a href="#">${list.name}</a>
           </li>`
         );
@@ -52,7 +53,7 @@ $(function () {
   });
 
   // 小カテゴリ表示メソッド
-  $(document).on("mouseover", ".header__inner__nav__left__categorize__medium__list", function() {
+  $(document).on("mouseover", ".header__inner__nav__left__categorize__tree__medium__list", function() {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
@@ -61,10 +62,10 @@ $(function () {
       dataType: 'json'
     })
     .done(function (list_categories) {
-      $(".header__inner__nav__left__categorize__small").empty();
+      $(".header__inner__nav__left__categorize__tree__small").empty();
       $(list_categories).each(function (i, list) {
-        $(".header__inner__nav__left__categorize__small").append(
-          `<li value="${list.id}" class="header__inner__nav__left__categorize__small__list">
+        $(".header__inner__nav__left__categorize__tree__small").append(
+          `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__small__list">
             <a href="#">${list.name}</a>
           </li>`
         );
@@ -75,9 +76,10 @@ $(function () {
     });
   });
   
-  $(document).on("mouseleave", ".header__inner__nav__left__categorize", function() {
+  $(document).on("mouseleave", ".header__inner__nav__left__categorize__tree", function() {
   // $(".header__inner__nav__left__categorize").on("mouseleave", function() {
-    $(".header__inner__nav__left__categorize__big").remove();
-    $(".header__inner__nav__left__categorize__medium").remove();
+    $(".header__inner__nav__left__categorize__tree__big").empty();
+    $(".header__inner__nav__left__categorize__tree__medium").empty();
+    $(".header__inner__nav__left__categorize__tree__small").empty();
   });
 });
