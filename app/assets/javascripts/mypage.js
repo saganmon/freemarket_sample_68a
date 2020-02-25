@@ -45,5 +45,62 @@ $(function() {
     $(".wrapper__main__card-form").show();
   });
 
+
+  $('.wrapper__main__list__nav__box__text')
+    .on('mouseenter', function(){
+      $(this).css({
+        "fontWeight": "bold",
+        "backgroundColor": "#f5f5f5"
+      });
+    })
+    .on('mouseleave', function(){
+      $(this).css({
+        "fontWeight": "normal",
+        "backgroundColor": "white"
+      });
+    });
+
+    $('.wrapper__main__list__nav__box__text__home')
+    .on('mouseenter', function(){
+      $(this).css({
+        "fontWeight": "bold",
+        "backgroundColor": "#f5f5f5"
+      });
+    })
+    .on('mouseleave', function(){
+      $(this).css({
+        "fontWeight": "normal",
+        "backgroundColor": "white"
+      });
+    });
+
+    $('.wrapper__main__list__nav__box__text__card')
+    .on('mouseenter', function(){
+      $(this).css({
+        "fontWeight": "bold",
+        "backgroundColor": "#f5f5f5"
+      });
+    })
+    .on('mouseleave', function(){
+      $(this).css({
+        "fontWeight": "normal",
+        "backgroundColor": "white"
+      });
+    });
+
+    $('.wrapper__main__list__nav__box__text__logout')
+    .on('mouseover', function(){
+      $(this).css({
+        "fontWeight": "bold",
+        "backgroundColor": "#f5f5f5"
+      });
+    })
+    .on('mouseleave', function(){
+      $(this).css({
+        "fontWeight": "normal",
+        "backgroundColor": "white"
+      });
+    });
+
 });
 
