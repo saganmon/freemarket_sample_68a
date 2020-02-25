@@ -1,17 +1,3 @@
-product_1 = Product.create(
-  name: 'クッキー',
-  description: '手作りです',
-  price: 3999,
-  user_id: 1,
-  brand_id: 1,
-  category_id: 234,
-  shipping_id: 5,
-  condition: 2,
-  shipping_where: 6,
-  shipping_day: 1,
-  size: 1,
-  status: 1,
-)
 
 product_2 = Product.create(
   name: 'カボチャ',
