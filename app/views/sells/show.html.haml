@@ -18,8 +18,7 @@
         - @sell.images.each do |i|
           = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
-      = tag.span("¥ ")
-      = @sell.price
+      = converting_to_jpy(@sell.price)
       .sell-product-detail__price__detail
         = tag.span("(税込)")
         = tag.span("送料込み")
