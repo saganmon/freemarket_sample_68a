@@ -9,7 +9,7 @@
           .wrapper__main__information__image__icon
             = image_tag("/material/icon/member_photo_noimage_thumb.png",size: "70")
           .wrapper__main__information__image__name
-            name
+            = current_user.nickname
           
       %section.wrapper__main__information__content
         .wrapper__main__information__content__tabs

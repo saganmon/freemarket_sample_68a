@@ -15,7 +15,7 @@ class SellsController < ApplicationController
   end
 
   def show
-
+    @sell = Product.find(params[:id])
   end
 
   def edit
@@ -36,7 +36,15 @@ class SellsController < ApplicationController
       format.html
       format.json
     end
+
+  def destroy
+    sell = Product.find(params[:id])
+    unless sell.destroy
+      flash.now[:alert] = '削除は完了していません。'
+      respond_to sell_path(sell)
+    end
   end
+
 
   def select_shipping_method
     @shipping_method = Shipping.where(ancestry: params[:keyword])

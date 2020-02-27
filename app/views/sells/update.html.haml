@@ -1,0 +1,13 @@
+.update-view
+  .update-view__image
+    %h1
+      = link_to image_tag('/material/logo/logo.png', width: '185px', height: '49px'), root_path
+
+  .update-view__main
+    .update-view__main__text
+      編集が完了しました。
+    .update-view__link-top
+      = link_to sell_path(@sell) do
+        商品詳細ページに戻る
+
+  = render partial: "shared/footer"

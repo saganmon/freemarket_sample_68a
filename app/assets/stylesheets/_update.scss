@@ -1,0 +1,32 @@
+.update-view{
+  width: 100%;
+  height: 100vh;
+  background-color: $background-color-lightgray;
+  font-size: 14px;
+  text-align: center;
+  &__image{
+    height: 128px;
+    h1{
+      text-align: center;
+      padding-top: 40px;
+    }
+  }
+  &__main{
+    width: 450px;
+    height: 30%;
+    margin: 0 auto;
+    background-color: $background-color-white;
+    text-align: center;
+    padding-top: 100px;
+    &__text {
+      margin-bottom: 50px;
+      font-size: 15px;
+    }
+    a {
+      line-height: 40px;
+      background-color: $background-color-red;
+      color: $font-color-white;
+      padding: 10px 40px;
+    }
+  }
+}

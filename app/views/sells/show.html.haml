@@ -4,29 +4,27 @@
   .navigation-bar
     = tag.ul class: "navigation-bar__contents" do
       = tag.li link_to('FURIMA', "/", class: "navigation-bar__contents__root")
-      = tag.li link_to('ベビー・キッズ', "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to('ベビー服(男女兼用)~95cm', "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to('アウター', "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to('product3', "#", class: "navigation-bar__contents__item navi-link active")
+      = tag.li link_to(@sell.category.parent.parent.name, "#", class: "navigation-bar__contents__category navi-link")
+      = tag.li link_to(@sell.category.parent.name, "#", class: "navigation-bar__contents__category navi-link")
+      = tag.li link_to(@sell.category.name, "#", class: "navigation-bar__contents__category navi-link")
+      = tag.li link_to(@sell.name, "#", class: "navigation-bar__contents__item navi-link active")
 
   .sell-product-detail
-    = tag.h2("product3", class: "sell-product-detail__title")
+    = tag.h2(@sell.name, class: "sell-product-detail__title")
 
     = tag.ul class: "sell-product-detail__items" do
-      = tag.li image_tag "/material/pict/dog-1027549_640.png", class: "sell-product-detail__items__main-image"
+      = tag.li image_tag "#{@sell.images.first.name}", class: "sell-product-detail__items__main-image"
       = tag.ul class: "sell-product-detail__items__sub-image" do
-        = tag.li image_tag "/material/pict/dog-1027549_640.png", class: "sell-product-detail__items__sub-image"
-        = tag.li image_tag "/material/pict/dog-1246610_640.png", class: "sell-product-detail__items__sub-image"
-        = tag.li image_tag "/material/pict/puppy-3842997_640.png", class: "sell-product-detail__items__sub-image"
-
+        - @sell.images.each do |i|
+          = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
-      = tag.span("¥ "+"30000")
+      = converting_to_jpy(@sell.price)
       .sell-product-detail__price__detail
         = tag.span("(税込)")
         = tag.span("送料込み")
 
     .sell-product-detail__subtitle
-      = tag.h3("product3")
+      = tag.h3(@sell.name)
 
     .sell-product-detail__table
       %table
@@ -35,51 +33,58 @@
             %th
               出品者
             %td
-              hoge
+              = @sell.user.nickname
           %tr
             %th
               カテゴリー
             %td
-              = tag.div link_to('ベビー・キッズ', "#")
-              = tag.div link_to('ベビー服(男女兼用)~95cm', "#")
-              = tag.div link_to('アウター', "#")
+              = tag.div link_to(@sell.category.parent.parent.name, "#")
+              = tag.div link_to(@sell.category.parent.name, "#")
+              = tag.div link_to(@sell.category.name, "#")
           %tr
             %th
               ブランド
             %td
-              ー
+              = @sell.brand.name
           %tr
             %th
               商品のサイズ
             %td
-              ー
+              = @sell.size_i18n
           %tr
             %th
               商品の状態
             %td
-              未使用に近い
+              = @sell.condition_i18n
           %tr
             %th
               配送料の負担
             %td
-              送料込み（出品者負担）
+              = @sell.shipping.parent.name
           %tr
             %th
               発送元の地域
             %td
-              = tag.div link_to('岩手県', "#")
+              = tag.div link_to(@sell.shipping_where_i18n , "#")
           %tr
             %th
               発送日の目安
             %td
-              4~7日で発送
+              = @sell.shipping_day_i18n
 
     .sell-product-detail__option
       = tag.ul class: "sell-product-detail__option__favorite" do
         = tag.li icon('fas', 'star')
         = tag.li "お気に入り 0"
-      = tag.ul class: "sell-product-detail__option__buy" do
-        = tag.li link_to('購入画面に進む', new_buy_path)
+      - if user_signed_in? && current_user.id == @sell.user_id
+        = tag.ul class: "sell-product-detail__option__edit" do
+          = tag.li link_to('編集', "#")
+        = tag.ul class: "sell-product-detail__option__destroy" do
+          = tag.li link_to('削除', sell_path, method: :delete)
+      - else user_signed_in?
+        = tag.ul class: "sell-product-detail__option__buy" do
+          = tag.li link_to('購入画面に進む', new_buy_path)
+
       = tag.ul class: "sell-product-detail__option__report" do
         = tag.li icon('fas', 'flag')
         = tag.li link_to('不適切な商品の通報', "#")
@@ -99,6 +104,6 @@
       = link_to('後ろの商品', "#")
   
   .sell-product-relatedItems
-    = link_to('ベビー・キッズ', "#")
+    = link_to(@sell.category.parent.parent.name, "#")
 
   = render 'shared/lower-part'
