@@ -129,9 +129,6 @@ var changeSelectShipping = function (id, nextSelect) {
     });
   });
 
-
-  // 配送料の負担・方法の表示
-
   // 配送の方法の非表示
   $(document).ready(function(){
     $(window).load(function(){
@@ -151,4 +148,3 @@ var changeSelectShipping = function (id, nextSelect) {
     changeSelectShipping(burden, $('#product_shipping_id'));
   });
 });
-

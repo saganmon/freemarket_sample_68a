@@ -5,6 +5,9 @@ class Product < ApplicationRecord
   belongs_to  :shipping
   belongs_to  :brand, optional: true
 
+  accepts_nested_attributes_for :brand, allow_destroy: true
+  accepts_nested_attributes_for :images, allow_destroy: true
+
   validates :name, :description, :category_id, :condition, :shipping_id, :shipping_where, :shipping_day, :price, presence: true
   validates :price, numericality: { only_integer: true , greater_than: 300, less_than: 9999999}
 

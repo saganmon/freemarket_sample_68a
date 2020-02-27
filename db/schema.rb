@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_02_21_040105) do
     t.bigint "user_id"
     t.bigint "brand_id"
     t.bigint "category_id"
-    t.boolean "status"
     t.bigint "shipping_id"
     t.integer "condition", null: false
     t.integer "shipping_where", null: false

@@ -8,10 +8,23 @@
       .sell-main__image__title
         = f.label :image, "出品画像", class: "sell-main__image__title--text"
         = tag.span("必須", class: "must")
-      = tag.br
+        = tag.br
       = tag.span("最大4枚までアップロードできます", class: "sell-main__image__caution")
       = tag.br
-      = f.file_field(:image, multiple: true, class: "sell-main__image__photos-box", accept: 'image/png,image/gif,image/jpeg')
+
+      = f.fields_for :images do |i|
+        .sell-main__image__title__photos-box
+          #preview1
+            .sell-main__image__title__photos-box__select-area1
+            = i.label :name, class: "select-image-area", for: "upload-image" do
+              .input_area
+                = i.file_field :name, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+              %p ここをクリックしてください
+          #preview2
+            .sell-main__image__title__photos-box__select-area2
+            = i.label :image, class: "select-image-area", for: "upload-image" do
+              %p ここをクリックしてください
+
     .sell-main__product-name
       .sell-main__product-name__title
         = f.label :name, "商品名", class: "sell-main__product-name__title--text"
@@ -24,7 +37,6 @@
         = tag.span("必須", class: "must")
       = tag.br
       = f.text_area :description, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-
     .sell-main__product-details
       .sell-main__product-details__title
         商品の詳細
@@ -54,12 +66,15 @@
             .sell-main__product-details__contents__category__title.category-box__small
               = tag.br
               = f.select :category_id, options_from_collection_for_select(@categories.where(id: @sell.category_id), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+
         .sell-main__product-details__contents__brand
-          .sell-main__product-details__contents__brand__title
-            = f.label :brand_id, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-            = tag.span("必須", class: "must")
-          = tag.br
-          = f.text_field :brand_id, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+          = f.fields_for :brand do |b|
+            .sell-main__product-details__contents__brand__title
+              = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+              = tag.span("必須", class: "must")
+              = tag.br
+              = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+
         .sell-main__product-details__contents__size
           .sell-main__product-details__contents__size__title
             = f.label :size, "サイズ", class: "sell-main__product-details__contents__size__title--text"

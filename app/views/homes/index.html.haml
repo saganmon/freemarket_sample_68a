@@ -1,5 +1,4 @@
 = render partial: 'shared/header'
-
 .main
   .main__visual
     .main__visual__inner
@@ -14,7 +13,6 @@
           = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', size: "210x60"), "#"
         .main__visual__inner__icon__google
           = link_to image_tag('/material/logo/unnamed.png', size: "220x60"), "#"
-
   .main__introduction
     .main__introduction__text
       FURIMAが選ばれる3つの理由
@@ -56,7 +54,6 @@
             業界最安
         .main__introduction__list__right__text
           最大3%でお得に出品&購入！
-
   .main__middle-dl
     .main__middle-dl__inner
       .main__middle-dl__inner__title
@@ -72,7 +69,6 @@
           = link_to image_tag('/material/logo/799px-Available_on_the_App_Store_(black).png', size: "210x60"), "#"
         .main__middle-dl__inner__icon__google
           = link_to image_tag('/material/logo/unnamed.png', size: "220x60"), "#"
-
   .main__features
     .main__features__text
       FURIMAの特徴
@@ -110,8 +106,8 @@
           .main__pickup-categorize__item__left
             = link_to sell_path(product) do
               .main__pickup-categorize__item__left__pic
-                - product.images.first.name
-                = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+                - product.images.first(1).each do |image|
+                  = image_tag("#{image.name.to_s}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
               .main__pickup-categorize__item__left__introduction
                 .main__pickup-categorize__item__left__introduction__left
                   .main__pickup-categorize__item__left__introduction__left__name
@@ -126,8 +122,6 @@
                     = icon('far', 'star')
                   .main__pickup-categorize__item__left__introduction__right__num
                     0
-
-
     .main__pickup-burand
       .main__pickup-burand__title
         ピックアップブランド
@@ -139,7 +133,6 @@
           .main__pickup-burand__item__left
             = link_to sell_path(product) do
               .main__pickup-burand__item__left__pic
-                - product.images.first.name
                 = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
               .main__pickup-burand__item__left__introduction
                 .main__pickup-burand__item__left__introduction__left
@@ -155,6 +148,4 @@
                     = icon('far', 'star')
                   .main__pickup-burand__item__left__introduction__right__num
                     34
- 
 = render partial: 'shared/lower-part'
-
