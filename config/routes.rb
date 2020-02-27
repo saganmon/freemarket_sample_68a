@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :mypages, only: [:index]
   resources :sells, only: [:new, :create, :show, :edit, :destroy]
   resources :buys, only: [:new, :create]
+  resources :cards, only: [:new, :create]
   resources :homes, only: [:index] do
     collection do
       get :search
