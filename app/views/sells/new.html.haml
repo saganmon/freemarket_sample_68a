@@ -11,19 +11,20 @@
         = tag.br
       = tag.span("最大4枚までアップロードできます", class: "sell-main__image__caution")
       = tag.br
+      #image-box
+        = f.fields_for :images do |i|
+          .js-file_group{"data-index": "#{i.index}"}
+            = i.file_field :name, class: 'js-file'
+            = tag.br
+            = tag.span("削除", class: "js-remove")
+          - if @sell.persisted?
+            = i.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
-      = f.fields_for :images do |i|
-        .sell-main__image__title__photos-box
-          #preview1
-            .sell-main__image__title__photos-box__select-area1
-            = i.label :name, class: "select-image-area", for: "upload-image" do
-              .input_area
-                = i.file_field :name, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-              %p ここをクリックしてください
-          #preview2
-            .sell-main__image__title__photos-box__select-area2
-            = i.label :image, class: "select-image-area", for: "upload-image" do
-              %p ここをクリックしてください
+        - if @sell.persisted?
+          .js-file_group{"data-index": "#{@sell.images.count}"}
+            = f.field_tag :name, name: "product[images_attributes][#{@product.images.count}][src]", class: 'js-file'
+            .js-remove 削除
+
 
     .sell-main__product-name
       .sell-main__product-name__title

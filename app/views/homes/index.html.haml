@@ -107,7 +107,7 @@
             = link_to sell_path(product) do
               .main__pickup-categorize__item__left__pic
                 - product.images.first(1).each do |image|
-                  = image_tag("#{image.name.to_s}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+                  = image_tag("#{image.name.to_s}", width: "220px", height: "150px",class: 'main__pickup-categorize__item__left__pic__left') 
               .main__pickup-categorize__item__left__introduction
                 .main__pickup-categorize__item__left__introduction__left
                   .main__pickup-categorize__item__left__introduction__left__name
