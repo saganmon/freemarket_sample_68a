@@ -43,12 +43,15 @@
     .buys-new__main__way
       .buys-new__main__way__text
         支払い方法
-      .buys-new__main__way__link
-        = link_to new_card_path do
-          .buys-new__main__way__link__icon
-            = icon('fas', 'plus-circle')
-          .buys-new__main__way__link__text
-            登録してください
+      - if @card.empty?
+        .buys-new__main__way__link
+          = link_to new_card_path do
+            .buys-new__main__way__link__icon
+              = icon('fas', 'plus-circle')
+            .buys-new__main__way__link__text
+              登録してください
+      - else
+        = render partial: 'cards/show'
 
     .buys-new__main__address
       .buys-new__main__address__text

@@ -75,12 +75,16 @@
       .wrapper__main__card__inner
         .wrapper__main__card__inner__text
           クレジットカード一覧
-        .wrapper__main__card__inner__btn
-          = link_to new_card_path do
-            .wrapper__main__card__inner__btn__icon
-              = icon('far', 'address-card')
-            .wrapper__main__card__inner__btn__text
-              クレジットカードを追加する
+        - if @card.empty?
+          .wrapper__main__card__inner__btn
+            = link_to new_card_path do
+              .wrapper__main__card__inner__btn__icon
+                = icon('far', 'address-card')
+              .wrapper__main__card__inner__btn__text
+                クレジットカードを追加する
+        - else
+          = render partial: 'cards/show'
+
       .wrapper__main__card__description
         = link_to "#" do
           .wrapper__main__card__description__text
