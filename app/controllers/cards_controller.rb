@@ -23,7 +23,7 @@ class CardsController < ApplicationController
       @card = PurchaseCredit.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       # ここでdbに保存
       if @card.save
-        redirect_to pay_cards_path
+        redirect_to mypages_path
         flash[:notice] = 'クレジットカードの登録が完了しました'
       else
         redirect_to action: "pay"
@@ -39,7 +39,7 @@ class CardsController < ApplicationController
     else
       Payjp.api_key = "sk_test_fc70de572b91d952622fced6"
       customer = Payjp::Customer.retrieve(card.customer_id)
-      @customer_card = customer.cards.retrieve(card.card_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
     end
   end
 
@@ -48,14 +48,14 @@ class CardsController < ApplicationController
     if card.blank?
       redirect_to action: "new"
     else
-      Payjp.api_key = "sk_test_fc70de572b91d952622fced6"
+      Payjp.api_key = 'sk_test_fc70de572b91d952622fced6'
       customer = Payjp::Customer.retrieve(card.customer_id)
       customer.delete
-    #ここでpay.jpの方を消している
+     #ここでpay.jpの方を消している
       card.delete
-    #ここでテーブルにあるcardデータを消している
+     #ここでテーブルにあるcardデータを消している
     end  
-  end
+end
 
 
 end
