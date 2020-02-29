@@ -1,0 +1,73 @@
+.wrapper
+  = render 'shared/header'
+  .search-main
+    .search-main__left-contents
+      .search-main__left-contents__sort-selector
+        %select{:name => "budget_d", class: "search-main__left-contents__sort-selector__box"}
+          %option{:value => "0"} 並び替え
+          %option{:value => "1"} 価格の安い順
+          %option{:value => "2"} 価格の高い順
+          %option{:value => "3"} 出品の新しい順
+          %option{:value => "4"} いいね！の順"
+
+      = form_with(model: @product, url: searches_path, local: true, html: { class: "search-main__left-contents__search-by" }) do |f|
+        .search-main__left-contents__search-by__title
+          =tag.span("詳細検索")
+
+        .search-main__left-contents__search-by__keyword
+          = f.label :keyword, "キーワードを選択する", class: "search-main__left-contents__search-by__keyword__lavel"
+          = tag.br
+          = f.text_field :name, class:"search-main__left-contents__search-by__keyword__text"
+
+        .search-main__left-contents__search-by__category
+          = f.label :name, "カテゴリーを選択する", class: "search-main__left-contents__search-by__category__title"
+          = tag.br
+          = f.select :name, ["メンズ", "レディーズ", "キッズ・レディース"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__category__selector"
+
+        .search-main__left-contents__search-by__brand
+          = f.label :brand, "ブランドから探す", class: "search-main__left-contents__search-by__brand__lavel"
+          = tag.br
+          = f.text_field :brand, class:"search-main__left-contents__search-by__brand__text"
+
+        .search-main__left-contents__search-by__size
+          = f.label :size, "サイズを指定する", class: "search-main__left-contents__search-by__size__lavel"
+          = tag.br
+          = f.select :size, ["S", "M", "L"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__size__selector"
+
+        .search-main__left-contents__search-by__price
+          = f.label :price, "価格", class: "search-main__left-contents__search-by__price__lavel"
+          = tag.br
+          = f.select :price, ["300-1000", "1001-5000", "5001-10000"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__price__selector"
+
+        .search-main__left-contents__search-by__condition
+          = f.label :condition, "商品の状態", class: "search-main__left-contents__search-by__condition__lavel"
+          = tag.br
+          = f.select :size, ["良い", "普通", "悪い"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
+
+        .search-main__left-contents__search-by__shipping
+          = f.label :condition, "配送料の負担", class: "search-main__left-contents__search-by__shipping__lavel"
+          = tag.br
+          = f.select :size, ["すべて", "着払い", "送料込み"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__shipping__selector"
+
+        .search-main__left-contents__search-by__status
+          = f.label :condition, "販売状況", class: "search-main__left-contents__search-by__status__lavel"
+          = tag.br
+          = f.select :size, ["すべて", "販売中", "売り切れ"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__status__selector"
+
+        .search-main__left-contents__search-by__submit
+          = f.submit "検索する", class: "search-main__left-contents__search-by__submit__button"
+
+    .search-main__right-contents
+      =tag.h2("#{params[:keyword]}の検索結果")
+      .search-main__right-contents__images
+        - unless @products == nil
+          - @products.each do |p|
+            .search-main__right-contents__images__list
+              .search-main__right-contents__images__list__image
+                = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+              .search-main__right-contents__images__list__name
+                = p.name
+              .search-main__right-contents__images__list__price
+                = converting_to_jpy(p.price)
+
+  = render 'shared/lower-part'
