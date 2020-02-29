@@ -11,19 +11,24 @@
         = tag.br
       = tag.span("最大4枚までアップロードできます", class: "sell-main__image__caution")
       = tag.br
-      #image-box
-        = f.fields_for :images do |i|
-          .js-file_group{"data-index": "#{i.index}"}
-            = i.file_field :name, class: 'js-file'
-            = tag.br
-            = tag.span("削除", class: "js-remove")
-          - if @sell.persisted?
-            = i.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+      .sell-main__image__box
+        #image-box
+          #previews
+            - if @sell.persisted?
+              - @sell.images.each_with_index do |image, i|
+                - image_tag image.name.url, data: { index: i }, width: "100px", height: '100px'
+          = f.fields_for :images do |i|
+            .sell-main__image__title_js-file-group{"data-index": "#{i.index}"}
+              = i.label :name,"ここをクリックしてください", class: 'sell-image-label'
+              = i.file_field :name, style:"display:none;", class: 'sell-image-js-file'
+              -# = tag.span("削除", class: "sell-image-js-remove sell-image-botton")
+            - if @sell.persisted?  #DBに保存している時(false)の時に、削除ボタンを表示する
+              = i.check_box :_destroy, data:{ index: image.index }, class: 'sell-image-hidden-destroy'
 
-        - if @sell.persisted?
-          .js-file_group{"data-index": "#{@sell.images.count}"}
-            = f.field_tag :name, name: "product[images_attributes][#{@product.images.count}][src]", class: 'js-file'
-            .js-remove 削除
+          - if @sell.persisted?  #編集時の新規画像追加のためのボタンを表示
+            .sell-main__image__title_js-file-group{"data-index": "#{@sell.images.count}"}
+              = f.field_tag :name, name: "product[images_attributes][#{@sell.images.count}][src]", class: 'sell-image-js-file'
+              .js-remove 削除
 
 
     .sell-main__product-name

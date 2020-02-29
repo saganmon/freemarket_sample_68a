@@ -4,7 +4,6 @@ class SellsController < ApplicationController
     @sell = Product.new
     @sell.images.new     #imageモデルの空のインスタンス生成
 
-    @sell.build_brand    #blandモデルの空のインスタンス生成
     @categories = Category.all
     @shippings = Shipping.all
   end
@@ -19,7 +18,6 @@ class SellsController < ApplicationController
   end
 
   def edit
-
   end
 
   def select_category_middle
@@ -36,6 +34,7 @@ class SellsController < ApplicationController
       format.html
       format.json
     end
+  end
 
   def destroy
     sell = Product.find(params[:id])

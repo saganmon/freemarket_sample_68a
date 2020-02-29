@@ -40,19 +40,43 @@
         margin-right: 10px;
       }
     }
-    &__caution {
-      margin-top: 16px;
-      font-size: 14px;
-      color: $font-color-gray;
-      margin-top: 16px;
-    }
-    &__photos-box {
-      display: flex;
-      margin-top: 16px;
-      height: 150px;
-      width: 620px;
-      background-color: $background-color-lightgray;
-    }
+  &__box{
+          .sell-image-label{
+            align-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            background-color: rgb(245, 245, 245);
+            cursor: pointer;
+            display: flex;
+            height: 150px;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            justify-content: center;
+            border-width: 1px;
+            border-style: dashed;
+            border-color: rgb(173, 56, 56);
+            border-image: initial;
+            transition: all 0.5s ease-out 0s;
+            width: 620px;
+
+          }
+
+          #previews{
+            display: flex;
+          }
+
+          .sell-image-botton{
+            margin-left: 25px;
+            color: blue;
+          }
+
+          .image-preview{
+            border: solid 1px $background-color-lightgray;
+            width: 150px;
+            margin-right: 10px;
+          }
+
+  }
   }
 
   &__product-name {
