@@ -95,3 +95,4 @@ gem 'fog-aws'
 gem 'font-awesome-sass'
 gem 'ancestry'
 gem "breadcrumbs_on_rails"
+gem 'ransack'
