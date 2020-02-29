@@ -8,21 +8,20 @@
           %option{value: "1"} 価格の安い順
           %option{value: "2"} 価格の高い順
           %option{value: "3"} 出品の新しい順
-          %option{value: "4"} いいね！の順"
 
       = form_with(model: @product, url: searches_path, local: true, html: { class: "search-main__left-contents__search-by" }) do |f|
         .search-main__left-contents__search-by__title
           =tag.span("詳細検索")
 
         .search-main__left-contents__search-by__keyword
-          = f.label :keyword, "キーワードを選択する", class: "search-main__left-contents__search-by__keyword__lavel"
+          = f.label :add_keyword, "キーワードを選択する", class: "search-main__left-contents__search-by__keyword__lavel"
           = tag.br
-          = f.text_field :name, class:"search-main__left-contents__search-by__keyword__text"
+          = f.text_field :add_keyword, value: @search_word, class:"search-main__left-contents__search-by__keyword__text"
 
         .search-main__left-contents__search-by__category
-          = f.label :name, "カテゴリーを選択する", class: "search-main__left-contents__search-by__category__title"
+          = f.label :category, "カテゴリーを選択する", class: "search-main__left-contents__search-by__category__title"
           = tag.br
-          = f.select :name, ["メンズ", "レディーズ", "キッズ・レディース"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__category__selector"
+          = f.select :category, ["メンズ", "レディーズ", "キッズ・レディース"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__category__selector"
 
         .search-main__left-contents__search-by__brand
           = f.label :brand, "ブランドから探す", class: "search-main__left-contents__search-by__brand__lavel"
@@ -42,17 +41,17 @@
         .search-main__left-contents__search-by__condition
           = f.label :condition, "商品の状態", class: "search-main__left-contents__search-by__condition__lavel"
           = tag.br
-          = f.select :size, ["良い", "普通", "悪い"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
+          = f.select :condition, ["良い", "普通", "悪い"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
 
         .search-main__left-contents__search-by__shipping
-          = f.label :condition, "配送料の負担", class: "search-main__left-contents__search-by__shipping__lavel"
+          = f.label :delivery_fee, "配送料の負担", class: "search-main__left-contents__search-by__shipping__lavel"
           = tag.br
-          = f.select :size, ["すべて", "着払い", "送料込み"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__shipping__selector"
+          = f.select :delivery_fee, ["すべて", "着払い", "送料込み"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__shipping__selector"
 
         .search-main__left-contents__search-by__status
-          = f.label :condition, "販売状況", class: "search-main__left-contents__search-by__status__lavel"
+          = f.label :status, "販売状況", class: "search-main__left-contents__search-by__status__lavel"
           = tag.br
-          = f.select :size, ["すべて", "販売中", "売り切れ"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__status__selector"
+          = f.select :status, ["すべて", "販売中", "売り切れ"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__status__selector"
 
         .search-main__left-contents__search-by__submit
           = f.submit "検索する", class: "search-main__left-contents__search-by__submit__button"

@@ -13,10 +13,24 @@ class SearchesController < ApplicationController
     end
   end
 
+  def sort
+    add_breadcrumb "検索結果", searches_path
+
+    @products = Product.search_sort_products(gets_params)
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
   private
 
   def get_params
     params.require(:product)[:keyword]
+  end
+
+  def gets_params
+    params.permit(:keyword, :num)
   end
 
   def set_breadcrumb
