@@ -98,30 +98,34 @@
         color: $font-color-black;
         margin-top: 20px;
         &__selector{
-          height: 30px;
+          height: 40px;
           width: 200px;
         }
       }
 
       &__submit {
-        height: 50px;
-        width: 100px;
         margin-top: 20px;
-        color: $font-color-black;
-
         &__button {
-  
+          font-size: 20px;
+          color: $font-color-white;
+          background-color: $background-color-red;
+          height: 30px;
+          width: 100px;  
         }
       }
-
-
     }
   }
 
   &__right-contents {
     margin-left: 50px;
+    &__keyword {
+      font-size: 25px;
+      color: $font-color-black;
+      font-weight: bold;
+    }
     &__images {
       display: flex;
+      margin-top: 20px;
       &__list {
         margin-right: 30px;
         height: 250px;
