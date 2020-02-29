@@ -11,14 +11,16 @@
 
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
-
     = tag.ul class: "sell-product-detail__items" do
       = tag.li image_tag "#{@sell.images.first.name}", class: "sell-product-detail__items__main-image"
       = tag.ul class: "sell-product-detail__items__sub-image" do
         - @sell.images.each do |i|
           = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
-      = converting_to_jpy(@sell.price)
+      - if @sell.status == false
+        = converting_to_jpy(@sell.price)
+      - if @sell.status == true
+        売却済
       .sell-product-detail__price__detail
         = tag.span("(税込)")
         = tag.span("送料込み")
