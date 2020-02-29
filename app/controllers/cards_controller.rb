@@ -54,7 +54,7 @@ class CardsController < ApplicationController
       card.delete
      #ここでテーブルにあるcardデータを消している
     end  
-end
+  end
 
 
 

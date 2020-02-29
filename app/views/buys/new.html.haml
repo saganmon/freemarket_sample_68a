@@ -6,20 +6,18 @@
       購入内容の確認
     .buys-new__main__image
       .buys-new__main__image__pict
-        = image_tag("/material/pict/test-pict.jpg",size: "180x230")
+        = image_tag(@sell.images.first.name,size: "180x180")
       .buys-new__main__image__information
         .buys-new__main__image__information__text
           .buys-new__main__image__information__text__burand
-            Dolce&Gabbana
+            = @sell.brand.name
           .buys-new__main__image__information__text__genre
-            ミニワンピース
+            = @sell.category.parent.name
           .buys-new__main__image__information__text__categorize
-            ワンピース
+            = @sell.category.name
         .buys-new__main__image__information__price
-          .buys-new__main__image__information__price__icon
-            = icon('fas', 'yen-sign')
           .buys-new__main__image__information__price__money
-            5000
+            = converting_to_jpy(@sell.price)
           .buys-new__main__image__information__price__text1
             (税込)
           .buys-new__main__image__information__price__text2
@@ -30,10 +28,8 @@
         .buys-new__main__price__title__text
           支払い金額
         .buys-new__main__price__title__money
-          .buys-new__main__price__title__money__icon
-            = icon('fas', 'yen-sign')
           .buys-new__main__price__title__money__number
-            5,600  
+            = converting_to_jpy(@sell.price)
       .buys-new__main__price__point
         .buys-new__main__price__point__box
           = icon('fas', 'stop')
@@ -49,22 +45,14 @@
             .buys-new__main__way__link__icon
               = icon('fas', 'plus-circle')
             .buys-new__main__way__link__text
-              登録してください
+              マイページでカードを登録する
       - else
         = render partial: "cards/show"
 
-    .buys-new__main__address
-      .buys-new__main__address__text
-        配送先
-      .buys-new__main__address__link
-        = link_to "" do
-          .buys-new__main__address__link__icon
-            = icon('fas', 'plus-circle')
-          .buys-new__main__address__link__text
-            登録してください
-
     .buys-new__main__btn
-      = link_to "#" do
-        購入する
-
+      - if @card.empty?
+        = link_to new_card_path do
+          カードを登録してください
+      - else
+        = link_to('購入する', buy_sell_buys_path(@sell), action: :pay, method: :post)
   = render partial: 'shared/footer'

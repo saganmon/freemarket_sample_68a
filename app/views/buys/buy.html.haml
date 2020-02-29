@@ -5,8 +5,9 @@
 
   .destroy-view__main
     .destroy-view__main__text
-      登録が完了しました。
+      購入が完了しました。
     .destroy-view__link-top
-      = link_to "マイページに戻る", mypages_path
+      = link_to root_path do
+        トップページに戻る
 
   = render partial: "shared/footer"

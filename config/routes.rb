@@ -11,8 +11,13 @@ Rails.application.routes.draw do
   root 'homes#index'
 
   resources :mypages, only: [:index]
-  resources :sells, only: [:new, :create, :show, :edit, :destroy]
-  resources :buys, only: [:new, :create]
+  resources :sells, only: [:new, :create, :show, :edit, :destroy] do
+    resources :buys, only: [:new, :create] do
+      collection do
+        post :buy
+      end
+    end
+  end
   resources :cards, only: [:new, :create, :show, :destroy] do
     collection do
       post :pay

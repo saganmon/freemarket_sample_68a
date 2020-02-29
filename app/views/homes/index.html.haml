@@ -107,23 +107,43 @@
           新規投稿商品
       .main__pickup-categorize__item
         - @products.each do |product|
-          .main__pickup-categorize__item__left
-            = link_to sell_path(product) do
-              .main__pickup-categorize__item__left__pic
-                = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
-              .main__pickup-categorize__item__left__introduction
-                .main__pickup-categorize__item__left__introduction__left
-                  .main__pickup-categorize__item__left__introduction__left__name
-                    = product.name
-                  .main__pickup-categorize__item__left__introduction__left__price
-                    = converting_to_jpy(product.price)
-                  .main__pickup-categorize__item__left__introduction__left__display
-                    (税込)
-                .main__pickup-categorize__item__left__introduction__right
-                  .main__pickup-categorize__item__left__introduction__right__icon
-                    = icon('far', 'star')
-                  .main__pickup-categorize__item__left__introduction__right__num
-                    0
+          - if product.status == false
+            .main__pickup-categorize__item__left
+              = link_to sell_path(product) do
+                .main__pickup-categorize__item__left__pic
+                  = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+                .main__pickup-categorize__item__left__introduction
+                  .main__pickup-categorize__item__left__introduction__left
+                    .main__pickup-categorize__item__left__introduction__left__name
+                      = product.name
+                    .main__pickup-categorize__item__left__introduction__left__price
+                      = converting_to_jpy(product.price)
+                    .main__pickup-categorize__item__left__introduction__left__display
+                      (税込)
+                  .main__pickup-categorize__item__left__introduction__right
+                    .main__pickup-categorize__item__left__introduction__right__icon
+                      = icon('far', 'star')
+                    .main__pickup-categorize__item__left__introduction__right__num
+                      0
+          - else product.status == true
+            .main__pickup-categorize__item__left
+              = link_to sell_path(product) do
+                .main__pickup-categorize__item__left__pic
+                  = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+                .main__pickup-categorize__item__left__introduction
+                  .main__pickup-categorize__item__left__introduction__left
+                    .main__pickup-categorize__item__left__introduction__left__name
+                      = product.name
+                    .main__pickup-categorize__item__left__introduction__left__price
+                      = converting_to_jpy(product.price)
+                    .main__pickup-categorize__item__left__introduction__left__display
+                      (税込)
+                  .main__pickup-categorize__item__left__introduction__right
+                    .main__pickup-categorize__item__left__introduction__right__icon
+                      = icon('far', 'star')
+                    .main__pickup-categorize__item__left__introduction__right__num
+                      0
+
 
 
     .main__pickup-burand
@@ -134,23 +154,42 @@
           アーカイバ
       .main__pickup-burand__item
         - @products.each do |product|
-          .main__pickup-burand__item__left
-            = link_to sell_path(product) do
-              .main__pickup-burand__item__left__pic
-                = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
-              .main__pickup-burand__item__left__introduction
-                .main__pickup-burand__item__left__introduction__left
-                  .main__pickup-burand__item__left__introduction__left__name
-                    = product.name
-                  .main__pickup-burand__item__left__introduction__left__price
-                    = converting_to_jpy(product.price)
-                  .main__pickup-burand__item__left__introduction__left__display
-                    (税込)
-                .main__pickup-burand__item__left__introduction__right
-                  .main__pickup-burand__item__left__introduction__right__icon
-                    = icon('far', 'star')
-                  .main__pickup-burand__item__left__introduction__right__num
-                    34
+          - if product.status == false
+            .main__pickup-burand__item__left
+              = link_to sell_path(product) do
+                .main__pickup-burand__item__left__pic
+                  = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left') 
+                .main__pickup-burand__item__left__introduction
+                  .main__pickup-burand__item__left__introduction__left
+                    .main__pickup-burand__item__left__introduction__left__name
+                      = product.name
+                    .main__pickup-burand__item__left__introduction__left__price
+                      = converting_to_jpy(product.price)
+                    .main__pickup-burand__item__left__introduction__left__display
+                      (税込)
+                  .main__pickup-burand__item__left__introduction__right
+                    .main__pickup-burand__item__left__introduction__right__icon
+                      = icon('far', 'star')
+                    .main__pickup-burand__item__left__introduction__right__num
+                      34
+          - else product.status == true
+            .main__pickup-categorize__item__left
+              = link_to sell_path(product) do
+                .main__pickup-categorize__item__left__pic
+                  = image_tag("#{product.images.first.name}", width: "220px", height: "150px",class: '.main__pickup-categorize__item__left__pic__left')
+                .main__pickup-categorize__item__left__introduction
+                  .main__pickup-categorize__item__left__introduction__left
+                    .main__pickup-categorize__item__left__introduction__left__name
+                      = product.name
+                    .main__pickup-categorize__item__left__introduction__left__price
+                      = converting_to_jpy(product.price)
+                    .main__pickup-categorize__item__left__introduction__left__display
+                      (税込)
+                  .main__pickup-categorize__item__left__introduction__right
+                    .main__pickup-categorize__item__left__introduction__right__icon
+                      = icon('far', 'star')
+                    .main__pickup-categorize__item__left__introduction__right__num
+                      0
  
 = render partial: 'shared/lower-part'
 
