@@ -10,7 +10,6 @@ class SearchesController < ApplicationController
       @products = Product.keyword_search(get_params)
       @images = @products.map(&:images).flatten
       @search_word = get_params
-      # binding.pry
     end
   end
 
