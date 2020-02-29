@@ -4,11 +4,13 @@ class SearchesController < ApplicationController
   def index
     add_breadcrumb "検索結果", searches_path
 
-    if params[:keyword] == ""
+    if get_params == nil
       return nil
     else
       @products = Product.keyword_search(get_params)
       @images = @products.map(&:images).flatten
+      @search_word = get_params
+      # binding.pry
     end
   end
 
