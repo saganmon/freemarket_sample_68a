@@ -10,7 +10,11 @@ class SellsController < ApplicationController
 
   def create
     @sell = Product.new(product_params)
-    @sell.save!
+    if @sell.save
+      flash.now[:alert] = '出品完了しました。'
+    else
+      render :new
+    end
   end
 
   def show
