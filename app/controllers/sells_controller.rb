@@ -39,7 +39,7 @@ class SellsController < ApplicationController
       format.json
     end
   end
-
+  
   def destroy
     sell = Product.find(params[:id])
     unless sell.destroy

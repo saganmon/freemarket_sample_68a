@@ -93,5 +93,5 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
 gem 'font-awesome-sass'
-
 gem 'ancestry'
+gem "breadcrumbs_on_rails"

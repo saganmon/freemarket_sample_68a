@@ -1,0 +1,155 @@
+.wrapper {
+  background-color: $background-color-lightgray;
+}
+
+.search-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  &__left-contents {
+    &__sort-selector {
+
+      &__box {
+        width: 200px;
+        height: 30px;
+      }
+    }
+    &__search-by {
+      margin-top: 30px;
+      &__title {
+        font-size: 16px;
+        color: $font-color-black;
+        font-weight: bold;
+      }
+
+      &__keyword {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 5px;
+        &__text{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__category {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+        height: 30px;
+        width: 200px;
+        }
+      }
+
+      &__brand {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__text{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__size {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__price {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__condition {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__shipping {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+          height: 30px;
+          width: 200px;
+        }  
+      }
+
+      &__status {
+        font-size: 16px;
+        color: $font-color-black;
+        margin-top: 20px;
+        &__selector{
+          height: 40px;
+          width: 200px;
+        }
+      }
+
+      &__submit {
+        margin-top: 20px;
+        &__button {
+          font-size: 20px;
+          color: $font-color-white;
+          background-color: $background-color-red;
+          height: 30px;
+          width: 100px;  
+        }
+      }
+    }
+  }
+
+  &__right-contents {
+    margin-left: 50px;
+    &__keyword {
+      font-size: 25px;
+      color: $font-color-black;
+      font-weight: bold;
+    }
+    &__images {
+      display: flex;
+      margin-top: 20px;
+      &__list {
+        margin-right: 30px;
+        height: 250px;
+        width: 220px;
+        background-color: $background-color-white;
+        position: relative;
+        &__name {
+          font-size: 16px;
+          color: $font-color-black;  
+        }
+        &__price {
+          position: absolute;
+          top: 120px;
+          left: 5px;
+          height: 22px;
+          width: 80px;
+          padding: 2px;
+          font-size: 14px;
+          color: $font-color-white;
+          background-color: rgba(0,0,0,0.5);
+        }
+      }
+    }
+  }
+
+
+}
