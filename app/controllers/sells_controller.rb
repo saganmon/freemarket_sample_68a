@@ -16,7 +16,7 @@ class SellsController < ApplicationController
       render :new
     end
   end
-
+ 
   def show
     @sell = Product.find(params[:id])
   end
