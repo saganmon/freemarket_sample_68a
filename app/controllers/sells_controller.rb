@@ -2,13 +2,19 @@ class SellsController < ApplicationController
 
   def new
     @sell = Product.new
-    @image = Image.new
+    @sell.images.new     #imageモデルの空のインスタンス生成
+
     @categories = Category.all
+    @shippings = Shipping.all
   end
 
   def create
-    Product.create(product_params)
-    Image.create(image_params)
+    @sell = Product.new(product_params)
+    if @sell.save
+      flash.now[:alert] = '出品完了しました。'
+    else
+      render :new
+    end
   end
 
   def show
@@ -16,13 +22,24 @@ class SellsController < ApplicationController
   end
 
   def edit
-    @child_categories = Category.where(ancestry: params[:keyword])
+  end
+
+  def select_category_middle
+    @middle_categories = Category.where(ancestry: params[:keyword])
     respond_to do |format|
       format.html
       format.json
     end
   end
 
+  def select_category_small
+    @small_categories = Category.find(params[:keyword]).children
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+  
   def destroy
     sell = Product.find(params[:id])
     unless sell.destroy
@@ -30,13 +47,20 @@ class SellsController < ApplicationController
       respond_to sell_path(sell)
     end
   end
-  
-  private
-  def product_params
-    params.require(:sell).permit(:name, :description, :category, :brand).merge(user_id: current_user.id)
+
+
+  def select_shipping_method
+    @shipping_method = Shipping.where(ancestry: params[:keyword])
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
-  def image_params
-    params.require(:image).permit(:name).merge(product_id: sell.id)
+  private
+
+  def product_params
+    params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :price, :condition, brand_attributes:[:name], images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
 end

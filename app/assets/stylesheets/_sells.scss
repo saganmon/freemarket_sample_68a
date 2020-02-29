@@ -40,18 +40,43 @@
         margin-right: 10px;
       }
     }
-    &__caution {
-      margin-top: 16px;
-      font-size: 14px;
-      color: $font-color-gray;
-      margin-top: 16px;
-    }
-    &__photos-box {
-      margin-top: 16px;
-      height: 150px;
-      width: 620px;
-      background-color: $background-color-lightgray;
-    }
+  &__box{
+          .sell-image-label{
+            align-content: center;
+            -webkit-box-align: center;
+            align-items: center;
+            background-color: rgb(245, 245, 245);
+            cursor: pointer;
+            display: flex;
+            height: 150px;
+            flex-wrap: wrap;
+            -webkit-box-pack: center;
+            justify-content: center;
+            border-width: 1px;
+            border-style: dashed;
+            border-color: rgb(173, 56, 56);
+            border-image: initial;
+            transition: all 0.5s ease-out 0s;
+            width: 620px;
+
+          }
+
+          #previews{
+            display: flex;
+          }
+
+          .sell-image-botton{
+            margin-left: 25px;
+            color: blue;
+          }
+
+          .image-preview{
+            border: solid 1px $background-color-lightgray;
+            width: 150px;
+            margin-right: 10px;
+          }
+
+  }
   }
 
   &__product-name {
@@ -135,6 +160,22 @@
           height: 48px;
         }
       }
+      &__size {
+        margin-top: 16px;
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;  
+        }
+      }
+
       &__condition {
         margin-top: 16px;
         &__title {
@@ -164,6 +205,21 @@
     }
     &__contents {
       &__who-cares {
+        &__title {
+          display: flex;
+          &--text {
+            font-size: 14px;
+            color: $font-color-black;
+            margin-right: 10px;  
+          }
+        }
+        &__lists {
+          width: 400px;
+          height: 48px;
+        }
+      }
+      &__shipping-method {
+        margin-top: 16px;
         &__title {
           display: flex;
           &--text {
@@ -228,19 +284,21 @@
         justify-content: space-between;
         border-bottom: 1px solid $font-color-gray;
         &__title {
+          margin-top: 40px;
           font-size: 14px;
           color: $font-color-black;
         }
         &__box {
           width: 150px;
-          height: 48px;
-          margin-bottom: 10px;
+          height: 40px;
+          margin-top: 15px;
         }
       }
       &__sales-commission {
         padding-top: 12px;
         display: flex;
         border-bottom: 1px solid $font-color-gray;
+        justify-content: space-between;
         &__title {
           font-size: 14px;
           color: $font-color-gray;
@@ -248,19 +306,22 @@
         &__price {
           font-size: 14px;
           color: $font-color-black;
+          padding-right: 20px;
         }
       }
       &__sales-profit {
         padding-top: 12px;
         display: flex;
         border-bottom: 1px solid $font-color-gray;
+        justify-content: space-between;
         &__title {
           font-size: 14px;
           color: $font-color-gray;
         }
         &__price {
           font-size: 14px;
-          color: $font-color-black;  
+          color: $font-color-black;
+          padding-right: 20px;  
         }
       }
     }
