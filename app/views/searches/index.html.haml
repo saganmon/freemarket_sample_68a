@@ -9,29 +9,32 @@
           %option{value: "2"} 価格の高い順
           %option{value: "3"} 出品の新しい順
 
-      = form_with(model: @product, url: searches_path, local: true, html: { class: "search-main__left-contents__search-by" }) do |f|
+      -# = form_with(model: @search, url:  detail_search_searches_path, local: true, method: :get, html: { class: "search-main__left-contents__search-by" }) do |f|
+      = search_form_for(@q, url: detail_search_searches_path, html: { class: "search-main__left-contents__search-by" }) do |f|
         .search-main__left-contents__search-by__title
           =tag.span("詳細検索")
 
         .search-main__left-contents__search-by__keyword
-          = f.label :add_keyword, "キーワードを選択する", class: "search-main__left-contents__search-by__keyword__lavel"
+          = f.label :name, "キーワードを選択する", class: "search-main__left-contents__search-by__keyword__lavel"
           = tag.br
-          = f.text_field :add_keyword, value: @search_word, class:"search-main__left-contents__search-by__keyword__text"
+          = f.search_field :name, value: @search_word, class: "search-main__left-contents__search-by__keyword__text"
+          -# = f.text_field :add_keyword, value: @search_word, class:"search-main__left-contents__search-by__keyword__text"
 
-        .search-main__left-contents__search-by__category
-          = f.label :category, "カテゴリーを選択する", class: "search-main__left-contents__search-by__category__title"
-          = tag.br
-          = f.select :category, ["メンズ", "レディーズ", "キッズ・レディース"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__category__selector"
+        -# .search-main__left-contents__search-by__category
+        -#   = f.label :category, "カテゴリーを選択する", class: "search-main__left-contents__search-by__category__title"
+        -#   = tag.br
+        -#   = f.select :category, ["メンズ", "レディーズ", "キッズ・レディース"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__category__selector"
 
-        .search-main__left-contents__search-by__brand
-          = f.label :brand, "ブランドから探す", class: "search-main__left-contents__search-by__brand__lavel"
-          = tag.br
-          = f.text_field :brand, class:"search-main__left-contents__search-by__brand__text"
+        -# .search-main__left-contents__search-by__brand
+        -#   = f.label :brand, "ブランドから探す", class: "search-main__left-contents__search-by__brand__lavel"
+        -#   = tag.br
+        -#   = f.text_field :brand, class:"search-main__left-contents__search-by__brand__text"
 
         .search-main__left-contents__search-by__size
           = f.label :size, "サイズを指定する", class: "search-main__left-contents__search-by__size__lavel"
           = tag.br
-          = f.select :size, ["S", "M", "L"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__size__selector"
+          -# = f.select :size, Product.sizes_i18n.invert, {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__size__selector"
+          = f.select :size, Product.sizes.map{|k, v| [Product.sizes_i18n[k], v]}, {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__size__selector"
 
         .search-main__left-contents__search-by__price
           = f.label :price, "価格", class: "search-main__left-contents__search-by__price__lavel"
@@ -41,12 +44,8 @@
         .search-main__left-contents__search-by__condition
           = f.label :condition, "商品の状態", class: "search-main__left-contents__search-by__condition__lavel"
           = tag.br
-          = f.select :condition, ["良い", "普通", "悪い"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
-
-        .search-main__left-contents__search-by__shipping
-          = f.label :delivery_fee, "配送料の負担", class: "search-main__left-contents__search-by__shipping__lavel"
-          = tag.br
-          = f.select :delivery_fee, ["すべて", "着払い", "送料込み"], {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__shipping__selector"
+          -# = f.select :condition, Product.conditions_i18n.invert, {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
+          = f.select :condition, Product.conditions.map{|k, v| [Product.conditions_i18n[k], v]}, {include_blank: "選択してください"}, class: "search-main__left-contents__search-by__condition__selector"
 
         .search-main__left-contents__search-by__status
           = f.label :status, "販売状況", class: "search-main__left-contents__search-by__status__lavel"
