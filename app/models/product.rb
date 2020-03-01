@@ -34,16 +34,4 @@ class Product < ApplicationRecord
       Product.where('name LIKE (?)', "%#{params[:keyword]}%").order("created_at DESC")
     end
   end
-
-  def self.detail_search(params)
-    case params[:num]
-    when '1'
-      Product.where('name LIKE (?)', "%#{params[:keyword]}%").order("price ASC")
-    when '2'
-      Product.where('name LIKE (?)', "%#{params[:keyword]}%").order("price DESC")
-    when '3'
-      Product.where('name LIKE (?)', "%#{params[:keyword]}%").order("created_at DESC")
-    end
-  end
-
 end
