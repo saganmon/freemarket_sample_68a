@@ -10,7 +10,7 @@
           %option{value: "3"} 出品の新しい順
 
       -# = form_with(model: @search, url:  detail_search_searches_path, local: true, method: :get, html: { class: "search-main__left-contents__search-by" }) do |f|
-      = search_form_for(@q, url: detail_search_searches_path, html: { class: "search-main__left-contents__search-by" }) do |f|
+      = search_form_for(@query, url: detail_search_searches_path, html: { class: "search-main__left-contents__search-by" }) do |f|
         .search-main__left-contents__search-by__title
           =tag.span("詳細検索")
 

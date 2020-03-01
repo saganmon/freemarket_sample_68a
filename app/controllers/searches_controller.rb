@@ -7,7 +7,7 @@ class SearchesController < ApplicationController
     if get_params == nil
       return nil
     else
-      @q = Product.ransack(params[:q])
+      @query = Product.ransack(params[:q])
       @products = Product.keyword_search(get_params)
       @images = @products.map(&:images).flatten
       @search_word = get_params
@@ -30,8 +30,8 @@ class SearchesController < ApplicationController
     add_breadcrumb "検索結果", searches_path
     add_breadcrumb "絞り込み結果", detail_search_searches_path
 
-    @q = Product.search(get_ransack)
-    @products = @q.result(distinct: true)
+    @query = Product.search(get_ransack)
+    @products = @query.result(distinct: true)
     @images = @products.map(&:images).flatten
     @search_word = get_ransack_only_name
   end
