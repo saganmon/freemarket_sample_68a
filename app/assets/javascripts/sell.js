@@ -3,7 +3,7 @@ $(function () {
   var changeSelectMiddle = function (id, nextSelect) {
     $.ajax({
       type: 'GET',
-      url: 'select_category_middle',
+      url: '/sells/select_category_middle',
       data: {keyword: id},
       dataType: 'json'
     })
@@ -28,7 +28,7 @@ $(function () {
   var changeSelectSmall = function (id, nextSelect) {
     $.ajax({
       type: 'GET',
-      url: 'select_category_small',
+      url: '/sells/select_category_small',
       data: {keyword: id},
       dataType: 'json'
     })
@@ -52,7 +52,7 @@ $(function () {
 var changeSelectShipping = function (id, nextSelect) {
   $.ajax({
     type: 'GET',
-    url: 'select_shipping_method',
+    url: `/sells/select_shipping_method`,
     data: {keyword: id},
     dataType: 'json'
   })
@@ -76,16 +76,16 @@ var changeSelectShipping = function (id, nextSelect) {
     // 中カテゴリ・小カテゴリ非表示
     $(document).ready(function(){
       $(window).load(function(){
-        $('.category-box__middle').css('display', 'none');
-        $('.category-box__small').css('display', 'none');
+        var product_name = $('.sell-main__product-name__box').val()
+        if (product_name === ""){
+          //大カテゴリにプルダウンを「---」に変更する
+          $('.sell-main__product-details__contents__category__lists').prepend(`<option value="" >---</option>`).val("");
+          $('.category-box__middle').css('display', 'none');
+          $('.category-box__small').css('display', 'none');
+        } 
       });
     });
   
-  // 大カテゴリにプルダウンを「---」に変更する
-  $('.sell-main__product-details__contents__category__lists').prepend(
-    `<option value="" >---</option>`
-    ).val("");
-
 
   // 大カテゴリが選択されたら、中カテゴリ表示
   $('#category_large_category_large').change(function(){
@@ -95,7 +95,8 @@ var changeSelectShipping = function (id, nextSelect) {
       $('.category-box__small').css('display', 'none'); //小カテゴリ非表示
       return;
     }
-    $('.category-box__middle').css('display', 'block');// 大カテゴリが選択されたら、中カテゴリ表示
+    $('.category-box__middle').css('display', '');// 大カテゴリが選択されたら、中カテゴリ表示
+    $('.category-box__small').css('display', 'none'); // 大カテゴリが選択されたら、小カテゴリ非表示
     changeSelectMiddle(id, $('#category_middle_category_middle'));
   });
 
@@ -106,14 +107,14 @@ var changeSelectShipping = function (id, nextSelect) {
       $('.category-box__small').css('display', 'none');
       return;
     }
-    $('.category-box__small').css('display', 'block');// 中カテゴリが選択されたら、小カテゴリ表示
+    $('.category-box__small').css('display', '');// 中カテゴリが選択されたら、小カテゴリ表示
     changeSelectSmall(id, $('#product_category_id'));
   });
 
   //販売手数料・販売利益の表示
   $(document).ready(function(){
-    $("#product_price").keyup(function(){
-      var price = $(this).val();
+    //販売手数料・販売利益の表示メソッド
+    var PricePreview = function (price) {
       if (price >= 300 & price <= 999999999){
         var tax = Math.floor(price * 0.1)
         var tax_add = tax.toLocaleString();
@@ -126,25 +127,40 @@ var changeSelectShipping = function (id, nextSelect) {
         $(".sell-main__product-price__contents__sales-commission__price").text("---")
         $(".sell-main__product-price__contents__sales-profit__price").text("---")
       }
+    }
+
+    $(window).load(function(){
+    //画面編集時
+      var price = $("#product_price").val();
+      PricePreview(price)
     });
+      //金額入力時
+      $("#product_price").keyup(function(){
+        var price = $(this).val();
+        PricePreview(price)
+      });
   });
 
   // 配送の方法の非表示
   $(document).ready(function(){
     $(window).load(function(){
-      $('.sell-main__product-delivery__contents__shipping-method').css('display', 'none');
+      var product_name = $('.sell-main__product-name__box').val()
+      if (product_name === ""){
+        $('.sell-main__product-delivery__contents__shipping-method').css('display', 'none');
+        $('.sell-main__product-delivery__contents__shipping-method__lists').css('display', 'none');
+      }
     });
   });
 
   // 配送料の負担が選ばれたら、配送の方法が表示される
   $('#product_shipping_burden').change(function(){
     var burden = $(this).val();
-    console.log(burden)
     if (burden === "") {
       $('.sell-main__product-delivery__contents__shipping-method').css('display', 'none'); //配送料の負担非表示
       return;
     }
-    $('.sell-main__product-delivery__contents__shipping-method').css('display', 'block');// 負担が選択されたら、方法表示
+    $('.sell-main__product-delivery__contents__shipping-method').css('display', '');// 負担が選択されたら、方法表示
+    $('.sell-main__product-delivery__contents__shipping-method__lists').css('display', '');
     changeSelectShipping(burden, $('#product_shipping_id'));
   });
 });

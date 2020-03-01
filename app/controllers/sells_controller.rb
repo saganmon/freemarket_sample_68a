@@ -2,8 +2,7 @@ class SellsController < ApplicationController
 
   def new
     @sell = Product.new
-    @sell.images.new     #imageモデルの空のインスタンス生成
-
+    @sell.images.new
     @categories = Category.all
     @shippings = Shipping.all
   end
@@ -16,12 +15,24 @@ class SellsController < ApplicationController
       render :new
     end
   end
- 
+
   def show
     @sell = Product.find(params[:id])
   end
 
   def edit
+    @sell = Product.find(params[:id])
+    @categories = Category.all
+    @shippings = Shipping.all
+  end
+
+  def update
+    @sell = Product.find(params[:id])
+    if @sell.update(product_params)
+
+    else
+      render :new
+    end
   end
 
   def select_category_middle

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :mypages, only: [:index]
 
-  resources :sells, only: [:new, :create, :show, :edit, :destroy] do
+  resources :sells, only: [:new, :create, :show, :edit, :update, :destroy] do
     collection do
       get 'select_category_middle' 
       get 'select_category_small'
