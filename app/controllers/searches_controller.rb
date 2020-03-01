@@ -54,10 +54,6 @@ class SearchesController < ApplicationController
     params.require(:q)[:name_cont]
   end
 
-  # def gets_params_again
-  #   params.permit(:name, :size, :price, :condition, :status)
-  # end
-
   def set_breadcrumb
     add_breadcrumb "フリマ", :root_path
   end
