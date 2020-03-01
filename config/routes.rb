@@ -17,6 +17,11 @@ Rails.application.routes.draw do
         post :buy
       end
     end
+    collection do
+      get 'select_category_middle' 
+      get 'select_category_small'
+      get 'select_shipping_method'
+    end
   end
   resources :cards, only: [:new, :create, :show, :destroy] do
     collection do
@@ -28,4 +33,5 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  resources :searches, only: [:index]
 end
