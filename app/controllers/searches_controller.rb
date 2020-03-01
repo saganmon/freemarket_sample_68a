@@ -17,6 +17,7 @@ class SearchesController < ApplicationController
 
   def sort
     add_breadcrumb "検索結果", searches_path
+    add_breadcrumb "並び替え", searches_path
 
     @products = Product.search_sort_products(gets_params)
     respond_to do |format|
@@ -26,15 +27,13 @@ class SearchesController < ApplicationController
   end
 
   def detail_search
+    add_breadcrumb "検索結果", searches_path
     add_breadcrumb "絞り込み結果", detail_search_searches_path
 
-    @q = Product.ransack(params[:q])
+    @q = Product.search(get_ransack)
     @products = @q.result(distinct: true)
-    # @products = Product.detail_search(gets_params_again)
-    respond_to do |format|
-      format.html
-      format.json
-    end
+    @images = @products.map(&:images).flatten
+    @search_word = get_ransack_only_name
   end
 
   private
@@ -45,6 +44,14 @@ class SearchesController < ApplicationController
 
   def gets_params
     params.permit(:keyword, :num)
+  end
+
+  def get_ransack
+    params.require(:q).permit(:name_cont, :size_eq, :price_gteq, :price_lt, :condition_eq, :status_eq)
+  end
+
+  def get_ransack_only_name
+    params.require(:q)[:name_cont]
   end
 
   # def gets_params_again
