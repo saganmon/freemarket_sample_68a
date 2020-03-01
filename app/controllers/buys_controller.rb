@@ -1,13 +1,13 @@
 class BuysController < ApplicationController
 
+  before_action :set_card
   def new
     @sell = Product.find(params[:sell_id])
     @card = PurchaseCredit.where(user_id: current_user.id)
-    card = PurchaseCredit.where(user_id: current_user.id).first
-    if card.blank?
-      
+    if @card.blank?
+      flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key = "sk_test_fc70de572b91d952622fced6"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
@@ -15,16 +15,13 @@ class BuysController < ApplicationController
 
 
   def buy #クレジット購入
-    card = PurchaseCredit.where(user_id: current_user.id).first
-    if card.blank?
+    if @card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
       @sell = Product.find(params[:sell_id])
      # 購入した際の情報を元に引っ張ってくる
-      card = PurchaseCredit.where(user_id: current_user.id).first
-     # テーブル紐付けてるのでログインユーザーのクレジットカードを引っ張ってくる
-      Payjp.api_key = "sk_test_fc70de572b91d952622fced6"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
      # キーをセットする(環境変数においても良い)
       Payjp::Charge.create(
       amount: @sell.price, #支払金額
@@ -40,6 +37,12 @@ class BuysController < ApplicationController
       end
      #↑この辺はこちら側のテーブル設計どうりに色々しています
     end
+  end
+
+  private
+
+  def set_card
+    card = PurchaseCredit.where(user_id: current_user.id).first
   end
 
 end

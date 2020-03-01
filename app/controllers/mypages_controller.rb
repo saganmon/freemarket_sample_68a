@@ -6,9 +6,9 @@ class MypagesController < ApplicationController
     @card = PurchaseCredit.where(user_id: current_user.id)
     card = PurchaseCredit.where(user_id: current_user.id).first
     if card.blank?
-      
+      flash[:alert] = '商品購入にはクレジットカード登録が必要です'
     else
-      Payjp.api_key = "sk_test_fc70de572b91d952622fced6"
+      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
     end
