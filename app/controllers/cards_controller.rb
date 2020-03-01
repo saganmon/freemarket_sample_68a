@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
 
-  before_action :set_card,only: [:show, :destroy]
+  before_action :set_card,only: [:new, :show, :destroy]
   require "payjp"
 
   def new
@@ -11,6 +11,7 @@ class CardsController < ApplicationController
   def pay #クレジットカード登録
     Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
     # ここでテスト鍵をセットしてあげる(環境変数にしても良い)
+    card = PurchaseCredit.where(user_id: current_user.id).first
     if params['payjpToken'].blank?
     # paramsの中にjsで作った'payjpTokenが存在するか確かめる
       redirect_to action: "new"
@@ -25,7 +26,7 @@ class CardsController < ApplicationController
       if @card.save
         flash[:notice] = 'クレジットカードの登録が完了しました'
       else
-        flash[:alert] = 'クレジットカード登録に失敗しました'      
+        flash[:alert] = 'クレジットカード登録に失敗しました'
       end
     end
   end
@@ -41,6 +42,7 @@ class CardsController < ApplicationController
   end
 
   def destroy
+    card = PurchaseCredit.where(user_id: current_user.id).first
     if card.blank?
       flash[:notice] = 'カード情報の登録されていません'
     else
@@ -55,7 +57,7 @@ class CardsController < ApplicationController
 
   private
   def set_card
-    card = PurchaseCredit.where(user_id: current_user.id).first
+    card = PurchaseCredit.where(user_id: current_user.id)
   end
 
 end

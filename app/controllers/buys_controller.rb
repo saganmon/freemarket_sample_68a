@@ -4,6 +4,7 @@ class BuysController < ApplicationController
   def new
     @sell = Product.find(params[:sell_id])
     @card = PurchaseCredit.where(user_id: current_user.id)
+    card = PurchaseCredit.where(user_id: current_user.id).first
     if @card.blank?
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else
@@ -15,6 +16,7 @@ class BuysController < ApplicationController
 
 
   def buy #クレジット購入
+    card = PurchaseCredit.where(user_id: current_user.id).first
     if @card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
@@ -42,7 +44,7 @@ class BuysController < ApplicationController
   private
 
   def set_card
-    card = PurchaseCredit.where(user_id: current_user.id).first
+    card = PurchaseCredit.where(user_id: current_user.id)
   end
 
 end

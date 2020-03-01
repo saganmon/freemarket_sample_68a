@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       collection do
         post :buy
       end
+      
     end
   end
   resources :cards, only: [:new, :create, :show, :destroy] do
