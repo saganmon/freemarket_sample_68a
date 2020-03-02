@@ -1,9 +1,14 @@
 class CardsController < ApplicationController
 
   before_action :set_card,only: [:new, :show, :destroy]
+  before_action :set_breadcrumb
+
   require "payjp"
 
   def new
+    add_breadcrumb "クレジットカード登録", new_card_path
+    @categories = Category.all
+
     card = PurchaseCredit.where(user_id: current_user.id)
     redirect_to card_path(card) if card.exists?
   end
@@ -32,12 +37,15 @@ class CardsController < ApplicationController
   end
 
   def show
+    add_breadcrumb "クレジットカード登録", card_path(current_user)
+
     if card.blank?
       redirect_to action: "new" 
     else
       Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
       customer = Payjp::Customer.retrieve(card.customer_id)
       @default_card_information = customer.cards.retrieve(card.card_id)
+      @categories = Category.all
     end
   end
 
@@ -58,6 +66,12 @@ class CardsController < ApplicationController
   private
   def set_card
     card = PurchaseCredit.where(user_id: current_user.id)
+  end
+
+  def set_breadcrumb
+    add_breadcrumb "フリマ", :root_path
+    add_breadcrumb "マイページ", :mypages_path
+    add_breadcrumb "#{current_user.nickname}さん", mypages_path
   end
 
 end
