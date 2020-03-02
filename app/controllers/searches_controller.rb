@@ -59,5 +59,4 @@ class SearchesController < ApplicationController
     add_breadcrumb "フリマ", :root_path
     add_breadcrumb "検索結果", searches_path
   end
-
 end

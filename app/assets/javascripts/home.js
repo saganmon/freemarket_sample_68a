@@ -5,7 +5,7 @@ $(function () {
     var list_id = "none";
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })
@@ -28,7 +28,7 @@ $(function () {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })
@@ -53,7 +53,7 @@ $(function () {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })

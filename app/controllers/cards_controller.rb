@@ -1,5 +1,4 @@
 class CardsController < ApplicationController
-
   before_action :set_card,only: [:new, :show, :destroy]
   before_action :set_breadcrumb
 
@@ -8,7 +7,6 @@ class CardsController < ApplicationController
   def new
     add_breadcrumb "クレジットカード登録", new_card_path
     @categories = Category.all
-
     card = PurchaseCredit.where(user_id: current_user.id)
     redirect_to card_path(card) if card.exists?
   end
@@ -38,7 +36,6 @@ class CardsController < ApplicationController
 
   def show
     add_breadcrumb "クレジットカード登録", card_path(current_user)
-
     if card.blank?
       redirect_to action: "new" 
     else
@@ -64,6 +61,7 @@ class CardsController < ApplicationController
   end
 
   private
+
   def set_card
     card = PurchaseCredit.where(user_id: current_user.id)
   end
