@@ -51,12 +51,12 @@
 
             &__wapper{
               border: solid 1px $background-color-gray;
+              margin-top: 25px;
               .preview{
-                width: auto;
-                height: 130px;
+                width: 130px;
+                height: 110px;
                 margin: 0 auto;
                 display: block;
-
               }
             }
             &__btn{
@@ -140,7 +140,6 @@
   }
 
   &__product-details {
-    margin-top: 200px;
     display: flex;
     justify-content: space-between;
     padding: 40px;
@@ -173,7 +172,8 @@
           &--text {
             font-size: 14px;
             color: $font-color-black;
-            margin-right: 10px;  
+            margin-right: 10px; 
+            // margin-bottom: 10px; 
           }
         }
         &__lists {
