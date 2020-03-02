@@ -5,7 +5,7 @@ $(function () {
     var list_id = "none";
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })
@@ -13,7 +13,7 @@ $(function () {
       $(list_categories).each(function (i, list) {
         $(".header__inner__nav__left__categorize__tree__big").append(
           `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__big__list">
-            <a href="#", id="big_category">${list.name}</a>
+            <a href="/searches/${list.id}", id="big_category">${list.name}</a>
           </li>`
         );
       });
@@ -28,7 +28,7 @@ $(function () {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })
@@ -38,7 +38,7 @@ $(function () {
       $(list_categories).each(function (i, list) {
         $(".header__inner__nav__left__categorize__tree__medium").append(
           `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__medium__list">
-            <a href="#">${list.name}</a>
+            <a href="/searches/${list.id}">${list.name}</a>
           </li>`
         );
       });
@@ -53,7 +53,7 @@ $(function () {
     var list_id = $(this).val();
     $.ajax({
       type: 'GET',
-      url: `homes/search`,
+      url: `/homes/search`,
       data: {list_id},
       dataType: 'json'
     })
@@ -62,7 +62,7 @@ $(function () {
       $(list_categories).each(function (i, list) {
         $(".header__inner__nav__left__categorize__tree__small").append(
           `<li value="${list.id}" class="header__inner__nav__left__categorize__tree__small__list">
-            <a href="#">${list.name}</a>
+            <a href="/searches/${list.id}">${list.name}</a>
           </li>`
         );
       });

@@ -34,4 +34,12 @@ class Product < ApplicationRecord
       Product.where('name LIKE (?)', "%#{params[:keyword]}%").order("created_at DESC")
     end
   end
+
+  def self.descendants_search(id)
+    ids = [id]
+    Category.find(id).descendants.each do |cat|
+      ids << cat.id
+    end
+    Product.where(category_id: ids)
+  end
 end
