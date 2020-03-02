@@ -86,13 +86,13 @@
           - if @sell.id.present?
             = f.fields_for :brand , @sell.build_brand do |b|
               = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-              = tag.span("必須", class: "must")
+              = tag.span("任意", class: "signup-option")
               = tag.br
               = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", value: @sell.brand.name, placeholder: "例）シャネル"
           - else
             = f.fields_for :brand , @sell.build_brand do |b|
               = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-              = tag.span("必須", class: "must")
+              = tag.span("任意", class: "signup-option")
               = tag.br
               = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
 
