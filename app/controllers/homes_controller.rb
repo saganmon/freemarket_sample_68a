@@ -3,7 +3,6 @@ class HomesController < ApplicationController
 
   def index
     add_breadcrumb "Top", root_path
-
     @product = Product.new
     @products = Product.all.order(created_at: :desc).limit(3)
     @categories =  Category.where(ancestry: nil)
@@ -22,5 +21,4 @@ class HomesController < ApplicationController
   def set_breadcrumb
     add_breadcrumb "フリマ", :root_path
   end
-
 end

@@ -31,6 +31,15 @@ RSpec.describe PurchaseDestination, type: :model do
         expect(destination.errors[:p_postcode]).to include("を入力してください")
       end
 
+      # --------------------------------------------------------
+      # スプリントレビューで指摘を受け追加
+      it "郵便番号はハイフンあり7桁" do
+        destination = build(:purchase_destination, p_postcode: "1234567")
+        destination.valid?
+        expect(destination.errors[:p_postcode]).to include("は不正な値です")
+      end
+      # --------------------------------------------------------
+
       it "都道府県が必須" do
         destination = build(:purchase_destination, p_prefecture: "")
         destination.valid?

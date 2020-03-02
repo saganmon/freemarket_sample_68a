@@ -16,25 +16,28 @@ Rails.application.routes.draw do
       collection do
         post :buy
       end
-      
     end
+
     collection do
       get 'select_category_middle' 
       get 'select_category_small'
       get 'select_shipping_method'
     end
   end
+
   resources :cards, only: [:new, :create, :show, :destroy] do
     collection do
       post :pay
     end
   end
+
   resources :homes, only: [:index] do
     collection do 
       get :search
     end
   end
-  resources :searches, only: [:index] do
+
+  resources :searches, only: [:index, :show] do
     collection do
       get :sort
       get :detail_search

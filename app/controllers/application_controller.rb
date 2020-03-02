@@ -19,9 +19,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-
-
   protected
 
   def configure_permitted_parameters
@@ -30,7 +27,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   end
   
-
   private
 
   def production?
@@ -42,7 +38,4 @@ class ApplicationController < ActionController::Base
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
     end
   end
-
-
-
 end
