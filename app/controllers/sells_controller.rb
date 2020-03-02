@@ -1,4 +1,5 @@
 class SellsController < ApplicationController
+  before_action :set_product, only: [:edit, :update, :show]
 
   def new
     @sell = Product.new
@@ -17,17 +18,14 @@ class SellsController < ApplicationController
   end
 
   def show
-    @sell = Product.find(params[:id])
   end
 
   def edit
-    @sell = Product.find(params[:id])
     @categories = Category.all
     @shippings = Shipping.all
   end
 
   def update
-    @sell = Product.find(params[:id])
     if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes") 
       if @sell.valid?
         if params[:product].keys.include?("image") 
@@ -90,5 +88,10 @@ class SellsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :price, :condition, brand_attributes:[:name], images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @sell = Product.find(params[:id])
+  end
+
 
 end

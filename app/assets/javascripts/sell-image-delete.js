@@ -1,7 +1,6 @@
 $(function () {
       //プレビュー表示カウントメソッド
       var PricePreviewCount = function (count) {
-        console.log(count)
         if (count < 4){
           $('#previews .input').css('display', '')
           $('#previews .input').css({'width': `calc(100% - (25% * ${count}))`})
