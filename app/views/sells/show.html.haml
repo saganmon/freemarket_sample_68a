@@ -11,14 +11,16 @@
 
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
-
     = tag.ul class: "sell-product-detail__items" do
       = tag.li image_tag "#{@sell.images.first.name}", class: "sell-product-detail__items__main-image"
       = tag.ul class: "sell-product-detail__items__sub-image" do
         - @sell.images.each do |i|
           = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
-      = converting_to_jpy(@sell.price)
+      - if @sell.status == false
+        = converting_to_jpy(@sell.price)
+      - if @sell.status == true
+        売却済
       .sell-product-detail__price__detail
         = tag.span("(税込)")
         = tag.span("送料込み")
@@ -81,9 +83,16 @@
           = tag.li link_to('編集', "#")
         = tag.ul class: "sell-product-detail__option__destroy" do
           = tag.li link_to('削除', sell_path, method: :delete)
-      - else user_signed_in?
+      - elsif user_signed_in?
+        - if @sell.status == false
+          = tag.ul class: "sell-product-detail__option__buy" do
+            = tag.li link_to('購入画面に進む', new_sell_buy_path(@sell))
+        - else @sell.status == true
+          = tag.ul class: "sell-product-detail__option__buy" do
+            = tag.li link_to('トップページに戻る', root_path)
+      - else
         = tag.ul class: "sell-product-detail__option__buy" do
-          = tag.li link_to('購入画面に進む', new_buy_path)
+          = tag.li link_to('新規登録またはログイン', root_path)
 
       = tag.ul class: "sell-product-detail__option__report" do
         = tag.li icon('fas', 'flag')
