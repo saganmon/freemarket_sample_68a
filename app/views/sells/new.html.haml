@@ -9,33 +9,15 @@
         %label 出品画像
         = tag.span("必須", class: "must")
         .form-image__text 最大4枚までアップロードできます
-        - if @sell.persisted?
+        = f.fields_for :images do |image|
           .clearfix
             %ul#previews
-              = f.fields_for :image do |image|
-                - @sell.images.each_with_index do |img, i|
-                  %li.image-preview
-                    %label.upload-label{style:"display: none;"}
-                      .upload-label__text
-                        またはクリックしてファイルをアップロード
-                        .input-area
-                          = image.file_field :name, value: img.name ,class: "hidden image_upload"
-                          = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
-                    .image-preview__wapper
-                      = image_tag img.name.to_s, class:"preview"
-                    .image-preview__btn
-                      .image-preview__btn__edit 編集
-                      .image-preview__btn__delete 削除
-        - else
-          = f.fields_for :images do |image|
-            .clearfix
-              %ul#previews
-                %li.input
-                  %label.upload-label
-                    .upload-label__text
-                      またはクリックしてファイルをアップロード
-                      .input-area
-                        = image.file_field :name, class: "hidden image_upload", style: "display:none"
+              %li.input
+                %label.upload-label
+                  .upload-label__text
+                    またはクリックしてファイルをアップロード
+                    .input-area
+                      = image.file_field :name, class: "hidden image_upload", style: "display:none" 
 
     .sell-main__product-name
       .sell-main__product-name__title
@@ -58,42 +40,22 @@
             = f.label :category_id, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
             = tag.span("必須", class: "must")
             = tag.br
-          - if @sell.id.present?
-            .sell-main__product-details__contents__category__title.category-box__large
-              = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}
-              = tag.br
-            .sell-main__product-details__contents__category__title.category-box__middle
-              = select :category_middle,:category_middle, options_from_collection_for_select(@sell.category.parent.siblings.order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}
-              = tag.br
-            .sell-main__product-details__contents__category__title.category-box__small
-              = tag.br
-              = f.select :category_id, options_from_collection_for_select(@sell.category.siblings.order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}
-          - else
-            .sell-main__product-details__contents__category__title.category-box__large
-              = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
-              = tag.br
-            .sell-main__product-details__contents__category__title.category-box__middle
-              = tag.br
-              = select :category_middle,:category_middle, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
-            .sell-main__product-details__contents__category__title.category-box__small
-              = tag.br
-              = f.select :category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+          .sell-main__product-details__contents__category__title.category-box__large
+            = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+            = tag.br
+          .sell-main__product-details__contents__category__title.category-box__middle
+            = tag.br
+            = select :category_middle,:category_middle, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
+          .sell-main__product-details__contents__category__title.category-box__small
+            = tag.br
+            = f.select :category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
 
         .sell-main__product-details__contents__brand
-          .sell-main__product-details__contents__brand__title
-
-          - if @sell.id.present?
-            = f.fields_for :brand , @sell.build_brand do |b|
-              = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-              = tag.span("任意", class: "signup-option")
-              = tag.br
-              = b.text_field :name, value: "壱生", class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
-          - else
-            = f.fields_for :brand , @sell.build_brand do |b|
-              = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-              = tag.span("任意", class: "signup-option")
-              = tag.br
-              = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+          = f.fields_for :brand , @sell.build_brand do |b|
+            = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+            = tag.span("任意", class: "signup-option")
+            = tag.br
+            = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
 
         .sell-main__product-details__contents__size
           .sell-main__product-details__contents__size__title
@@ -117,18 +79,12 @@
             = f.label :shipping_burden, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-        - if @sell.id.present?
-          = f.select :shipping_burden, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name, {selected: @sell.shipping.root.id}),{}, {class: "sell-main__product-delivery__contents__who-cares__lists"}
-        - else
           = f.select :shipping_burden, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name), {include_blank: "選択してください"}, {class: "sell-main__product-delivery__contents__who-cares__lists"}
         .sell-main__product-delivery__contents__shipping-method
           .sell-main__product-delivery__contents__shipping-method__title
             = f.label :shipping_id, "配送の方法", class: "sell-main__product-delivery__contents__shipping-method__title--text"
             = tag.span("必須", class: "must")
           = tag.br
-        - if @sell.id.present?
-          = f.select :shipping_id, options_from_collection_for_select(@sell.shipping.siblings.order("id ASC"), :id, :name, {selected: @sell.shipping.id}), {}, {class: "sell-main__product-delivery__contents__shipping-method__lists"}
-        - else
           = f.select :shipping_id, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name), {include_blank: "選択してください"}, {class: "sell-main__product-delivery__contents__shipping-method__lists"}
         .sell-main__product-delivery__contents__where-from
           .sell-main__product-delivery__contents__where-from__title
@@ -162,16 +118,10 @@
           = tag.span("---", class: "sell-main__product-price__contents__sales-profit__price")
 
     .sell-main__button
-      - if @sell.id.present?
-        = f.submit "変更する", class: "sell-main__button__sell"
-        = tag.br
-        = link_to "", class: "sell-main__button__back" do
-          もどる
-      - else
-        = f.submit "出品する", class: "sell-main__button__sell"
-        = tag.br
-        = link_to "#", class: "sell-main__button__back" do
-          もどる
+      = f.submit "出品する", class: "sell-main__button__sell"
+      = tag.br
+      = link_to "#", class: "sell-main__button__back" do
+        もどる
     .sell-main__caution
       - my_action = link_to '行為', '#'
       - my_products = link_to '出品物', '#'
