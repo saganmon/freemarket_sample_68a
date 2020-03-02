@@ -37,13 +37,13 @@ $(function() {
     .on('mouseenter', function(){
       $(this).css({
         "fontWeight": "bold",
-        "backgroundColor": "#f5f5f5"
+        "backgroundColor": "gray"
       });
     })
     .on('mouseleave', function(){
       $(this).css({
         "fontWeight": "normal",
-        "backgroundColor": "white"
+        "backgroundColor": "gray"
       });
     });
 

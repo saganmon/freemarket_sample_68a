@@ -6,15 +6,17 @@
       購入内容の確認
     .buys-new__main__image
       .buys-new__main__image__pict
-        = image_tag(@sell.images.first.name,size: "180x180")
+        = image_tag(@sell.images.first.name.to_s,size: "180x180")
       .buys-new__main__image__information
         .buys-new__main__image__information__text
           .buys-new__main__image__information__text__burand
-            = @sell.brand.name
+            -# = @sell.brand.name
           .buys-new__main__image__information__text__genre
             = @sell.category.parent.name
           .buys-new__main__image__information__text__categorize
             = @sell.category.name
+        .buys-new__main__image__information__name
+          = @sell.name
         .buys-new__main__image__information__price
           .buys-new__main__image__information__price__money
             = converting_to_jpy(@sell.price)
