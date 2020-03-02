@@ -8,8 +8,8 @@ class SellsController < ApplicationController
   end
 
   def create
-    @sell = Product.new(product_params)
-    if @sell.save
+    @product = Product.new(product_params)
+    if @product.save
       flash.now[:alert] = '出品完了しました。'
     else
       render :new
@@ -28,11 +28,28 @@ class SellsController < ApplicationController
 
   def update
     @sell = Product.find(params[:id])
-    if @sell.update(product_params)
-
+    if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes") 
+      if @sell.valid?
+        if params[:product].keys.include?("image") 
+          update_images_ids = params[:product][:image].values
+          before_images_ids = @sell.images.ids
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
+          end
+        else
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy 
+          end
+        end
+        @sell.update(product_params)
+        redirect_to sell_path(@sell), notice: "商品を更新しました"
+      else
+        render 'edit'
+      end
     else
-      render :new
+      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
     end
+    
   end
 
   def select_category_middle

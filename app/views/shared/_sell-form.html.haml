@@ -2,24 +2,40 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  = form_with(model: @sell, url: sells_path, local: true, html: { class: "sell-main" }) do |f|
+  = form_with(model: @sell,url: sell_path, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .form-image
       .form-image__title
         %label 出品画像
         = tag.span("必須", class: "must")
         .form-image__text 最大4枚までアップロードできます
-        = f.fields_for :images do |image|
+        - if @sell.persisted?
           .clearfix
-            // 写真のプレビューとインプットボタンのul
             %ul#previews
-              %li.input
-                // 画像を取り込むインプットボタン
-                %label.upload-label
-                  .upload-label__text
-                    またはクリックしてファイルをアップロード
-                    .input-area
-                      = image.file_field :name, class: "hidden image_upload", style: "display:none"
+              = f.fields_for :image do |image|
+                - @sell.images.each_with_index do |img, i|
+                  %li.image-preview
+                    %label.upload-label{style:"display: none;"}
+                      .upload-label__text
+                        またはクリックしてファイルをアップロード
+                        .input-area
+                          = image.file_field :name, value: img.name ,class: "hidden image_upload"
+                          = image.hidden_field :id, value: img.id, name:"product[image][#{i}]"
+                    .image-preview__wapper
+                      = image_tag img.name.to_s, class:"preview"
+                    .image-preview__btn
+                      .image-preview__btn__edit 編集
+                      .image-preview__btn__delete 削除
+        - else
+          = f.fields_for :images do |image|
+            .clearfix
+              %ul#previews
+                %li.input
+                  %label.upload-label
+                    .upload-label__text
+                      またはクリックしてファイルをアップロード
+                      .input-area
+                        = image.file_field :name, class: "hidden image_upload", style: "display:none"
 
 
     .sell-main__product-name
@@ -65,8 +81,16 @@
               = f.select :category_id, options_from_collection_for_select(@categories.limit(1), :id, :name),{}, {class: 'sell-main__product-details__contents__category__lists'}
 
         .sell-main__product-details__contents__brand
-          = f.fields_for :brand do |b|
-            .sell-main__product-details__contents__brand__title
+          .sell-main__product-details__contents__brand__title
+
+          - if @sell.id.present?
+            = f.fields_for :brand , @sell.build_brand do |b|
+              = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+              = tag.span("必須", class: "must")
+              = tag.br
+              = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", value: @sell.brand.name, placeholder: "例）シャネル"
+          - else
+            = f.fields_for :brand , @sell.build_brand do |b|
               = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
               = tag.span("必須", class: "must")
               = tag.br
@@ -142,7 +166,7 @@
       - if @sell.id.present?
         = f.submit "変更する", class: "sell-main__button__sell"
         = tag.br
-        = link_to "#", class: "sell-main__button__back" do
+        = link_to "", class: "sell-main__button__back" do
           もどる
       - else
         = f.submit "出品する", class: "sell-main__button__sell"
