@@ -240,15 +240,15 @@
       height: 330px;
       background-color: $background-color-white;
       &__title {
-        height: 50px;
+        height: 80px;
         border-bottom: 1px solid $background-color-lightgray;
-        line-height: 50px;
+        line-height: 80px;
         text-align: center;
         font-size: 25px;
         font-weight: 700;
       }
       &__inner {
-        height: 100px;
+        height: 70px;
         padding: 20px 64px 160px 64px;
         text-align: center;
         border-bottom: 1px solid $background-color-lightgray;
