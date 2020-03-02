@@ -49,11 +49,12 @@
               = tag.div link_to(@sell.category.parent.parent.name, "#")
               = tag.div link_to(@sell.category.parent.name, "#")
               = tag.div link_to(@sell.category.name, "#")
-          -# %tr
-          -#   %th
-          -#     ブランド
-          -#   %td
-          -#     = @sell.brand.name
+          %tr
+            %th
+              ブランド
+            %td
+              - unless @sell.brand_id.nil?
+                = @sell.brand.name
           %tr
             %th
               商品のサイズ
@@ -86,7 +87,7 @@
         = tag.li "お気に入り 0"
       - if user_signed_in? && current_user.id == @sell.user_id
         = tag.ul class: "sell-product-detail__option__edit" do
-          = tag.li link_to('編集', "#")
+          = tag.li link_to('編集', edit_sell_path)
         = tag.ul class: "sell-product-detail__option__destroy" do
           = tag.li link_to('削除', sell_path, method: :delete)
       - elsif user_signed_in?

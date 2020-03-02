@@ -23,6 +23,15 @@ RSpec.describe User, type: :model do
         expect(user.errors[:email]).to include("は不正な値です")
       end
 
+      # --------------------------------------------------------
+      # スプリントレビューで指摘を受け追加
+      it "メールアドレスは有効なドメイン名を含む必要がある" do
+        user = build(:user, email: "aaa@aaa")
+        user.valid?
+        expect(user.errors[:email]).to include("は不正な値です")
+      end
+      # --------------------------------------------------------
+
       it "パスワードが必須" do
         user = build(:user, password: "")
         user.valid?
@@ -74,15 +83,6 @@ RSpec.describe User, type: :model do
         expect(user.errors[:birthday_month]).to include("を入力してください")
         expect(user.errors[:birthday_date]).to include("を入力してください")
       end
-
-
+    end
   end
-end
-
-
-
-
-
-
-
 end
