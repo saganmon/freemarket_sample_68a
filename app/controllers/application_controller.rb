@@ -1,6 +1,25 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_request_from
+
+  def set_request_from
+    if session[:request_from]
+      @request_from = session[:request_from]
+    end
+    # 現在のURLを保存しておく
+    session[:request_from] = request.original_url
+  end
+
+  def return_back
+    if request.referer
+      redirect_to :back and return true
+    elsif @request_from
+      redirect_to @request_from and return true
+    end
+  end
+
+
 
 
   protected
@@ -10,7 +29,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
     devise_parameter_sanitizer.permit(:account_update, keys: [:attribute])
   end
-
+  
 
   private
 

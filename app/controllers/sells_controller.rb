@@ -18,6 +18,7 @@ class SellsController < ApplicationController
 
   def show
     @sell = Product.find(params[:id])
+    @categories = Category.all
   end
 
   def edit

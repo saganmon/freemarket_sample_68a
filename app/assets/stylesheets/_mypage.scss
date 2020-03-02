@@ -250,6 +250,9 @@
           margin: 0 40px;
           background-color: $background-color-red;
           line-height: 50px;
+          a {
+            display: flex;
+          }
           &__icon {
             color: $font-color-white;
           }
@@ -281,6 +284,7 @@
     }
 
     &__card-form {
+      margin: 0 auto;
       width: 700px;
       height: 590px;
       background-color: $background-color-white;
@@ -384,7 +388,13 @@
   margin-left: 10px;
 }
 
-.month-day {
+.exp_year {
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 48px;
+  padding: 0 10px;
+}
+.exp_month {
   font-size: 20px;
   font-weight: 800;
   line-height: 48px;
