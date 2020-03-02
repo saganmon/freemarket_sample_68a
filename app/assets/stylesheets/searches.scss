@@ -9,7 +9,6 @@
   display: flex;
   &__left-contents {
     &__sort-selector {
-
       &__box {
         width: 200px;
         height: 30px;
@@ -27,26 +26,6 @@
         font-size: 16px;
         color: $font-color-black;
         margin-top: 5px;
-        &__text{
-          height: 30px;
-          width: 200px;
-        }  
-      }
-
-      &__category {
-        font-size: 16px;
-        color: $font-color-black;
-        margin-top: 20px;
-        &__selector{
-        height: 30px;
-        width: 200px;
-        }
-      }
-
-      &__brand {
-        font-size: 16px;
-        color: $font-color-black;
-        margin-top: 20px;
         &__text{
           height: 30px;
           width: 200px;
@@ -73,26 +52,6 @@
         }  
       }
 
-      &__condition {
-        font-size: 16px;
-        color: $font-color-black;
-        margin-top: 20px;
-        &__selector{
-          height: 30px;
-          width: 200px;
-        }  
-      }
-
-      &__shipping {
-        font-size: 16px;
-        color: $font-color-black;
-        margin-top: 20px;
-        &__selector{
-          height: 30px;
-          width: 200px;
-        }  
-      }
-
       &__status {
         font-size: 16px;
         color: $font-color-black;
@@ -104,7 +63,7 @@
       }
 
       &__submit {
-        margin-top: 20px;
+        margin-top: 18px;
         &__button {
           font-size: 20px;
           color: $font-color-white;
