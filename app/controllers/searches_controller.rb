@@ -2,8 +2,7 @@ class SearchesController < ApplicationController
   before_action :set_breadcrumb
 
   def index
-    add_breadcrumb "検索結果", searches_path
-
+    add_breadcrumb "あいまい検索", searches_path
     if get_params == nil
       return nil
     else
@@ -16,9 +15,7 @@ class SearchesController < ApplicationController
   end
 
   def sort
-    add_breadcrumb "検索結果", searches_path
     add_breadcrumb "並び替え", searches_path
-
     @products = Product.search_sort_products(gets_params)
     respond_to do |format|
       format.html
@@ -27,13 +24,21 @@ class SearchesController < ApplicationController
   end
 
   def detail_search
-    add_breadcrumb "検索結果", searches_path
-    add_breadcrumb "絞り込み結果", detail_search_searches_path
-
+    add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
     @products = @query.result(distinct: true)
     @images = @products.map(&:images).flatten
     @search_word = get_ransack_only_name
+    @categories = Category.all
+  end
+
+  def show
+    add_breadcrumb "カテゴリー", search_path(params[:id])
+    @products = Product.descendants_search(params[:id])
+    # @products =Product.where(category_id: params[:id])
+    @images = @products.map(&:images).flatten
+    @categories = Category.all
+    @search_word = Category.find(params[:id]).name
   end
 
   private
@@ -54,8 +59,13 @@ class SearchesController < ApplicationController
     params.require(:q)[:name_cont]
   end
 
+  # def get_params_id
+  #   params.permit(:id)
+  # end
+
   def set_breadcrumb
     add_breadcrumb "フリマ", :root_path
+    add_breadcrumb "検索結果", searches_path
   end
 
 end
