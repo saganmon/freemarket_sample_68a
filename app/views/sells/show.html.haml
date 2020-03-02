@@ -22,8 +22,9 @@
       - if @sell.status == true
         売却済
       .sell-product-detail__price__detail
-        = tag.span("(税込)")
-        = tag.span("送料込み")
+        - if @sell.status == false
+          = tag.span("(税込)")
+          = tag.span("送料込み")
 
     .sell-product-detail__subtitle
       = tag.h3(@sell.name)

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       collection do
         post :buy
       end
+      
     end
     collection do
       get 'select_category_middle' 
