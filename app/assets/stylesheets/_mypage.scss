@@ -237,7 +237,7 @@
     }
     &__card {
       width: 700px;
-      height: 300px;
+      height: 330px;
       background-color: $background-color-white;
       &__title {
         height: 50px;
@@ -249,11 +249,11 @@
       }
       &__inner {
         height: 100px;
-        padding: 64px;
+        padding: 20px 64px 160px 64px;
         text-align: center;
         border-bottom: 1px solid $background-color-lightgray;
         &__text {
-          margin-bottom: 20px;
+          margin-bottom: 40px;
           font-size: 20px;
           font-size: 800;
         }
