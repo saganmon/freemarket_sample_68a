@@ -48,11 +48,8 @@
             %th
               ブランド
             %td
-              - if @sell.brand_id.nil?
-                
-              - else
+              - unless @sell.brand_id.nil?
                 = @sell.brand.name
-                
           %tr
             %th
               商品のサイズ
