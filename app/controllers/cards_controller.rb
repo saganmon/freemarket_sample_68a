@@ -32,6 +32,7 @@ class CardsController < ApplicationController
   end
 
   def show
+    card = PurchaseCredit.where(user_id: current_user.id).first
     if card.blank?
       redirect_to action: "new" 
     else

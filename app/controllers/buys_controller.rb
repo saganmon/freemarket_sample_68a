@@ -17,7 +17,7 @@ class BuysController < ApplicationController
 
   def buy #クレジット購入
     card = PurchaseCredit.where(user_id: current_user.id).first
-    if @card.blank?
+    if card.blank?
       redirect_to action: "new"
       flash[:alert] = '購入にはクレジットカード登録が必要です'
     else

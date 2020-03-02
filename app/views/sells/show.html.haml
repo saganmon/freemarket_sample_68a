@@ -2,20 +2,20 @@
   = render 'shared/header'
 
   .navigation-bar
-    = tag.ul class: "navigation-bar__contents" do
-      = tag.li link_to('FURIMA', "/", class: "navigation-bar__contents__root")
-      = tag.li link_to(@sell.category.parent.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to(@sell.category.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to(@sell.category.name, "#", class: "navigation-bar__contents__category navi-link")
-      = tag.li link_to(@sell.name, "#", class: "navigation-bar__contents__item navi-link active")
+  -#   = tag.ul class: "navigation-bar__contents" do
+  -#     = tag.li link_to('FURIMA', "/", class: "navigation-bar__contents__root")
+  -#     = tag.li link_to(@sell.category.parent.parent.name, "#", class: "navigation-bar__contents__category navi-link")
+  -#     = tag.li link_to(@sell.category.parent.name, "#", class: "navigation-bar__contents__category navi-link")
+  -#     = tag.li link_to(@sell.category.name, "#", class: "navigation-bar__contents__category navi-link")
+  -#     = tag.li link_to(@sell.name, "#", class: "navigation-bar__contents__item navi-link active")
 
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
     = tag.ul class: "sell-product-detail__items" do
-      = tag.li image_tag "#{@sell.images.first.name}", class: "sell-product-detail__items__main-image"
+      = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
       = tag.ul class: "sell-product-detail__items__sub-image" do
         - @sell.images.each do |i|
-          = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
+          = tag.li image_tag i.name.to_s, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
       - if @sell.status == false
         = converting_to_jpy(@sell.price)
@@ -39,16 +39,21 @@
               = @sell.user.nickname
           %tr
             %th
+              商品の説明
+            %td
+              = @sell.description
+          %tr
+            %th
               カテゴリー
             %td
               = tag.div link_to(@sell.category.parent.parent.name, "#")
               = tag.div link_to(@sell.category.parent.name, "#")
               = tag.div link_to(@sell.category.name, "#")
-          %tr
-            %th
-              ブランド
-            %td
-              = @sell.brand.name
+          -# %tr
+          -#   %th
+          -#     ブランド
+          -#   %td
+          -#     = @sell.brand.name
           %tr
             %th
               商品のサイズ
