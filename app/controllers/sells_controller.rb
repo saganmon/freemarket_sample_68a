@@ -1,16 +1,16 @@
 class SellsController < ApplicationController
+  before_action :set_product, only: [:edit, :update, :show]
 
   def new
     @sell = Product.new
-    @sell.images.new     #imageモデルの空のインスタンス生成
-
+    @sell.images.new
     @categories = Category.all
     @shippings = Shipping.all
   end
 
   def create
-    @sell = Product.new(product_params)
-    if @sell.save
+    @product = Product.new(product_params)
+    if @product.save
       flash.now[:alert] = '出品完了しました。'
     else
       render :new
@@ -18,11 +18,41 @@ class SellsController < ApplicationController
   end
 
   def show
-    @sell = Product.find(params[:id])
     @categories = Category.all
   end
 
   def edit
+    @categories = Category.all
+    @shippings = Shipping.all
+  end
+
+  def update
+    if params[:product].keys.include?("image") || params[:product].keys.include?("images_attributes") 
+      if @sell.valid?
+        if params[:product].keys.include?("image") 
+          update_images_ids = params[:product][:image].values
+          before_images_ids = @sell.images.ids
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
+          end
+        else
+          before_images_ids.each do |before_img_id|
+            Image.find(before_img_id).destroy 
+          end
+        end
+
+        if @sell.update(product_params)
+          redirect_to sell_path(@sell), notice: "商品を更新しました"
+        else
+          render 'edit'
+        end
+      else
+        render 'edit'
+      end
+    else
+      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+    end
+    
   end
 
   def select_category_middle
@@ -63,5 +93,10 @@ class SellsController < ApplicationController
   def product_params
     params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :price, :condition, brand_attributes:[:name], images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
+
+  def set_product
+    @sell = Product.find(params[:id])
+  end
+
 
 end

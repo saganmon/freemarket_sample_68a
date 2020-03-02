@@ -29,56 +29,74 @@
     text-align: center;
     border-bottom: 1px solid $font-color-gray;
   }
-  &__image {
-    padding: 40px;
-    border-bottom: 1px solid $font-color-gray;
-    &__title {
-      display: flex;
-      &--text {
+  .form-image{
+    &__title{
+      padding-top: 10px;
+      label{
         font-size: 14px;
         color: $font-color-black;
-        margin-right: 10px;
+        margin-left: 35px;
+      }
+      .form-image__text{
+        font-size: 14px;
+        color: $font-color-black;
+        margin-left: 35px;
+      }
+      .clearfix{
+        #previews{
+          width: 100%;
+          display: flex;
+          .image-preview{
+            margin-left: 20px;
+
+            &__wapper{
+              border: solid 1px $background-color-gray;
+              .preview{
+                width: auto;
+                height: 130px;
+                margin: 0 auto;
+                display: block;
+
+              }
+            }
+            &__btn{
+              display: flex;
+              font-size: 14px;
+              color: rgb(0, 149, 238);
+              background-color: $background-color-lightgray;
+              border: solid 1px $background-color-gray;
+              text-align: center;
+              &__edit{
+                width: 75px;
+                border-right: solid 1px $background-color-gray;
+              }
+              &__delete{
+                width: 75px;
+              }
+            }
+          }
+          .input{
+
+            .upload-label{
+              &__text{
+                height: 130px;
+                align-items: center;
+                background-color: rgb(245, 245, 245);
+                display: flex;
+                justify-content: center;
+                border-width: 1px;
+                border-style: dashed;
+                border-color: rgb(173, 56, 56);
+                text-align: center;
+                margin-left: 30px;
+                margin-right: 30px;
+              }
+            }
+          }
+        }
       }
     }
-  &__box{
-          .sell-image-label{
-            align-content: center;
-            -webkit-box-align: center;
-            align-items: center;
-            background-color: rgb(245, 245, 245);
-            cursor: pointer;
-            display: flex;
-            height: 150px;
-            flex-wrap: wrap;
-            -webkit-box-pack: center;
-            justify-content: center;
-            border-width: 1px;
-            border-style: dashed;
-            border-color: rgb(173, 56, 56);
-            border-image: initial;
-            transition: all 0.5s ease-out 0s;
-            width: 620px;
-
-          }
-
-          #previews{
-            display: flex;
-          }
-
-          .sell-image-botton{
-            margin-left: 25px;
-            color: blue;
-          }
-
-          .image-preview{
-            border: solid 1px $background-color-lightgray;
-            width: 150px;
-            margin-right: 10px;
-          }
-
   }
-  }
-
   &__product-name {
     padding: 40px;
     &__title {
@@ -132,8 +150,10 @@
     }
     &__contents {
       &__category {
+        
         &__title {
           display: flex;
+          margin-top: 16px;
           &--text {
             font-size: 14px;
             color: $font-color-black;

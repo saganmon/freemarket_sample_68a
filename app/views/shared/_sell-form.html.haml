@@ -2,7 +2,7 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  = form_with(model: @sell ,url: new_sell_path, local: true, html: { class: "sell-main" }) do |f|
+  = form_with(model: @sell,url: sell_path, local: true, html: { class: "sell-main" }) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .form-image
       .form-image__title
@@ -36,6 +36,7 @@
                       またはクリックしてファイルをアップロード
                       .input-area
                         = image.file_field :name, class: "hidden image_upload", style: "display:none"
+
 
     .sell-main__product-name
       .sell-main__product-name__title
@@ -87,7 +88,7 @@
               = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
               = tag.span("必須", class: "must")
               = tag.br
-              = b.text_field :name, value: "壱生", class:"sell-main__product-details__contents__brand__lists", placeholder: "例）シャネル"
+              = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", value: @sell.brand.name, placeholder: "例）シャネル"
           - else
             = f.fields_for :brand , @sell.build_brand do |b|
               = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"

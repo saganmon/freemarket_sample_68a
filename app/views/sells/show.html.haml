@@ -15,7 +15,7 @@
       = tag.li image_tag "#{@sell.images.first.name}", class: "sell-product-detail__items__main-image"
       = tag.ul class: "sell-product-detail__items__sub-image" do
         - @sell.images.each do |i|
-          = tag.li image_tag i.name, class: "sell-product-detail__items__sub-image"
+          = tag.li image_tag i.name.to_s, class: "sell-product-detail__items__sub-image"
     .sell-product-detail__price
       - if @sell.status == false
         = converting_to_jpy(@sell.price)
@@ -48,7 +48,8 @@
             %th
               ブランド
             %td
-              = @sell.brand.name
+              - unless @sell.brand_id.nil?
+                = @sell.brand.name
           %tr
             %th
               商品のサイズ
@@ -81,7 +82,7 @@
         = tag.li "お気に入り 0"
       - if user_signed_in? && current_user.id == @sell.user_id
         = tag.ul class: "sell-product-detail__option__edit" do
-          = tag.li link_to('編集', "#")
+          = tag.li link_to('編集', edit_sell_path)
         = tag.ul class: "sell-product-detail__option__destroy" do
           = tag.li link_to('削除', sell_path, method: :delete)
       - elsif user_signed_in?
