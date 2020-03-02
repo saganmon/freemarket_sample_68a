@@ -8,7 +8,6 @@ class SearchesController < ApplicationController
     else
       @query = Product.ransack(params[:q])
       @products = Product.keyword_search(get_params)
-      @images = @products.map(&:images).flatten
       @search_word = get_params
       @search = Product.new
     end
@@ -27,7 +26,6 @@ class SearchesController < ApplicationController
     add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
     @products = @query.result(distinct: true)
-    @images = @products.map(&:images).flatten
     @search_word = get_ransack_only_name
     @categories = Category.all
   end
@@ -35,8 +33,6 @@ class SearchesController < ApplicationController
   def show
     add_breadcrumb "カテゴリー", search_path(params[:id])
     @products = Product.descendants_search(params[:id])
-    # @products =Product.where(category_id: params[:id])
-    @images = @products.map(&:images).flatten
     @categories = Category.all
     @search_word = Category.find(params[:id]).name
   end
@@ -58,10 +54,6 @@ class SearchesController < ApplicationController
   def get_ransack_only_name
     params.require(:q)[:name_cont]
   end
-
-  # def get_params_id
-  #   params.permit(:id)
-  # end
 
   def set_breadcrumb
     add_breadcrumb "フリマ", :root_path
