@@ -40,8 +40,12 @@ class SellsController < ApplicationController
             Image.find(before_img_id).destroy 
           end
         end
-        @sell.update(product_params)
-        redirect_to sell_path(@sell), notice: "商品を更新しました"
+
+        if @sell.update(product_params)
+          redirect_to sell_path(@sell), notice: "商品を更新しました"
+        else
+          render 'edit'
+        end
       else
         render 'edit'
       end
