@@ -33,5 +33,10 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  resources :searches, only: [:index]
+  resources :searches, only: [:index] do
+    collection do
+      get :sort
+      get :detail_search
+    end
+  end
 end

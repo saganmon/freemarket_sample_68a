@@ -98,7 +98,7 @@
         color: $font-color-black;
         margin-top: 20px;
         &__selector{
-          height: 40px;
+          height: 30px;
           width: 200px;
         }
       }
@@ -124,11 +124,14 @@
       font-weight: bold;
     }
     &__images {
-      display: flex;
-      margin-top: 20px;
+      margin: 20px auto;
+      max-width: 220px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
       &__list {
-        margin-right: 30px;
-        height: 250px;
+        margin-right: 20px;
+        margin-top: 30px;
+        height: 220px;
         width: 220px;
         background-color: $background-color-white;
         position: relative;
@@ -146,10 +149,9 @@
           font-size: 14px;
           color: $font-color-white;
           background-color: rgba(0,0,0,0.5);
+          line-height: 22px;
         }
       }
     }
   }
-
-
 }

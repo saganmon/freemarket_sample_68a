@@ -94,5 +94,6 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'font-awesome-sass'
 gem 'ancestry'
-gem 'payjp'
 gem "breadcrumbs_on_rails"
+gem 'ransack'
+gem 'payjp'
