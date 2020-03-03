@@ -61,13 +61,14 @@
       - else
         .search-main__right-contents__images
           - @products.each do |p|
-            = link_to sell_path(p) do
-              .search-main__right-contents__images__list
-                .search-main__right-contents__images__list__image
-                  = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
-                .search-main__right-contents__images__list__name
-                  = p.name
-                .search-main__right-contents__images__list__price
-                  = converting_to_jpy(p.price)
+            - if p.user_id != current_user.id
+              = link_to sell_path(p) do
+                .search-main__right-contents__images__list
+                  .search-main__right-contents__images__list__image
+                    = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+                  .search-main__right-contents__images__list__name
+                    = p.name
+                  .search-main__right-contents__images__list__price
+                    = converting_to_jpy(p.price)
 
   = render 'shared/lower-part'

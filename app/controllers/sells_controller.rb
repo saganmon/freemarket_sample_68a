@@ -20,6 +20,7 @@ class SellsController < ApplicationController
   end
 
   def show
+    @product = Product.new
     @categories = Category.all
     add_breadcrumb "商品詳細", sell_path(params[:id])
   end
