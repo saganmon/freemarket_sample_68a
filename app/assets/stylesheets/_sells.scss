@@ -467,10 +467,21 @@
       width: 560px;
       height: 346px;
       margin-left: 70px;
+      position: relative;
       li img {
         align-items: center;
         text-align: center;
         background-size: cover;
+      }
+      &__cover {
+        display: inline-block;
+        position: absolute;
+        top: 305px;
+        // top: 185px;
+        // left: 260px;
+        width: 560px;
+        height: 346px;
+        margin-left: 70px;
       }
       
     }

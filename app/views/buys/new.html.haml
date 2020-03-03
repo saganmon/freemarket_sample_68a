@@ -10,7 +10,8 @@
       .buys-new__main__image__information
         .buys-new__main__image__information__text
           .buys-new__main__image__information__text__burand
-            -# = @sell.brand.name
+            - unless @sell.brand_id.nil?
+              = @sell.brand.name
           .buys-new__main__image__information__text__genre
             = @sell.category.parent.name
           .buys-new__main__image__information__text__categorize
