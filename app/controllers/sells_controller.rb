@@ -1,5 +1,5 @@
 class SellsController < ApplicationController
-  before_action :current_user_check,       only: [:edit, :delete]
+  before_action :current_user_check,       only: [:edit, :update, :delete]
   before_action :set_product,              only: [:edit, :update, :show]
 
   def new
@@ -14,7 +14,7 @@ class SellsController < ApplicationController
     if @product.save
       flash.now[:notice] = '出品完了しました。'
     else
-      render :new
+      redirect_to new_sell_path, alert: "再度入力してください"
     end
   end
 
