@@ -1,6 +1,8 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_card,only: [:new, :show, :destroy]
   before_action :set_breadcrumb
+ 
 
   require "payjp"
 

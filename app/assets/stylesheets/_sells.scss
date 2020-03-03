@@ -585,7 +585,9 @@ table {
 
 th {
   background-color: $background-color-gray;
-  min-width: 264px;
+  max-width: 250px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 th, td {
@@ -593,6 +595,7 @@ th, td {
   color: $font-color-black;
   border: 1px solid $font-color-gray;
   padding: 8px;
+  max-width: 250px;
 }
 
 td {
