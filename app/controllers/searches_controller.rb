@@ -41,6 +41,14 @@ class SearchesController < ApplicationController
     @search_word = Category.find(params[:id]).name
   end
 
+  def myitem_show
+    add_breadcrumb "出品した商品", myitem_show_searches_path
+    @product = Product.new
+    @products = Product.where(user_id: current_user.id)
+    @categories = Category.all
+    @search_word = current_user.nickname
+  end
+
   private
 
   def get_params

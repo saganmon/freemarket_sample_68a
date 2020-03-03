@@ -41,6 +41,7 @@ Rails.application.routes.draw do
     collection do
       get :sort
       get :detail_search
+      get :myitem_show
     end
   end
 end
