@@ -14,7 +14,6 @@ $(function() {
     $(".wrapper__main__information").show();
     $(".wrapper__main__logout").hide();
     $(".wrapper__main__card").hide();
-
   });
 
   $('.wrapper__main__list__nav__box__text__logout').on('click', function(){
