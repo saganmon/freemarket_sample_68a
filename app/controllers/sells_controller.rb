@@ -1,6 +1,7 @@
 class SellsController < ApplicationController
   before_action :current_user_check,       only: [:edit, :update, :delete]
   before_action :set_product,              only: [:edit, :update, :show]
+  before_action :set_breadcrumb
 
   def new
     @sell = Product.new
@@ -20,6 +21,7 @@ class SellsController < ApplicationController
 
   def show
     @categories = Category.all
+    add_breadcrumb "商品詳細", sell_path(params[:id])
   end
 
   def edit
@@ -108,4 +110,7 @@ class SellsController < ApplicationController
       end
   end
 
+  def set_breadcrumb
+    add_breadcrumb "フリマ", :root_path
+  end
 end

@@ -36,7 +36,7 @@ class CardsController < ApplicationController
 
   def show
     card = PurchaseCredit.where(user_id: current_user.id).first
-    add_breadcrumb "クレジットカード登録", card_path(current_user)
+    add_breadcrumb "クレジットカード情報", card_path(current_user)
     if card.blank?
       redirect_to action: "new" 
     else
