@@ -4,7 +4,7 @@ class HomesController < ApplicationController
   def index
     add_breadcrumb "Top", root_path
     @product = Product.new
-    @products = Product.all.order(created_at: :desc).limit(3)
+    @products = Product.all.order(updated_at: :desc).limit(3)
     @categories =  Category.where(ancestry: nil)
   end
 
