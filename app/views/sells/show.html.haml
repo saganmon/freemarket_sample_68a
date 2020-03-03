@@ -12,7 +12,11 @@
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
     = tag.ul class: "sell-product-detail__items" do
-      = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
+      - if @sell.status == false
+        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
+      - if @sell.status == true
+        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
+        = tag.li image_tag "/material/logo/unnamed (1).png", class: "sell-product-detail__items__main-image__cover"
       = tag.ul class: "sell-product-detail__items__sub-image" do
         - @sell.images.each do |i|
           = tag.li image_tag i.name.to_s, class: "sell-product-detail__items__sub-image"
