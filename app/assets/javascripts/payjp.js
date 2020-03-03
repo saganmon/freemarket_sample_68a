@@ -1,9 +1,9 @@
 $(function(){
 var form = $(".card__form");
   Payjp.setPublicKey("pk_test_6d3b5281d60d13a83b22e22d");
+
 //まずはテスト鍵をセットする↑
   $(".form__btn").on("click",function(e){
-
     e.preventDefault();
   //↑ここでrailsの処理を止めることでjsの処理を行う
     var card = {
@@ -32,6 +32,7 @@ var form = $(".card__form");
        //↑そしてここでsubmit！！これでrailsのアクションにいく！もちろん上でトークンをセットしているのでparamsの中には{payjpToken="トークン"}という情報が入っている
       }else{
         alert("カード情報が正しくありません。");
+        form.find("input[type=submit]").prop("disabled", false);
       }
     });
   });

@@ -1,16 +1,26 @@
 class BuysController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_card
 
   def new
     @sell = Product.find(params[:sell_id])
-    @card = PurchaseCredit.where(user_id: current_user.id)
-    card = PurchaseCredit.where(user_id: current_user.id).first
-    if @card.blank?
-      flash[:alert] = '購入にはクレジットカード登録が必要です'
-    else
-      Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
-      customer = Payjp::Customer.retrieve(card.customer_id)
-      @default_card_information = customer.cards.retrieve(card.card_id)
+    if @sell.status == false
+      if user_signed_in? && current_user.id == @sell.user_id
+        redirect_to root_path
+      else 
+        @sell = Product.find(params[:sell_id])
+        @card = PurchaseCredit.where(user_id: current_user.id)
+        card = PurchaseCredit.where(user_id: current_user.id).first
+        if @card.blank?
+          flash[:alert] = '購入にはクレジットカード登録が必要です'
+        else
+          Payjp.api_key = ENV["PAYJP_PRIVATE_KEY"]
+          customer = Payjp::Customer.retrieve(card.customer_id)
+          @default_card_information = customer.cards.retrieve(card.card_id)
+        end
+      end
+    else @sell.status == true
+      redirect_to root_path
     end
   end
 
@@ -45,4 +55,5 @@ class BuysController < ApplicationController
   def set_card
     card = PurchaseCredit.where(user_id: current_user.id)
   end
+  
 end
