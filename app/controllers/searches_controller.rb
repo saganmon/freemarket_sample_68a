@@ -10,11 +10,13 @@ class SearchesController < ApplicationController
       @products = Product.keyword_search(get_params)
       @search_word = get_params
       @search = Product.new
+      @product = Product.new
     end
   end
 
   def sort
     add_breadcrumb "並び替え", searches_path
+    @product = Product.new
     @products = Product.search_sort_products(gets_params)
     respond_to do |format|
       format.html
@@ -25,6 +27,7 @@ class SearchesController < ApplicationController
   def detail_search
     add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
+    @product = Product.new
     @products = @query.result(distinct: true)
     @search_word = get_ransack_only_name
     @categories = Category.all
@@ -32,6 +35,7 @@ class SearchesController < ApplicationController
 
   def show
     add_breadcrumb "カテゴリー", search_path(params[:id])
+    @product = Product.new
     @products = Product.descendants_search(params[:id])
     @categories = Category.all
     @search_word = Category.find(params[:id]).name

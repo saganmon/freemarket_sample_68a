@@ -7,6 +7,7 @@ class CardsController < ApplicationController
   def new
     add_breadcrumb "クレジットカード登録", new_card_path
     @categories = Category.all
+    @product = Product.new
     card = PurchaseCredit.where(user_id: current_user.id)
     redirect_to card_path(card) if card.exists?
   end
