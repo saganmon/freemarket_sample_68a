@@ -13,13 +13,30 @@
     = tag.h2(@sell.name, class: "sell-product-detail__title")
     = tag.ul class: "sell-product-detail__items" do
       - if @sell.status == false
-        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
+        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image1"
+        - unless @sell.images.second&.name.nil?
+          = tag.li image_tag "#{@sell.images.second.name.to_s}", class: "sell-product-detail__items__main-image2"
+        - unless @sell.images.third&.name.nil?
+          = tag.li image_tag "#{@sell.images.third.name.to_s}", class: "sell-product-detail__items__main-image3"
+        - unless @sell.images.fourth&.name.nil?
+          = tag.li image_tag "#{@sell.images.fourth.name.to_s}", class: "sell-product-detail__items__main-image4"
       - if @sell.status == true
-        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image"
-        = tag.li image_tag "/material/logo/unnamed (1).png", class: "sell-product-detail__items__main-image__cover"
+        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__main-image1"
+        - unless @sell.images.second&.name.nil?
+          = tag.li image_tag "#{@sell.images.second.name.to_s}", class: "sell-product-detail__items__main-image2"
+        - unless @sell.images.third&.name.nil?
+          = tag.li image_tag "#{@sell.images.third.name.to_s}", class: "sell-product-detail__items__main-image3"
+        - unless @sell.images.fourth&.name.nil?
+          = tag.li image_tag "#{@sell.images.fourth.name.to_s}", class: "sell-product-detail__items__main-image4"
+        = tag.li image_tag "/material/logo/unnamed (1).png", class: "sell-product-detail__items__cover"
       = tag.ul class: "sell-product-detail__items__sub-image" do
-        - @sell.images.each do |i|
-          = tag.li image_tag i.name.to_s, class: "sell-product-detail__items__sub-image"
+        = tag.li image_tag "#{@sell.images.first.name.to_s}", class: "sell-product-detail__items__sub-image1"
+        - unless @sell.images.second&.name.nil?
+          = tag.li image_tag "#{@sell.images.second.name.to_s}", class: "sell-product-detail__items__sub-image2"
+        - unless @sell.images.third&.name.nil?
+          = tag.li image_tag "#{@sell.images.third.name.to_s}", class: "sell-product-detail__items__sub-image3"
+        - unless @sell.images.fourth&.name.nil?
+          = tag.li image_tag "#{@sell.images.fourth.name.to_s}", class: "sell-product-detail__items__sub-image4"
     .sell-product-detail__price
       - if @sell.status == false
         = converting_to_jpy(@sell.price)
