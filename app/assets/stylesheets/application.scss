@@ -2,12 +2,12 @@
 @import "font-awesome-sprockets";
 @import "font-awesome";
 @import "modules/fonts";
+@import "modules/flash";
 @import "header";
 @import "main";
 @import "mypage";
 @import "cards";
 @import "banner";
-@import "modules/flash";
 @import "camera-form";
 @import "select-signup";
 @import "devise-signup";
@@ -20,3 +20,4 @@
 @import "update";
 @import "buys";
 @import "searches";
+@import "jquery-validate";

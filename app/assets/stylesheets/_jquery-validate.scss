@@ -1,0 +1,35 @@
+.registration {
+  &__main {
+    // 〜省略〜
+    &__form {
+      // 〜省略〜
+      &__content {
+      // 〜省略〜
+        &__group {
+          // 〜省略〜
+          &__input.invalid { // バリデーションNGの場合に枠線を赤色に変更
+            border: #ea352d 1px solid;
+          }
+          &__input.valid {
+            border: seagreen 1px solid; // バリデーションNGの場合に枠線を緑色に変更
+          }
+        }
+      }
+    }
+  }
+  
+}
+// エラーメッセージ
+#signup-first-nickname-error, #email-error, #password-error {
+  color: #ea352d;
+  line-height: 1.5;
+  font-size: 14px;
+  margin-top: 3px;
+}
+// 入力欄をクリック時に枠線を水色に変更
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus {
+  outline: none;
+  border-color: #0098E8;
+}

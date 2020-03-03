@@ -10,6 +10,7 @@ class Product < ApplicationRecord
 
   validates :name, :description, :category_id, :condition, :shipping_id, :shipping_where, :shipping_day, :price, presence: true
   validates :price, numericality: { only_integer: true , greater_than: 300, less_than: 9999999}
+  validates :images, presence: true
 
   enum condition: [:brand_new, :almost_new, :nothing_damage, :little_damage, :damage, :awful]
   enum shipping_where: [:HOKKAIDO, :AOMORI, :IWATE, :MIYAGI, :AKITA, :YAMAGATA, :FUKUSHIMA, :IBARAKI, :TOCHIGI, :GUNMA, :SAITAMA, :CHIBA, :TOKYO, :KANAGAWA, :NIIGATA, :TOYAMA, :ISHIKAWA, :FUKUI, :YAMANASHI, :NAGANO, :GIFU, :SHIZUOKA, :AICHI, :MIE, :SHIGA, :KYOTO, :OSAKA, :HYOGO, :NARA, :WAKAYAMA, :TOTTORI, :SHIMANE, :OKAYAMA, :HIROSHIMA, :YAMAGUCHI, :TOKUSHIMA, :KAGAWA, :EHIME, :KOCHI, :FUKUOKA, :SAGA, :NAGASAKI, :KUMAMOTO, :OITA, :MIYAZAKI, :KAGOSHIMA, :OKINAWA]

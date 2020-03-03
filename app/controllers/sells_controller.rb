@@ -12,7 +12,7 @@ class SellsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash.now[:alert] = '出品完了しました。'
+      flash.now[:notice] = '出品完了しました。'
     else
       render :new
     end
@@ -52,7 +52,7 @@ class SellsController < ApplicationController
         render 'edit'
       end
     else
-      redirect_back(fallback_location: root_path,flash: {success: '画像がありません'})
+      redirect_back(fallback_location: root_path,flash: {alert: '画像がありません'})
     end
     
   end
