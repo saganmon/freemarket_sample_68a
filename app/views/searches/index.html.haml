@@ -61,7 +61,7 @@
       - else
         .search-main__right-contents__images
           - @products.each do |p|
-            - if p.user_id != current_user.id
+            - unless user_signed_in? || p.user_id == current_user&.id
               = link_to sell_path(p) do
                 .search-main__right-contents__images__list
                   .search-main__right-contents__images__list__image
