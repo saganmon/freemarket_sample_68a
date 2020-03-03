@@ -1,5 +1,6 @@
 class SellsController < ApplicationController
-  before_action :set_product, only: [:edit, :update, :show]
+  before_action :current_user_check,       only: [:edit, :delete]
+  before_action :set_product,              only: [:edit, :update, :show]
 
   def new
     @sell = Product.new
@@ -36,6 +37,7 @@ class SellsController < ApplicationController
             Image.find(before_img_id).destroy unless update_images_ids.include?("#{before_img_id}") 
           end
         else
+          before_images_ids = @sell.images.ids
           before_images_ids.each do |before_img_id|
             Image.find(before_img_id).destroy 
           end
@@ -91,12 +93,19 @@ class SellsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :price, :condition, brand_attributes:[:name], images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
+    params.require(:product).permit(:name, :description, :category_id, :shipping_id, :shipping_where, :shipping_day, :size, :price, :condition, brand_attributes:[:name], images_attributes: [:name, :_destroy, :id]).merge(user_id: current_user.id)
   end
 
   def set_product
     @sell = Product.find(params[:id])
   end
 
+  def current_user_check
+    @product_id = Product.find(params[:id]).user_id
+    @current_user_id = current_user.id
+      unless @product_id == @current_user_id
+        redirect_to root_path
+      end
+  end
 
 end
