@@ -53,7 +53,6 @@ $(function () {
         $(".search-main__right-contents__images").empty();
         $.each(products, function (i, product) {
           insertHTML += buildHTML(product);
-          console.log(insertHTML)
         })
         $(".search-main__right-contents__images").append(insertHTML);
       }
