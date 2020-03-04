@@ -13,8 +13,14 @@
         .search-main__right-contents__images
           - @products.each do |p|
             .search-main__right-contents__images__list
-              .search-main__right-contents__images__list__image
-                = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+              - if p.status == false
+                .search-main__right-contents__images__list__image
+                  = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+              - else
+                .search-main__right-contents__images__list__image
+                  = image_tag("#{p.images.first.name}", width: "220px", height: "150px", style: "filter: blur(3px);")
+                .search-main__right-contents__images__list__image__soldout
+                  = image_tag("/material/logo/unnamed (1).png", width: "220px", height: "150px")
               .search-main__right-contents__images__list__name
                 = p.name
               .search-main__right-contents__images__list__price
