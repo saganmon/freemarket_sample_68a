@@ -2,10 +2,18 @@
   background-color: $background-color-lightgray;
 }
 
-.must {
+.sell-must {
   font-size: 10px;
   color: $font-color-white;
   background-color: $background-color-red;
+  padding: 2px 5px;
+  font-weight: bold;
+}
+
+.sell-option {
+  font-size: 10px;
+  color: $font-color-white;
+  background-color: $background-color-gray;
   padding: 2px 5px;
   font-weight: bold;
 }
@@ -173,7 +181,6 @@
             font-size: 14px;
             color: $font-color-black;
             margin-right: 10px; 
-            // margin-bottom: 10px; 
           }
         }
         &__lists {

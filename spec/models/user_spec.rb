@@ -26,7 +26,7 @@ RSpec.describe User, type: :model do
       # --------------------------------------------------------
       # スプリントレビューで指摘を受け追加
       it "メールアドレスは有効なドメイン名を含む必要がある" do
-        user = build(:user, email: "aaa@aaa")
+        user = build(:user, email: "ggg@gmail.com")
         user.valid?
         expect(user.errors[:email]).to include("は不正な値です")
       end

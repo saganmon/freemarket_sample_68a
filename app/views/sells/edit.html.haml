@@ -2,12 +2,12 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  = form_with(model: @sell ,url: sell_path, local: true, html: { class: "sell-main" }) do |f|
+  = form_with(model: @sell ,url: sell_path, local: true, html: { class: "sell-main"}) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .form-image
       .form-image__title
         %label 出品画像
-        = tag.span("必須", class: "must")
+        = tag.span("必須", class: "sell-must")
         .form-image__text 最大4枚までアップロードできます
         .clearfix
           %ul#previews
@@ -29,13 +29,13 @@
     .sell-main__product-name
       .sell-main__product-name__title
         = f.label :name, "商品名", class: "sell-main__product-name__title--text"
-        = tag.span("必須", class: "must")
+        = tag.span("必須", class: "sell-must")
       = tag.br
       = f.text_field :name, class:"sell-main__product-name__box", placeholder: "40文字まで"
     .sell-main__product-description
       .sell-main__product-description__title
         = f.label :description, "商品の説明", class: "sell-main__product-description__title--text"
-        = tag.span("必須", class: "must")
+        = tag.span("必須", class: "sell-must")
       = tag.br
       = f.text_area :description, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
     .sell-main__product-details
@@ -45,7 +45,7 @@
         .sell-main__product-details__contents__category
           .sell-main__product-details__contents__category__title
             = f.label :category_id, "カテゴリー", class: "sell-main__product-details__contents__category__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
             = tag.br
           .sell-main__product-details__contents__category__title.category-box__large
             = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}
@@ -59,8 +59,9 @@
 
         .sell-main__product-details__contents__brand
           = f.fields_for :brand do |b|
-            = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
-            = tag.span("任意", class: "signup-option")
+            .sell-main__product-details__contents__brand__title
+              = b.label :name, "ブランド", class: "sell-main__product-details__contents__brand__title--text"
+              = tag.span("任意", class: "signup-option")
             = tag.br
             = b.text_field :name, class:"sell-main__product-details__contents__brand__lists", value: @sell.brand.name, placeholder: "例）シャネル"
 
@@ -73,7 +74,7 @@
         .sell-main__product-details__contents__condition
           .sell-main__product-details__contents__condition__title
             = f.label :condition, "商品の状態", class: "sell-main__product-details__contents__condition__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
           = tag.br
           = f.select :condition, Product.conditions_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-details__contents__condition__lists"
     .sell-main__product-delivery
@@ -84,25 +85,25 @@
         .sell-main__product-delivery__contents__who-cares
           .sell-main__product-delivery__contents__who-cares__title
             = f.label :shipping_burden, "配送料の負担", class: "sell-main__product-delivery__contents__who-cares__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
           = tag.br
           = f.select :shipping_burden, options_from_collection_for_select(@shippings.order("ancestry ASC").limit(2).order("id ASC"), :id, :name, {selected: @sell.shipping.root.id}),{}, {class: "sell-main__product-delivery__contents__who-cares__lists"}
         .sell-main__product-delivery__contents__shipping-method
           .sell-main__product-delivery__contents__shipping-method__title
             = f.label :shipping_id, "配送の方法", class: "sell-main__product-delivery__contents__shipping-method__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
           = tag.br
           = f.select :shipping_id, options_from_collection_for_select(@sell.shipping.siblings.order("id ASC"), :id, :name, {selected: @sell.shipping.id}), {}, {class: "sell-main__product-delivery__contents__shipping-method__lists"}
         .sell-main__product-delivery__contents__where-from
           .sell-main__product-delivery__contents__where-from__title
             = f.label :shipping_where, "配送元の地域", class: "sell-main__product-delivery__contents__where-from__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
           = tag.br
           = f.select :shipping_where, Product.shipping_wheres_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__where-from__lists"
         .sell-main__product-delivery__contents__how-long
           .sell-main__product-delivery__contents__how-long__title
             = f.label :shipping_day, "発送までの日数", class: "sell-main__product-delivery__contents__how-long__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
           = tag.br
           = f.select :shipping_day, Product.shipping_days_i18n.invert, {include_blank: "選択してください"}, class: "sell-main__product-delivery__contents__how-long__lists"
 
@@ -113,7 +114,7 @@
         .sell-main__product-price__contents__selling-price
           .sell-main__product-price__contents__selling-price__title
             = f.label :price, "販売価格", class: "sell-main__product-price__contents__selling-price__title--text"
-            = tag.span("必須", class: "must")
+            = tag.span("必須", class: "sell-must")
             = tag.span("¥")
           = f.text_field :price, class:"sell-main__product-price__contents__selling-price__box", placeholder: "例）300"
         .sell-main__product-price__contents__sales-commission

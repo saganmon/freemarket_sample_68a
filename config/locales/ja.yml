@@ -72,12 +72,25 @@ ja:
         over_xxxxl: "4XL(5L)以上"
         free: "FREE SIZE"
   activerecord:
+    models:
+      product: "出品商品"
+      image: "画像"
+    attributes:
+      product:
+        category: "カテゴリ"
+        shipping: "配送方法"
+        product_images: "画像"
+      product/image:
+        name: "画像"
+        
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+
+
   date:
     abbr_day_names:
     - 日

@@ -72,6 +72,10 @@ $font-color-blue: #0095ee;
 
 }
 
+.field_with_errors{
+  display: contents;
+}
+
 .signup-submit{
   background-color:#ea352d;
   color: $font-color-white;
@@ -82,9 +86,6 @@ $font-color-blue: #0095ee;
   margin-top: 40px;
   border-radius: 5px;
 }
-
-
-
 
 .signup-form-select-font.fas.fa-chevron-down{
   position: absolute;

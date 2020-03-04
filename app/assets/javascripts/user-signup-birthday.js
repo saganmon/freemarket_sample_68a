@@ -25,28 +25,28 @@ $(function () {
       $("<option>", {
         value: birthday_year[i].var,
         text: birthday_year[i].txt
-      }).appendTo('#select_birth_year');
+      }).appendTo('#signup-first-birthday-year');
     }
     for (var i = 0; i < birthday_month.length; i++) {
       $("<option>", {
         value: birthday_month[i].var,
         text: birthday_month[i].txt
-      }).appendTo('#select_birth_month');
+      }).appendTo('#signup-first-birthday-month');
     }
 
     // 年、もしくは月のセレクトボックスの中身に変更があったら日の内容を変更する
-    $('#select_birth_year, #select_birth_month').change(function () {
+    $('#signup-first-birthday-year, #signup-first-birthday-month').change(function () {
       // 日が入っているセレクトボックスの中身を空っぽにする
-      $('#select_birth_day').empty();
+      $('#signup-first-birthday-date').empty();
       // 日が入るセレクトボックスにデフォルト値の'--'を入れる
       $("<option>", {
         text: '--'
-      }).appendTo('#select_birth_day');
+      }).appendTo('#signup-first-birthday-date');
       // ２月の日にち、すなわちmonths[1]を28にセットし直す
       months[1] = 28;
       // 年と月に入力されている情報を取得する
-      var year = $('#select_birth_year').val();
-      var month = $("#select_birth_month").val();
+      var year = $('#signup-first-birthday-year').val();
+      var month = $("#signup-first-birthday-month").val();
       // yearとmonth共に数字が入力されている、すなわち共に'--'でないときに実行
       if (year != '--' && month != '--') {
         // monthに２月が選択されている時実行
@@ -67,7 +67,7 @@ $(function () {
           $("<option>", {
             value: birthday_date[i].var,
             text: birthday_date[i].txt
-          }).appendTo('#select_birth_day');
+          }).appendTo('#signup-first-birthday-date');
         };
       };
     });
