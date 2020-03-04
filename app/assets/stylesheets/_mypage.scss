@@ -91,8 +91,19 @@
               color: $font-color-black;
               border: 1px solid $background-color-lightgray;
             }
-            a {
-
+            &__description {
+              cursor: pointer;
+              cursor: hand;
+              padding-right: 5px;
+              line-height: 32px;
+              position: relative;
+              display: block;
+              min-height: 32px;
+              padding: 5px;
+              background: $background-color-white;
+              font-size: 14px;
+              color: $font-color-black;
+              border: 1px solid $background-color-lightgray;
             }
           }
         }
@@ -390,6 +401,25 @@
         }
       }
     }
+  &__destinasions {
+    width: 500px;
+    padding: 0 50px;
+    background-color: $background-color-white;
+    &__title {
+      line-height: 40px;
+      text-align: center;
+      font-size: 24px;
+      padding: 8px 24px;
+      height: 40px;
+      border-bottom: 1px solid $background-color-lightgray;
+      margin-bottom: 20px;
+    }
+    &__form__submit {
+      margin-bottom: 30px;
+      text-align: center;
+      
+    }
+  }
   }
 }
 

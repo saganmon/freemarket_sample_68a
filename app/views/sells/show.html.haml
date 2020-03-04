@@ -67,9 +67,9 @@
             %th
               カテゴリー
             %td
-              = tag.div link_to(@sell.category.parent.parent.name, "#")
-              = tag.div link_to(@sell.category.parent.name, "#")
-              = tag.div link_to(@sell.category.name, "#")
+              = tag.div link_to(@sell.category.root.name, "/searches/#{@sell.category.root.id}")
+              = tag.div link_to(@sell.category.parent.name, "/searches/#{@sell.category.parent.id}")
+              = tag.div link_to(@sell.category.name, "/searches/#{@sell.category.id}")
           %tr
             %th
               ブランド
@@ -141,6 +141,6 @@
       = link_to('後ろの商品', "#")
   
   .sell-product-relatedItems
-    = link_to(@sell.category.parent.parent.name, "#")
+    = link_to(@sell.category.root.name, "#")
 
   = render 'shared/lower-part'
