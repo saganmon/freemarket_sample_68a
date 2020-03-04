@@ -48,6 +48,92 @@
       }
     }
   }
+  &__product-description{
+    &__box{
+      &.invalid {
+        border: #ea352d 2px solid;
+      }
+      &.valid {
+        border: #0098E8 1px solid;
+      }
+    }
+  }
+  &__product-details{
+    &__contents{
+      &__category__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+      &__condition__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+      &__who-cares__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+    }
+  }
+  &__product-delivery{
+    &__contents{
+      &__shipping-method__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+      &__who-cares__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+      &__where-from__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+      &__how-long__lists{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+    }
+  }
+  &__product-price{
+    &__contents{
+      &__selling-price__box{
+        &.invalid {
+          border: #ea352d 2px solid;
+        }
+        &.valid {
+          border: #0098E8 1px solid;
+        }
+      }
+    }
+  }
 }
 
 
@@ -71,8 +157,35 @@
 #signup-second-form-postcode-error, 
 #signup-second-form-prefecture-error, 
 #signup-second-form-city-error, 
-#signup-second-form-block-error,
-#sell-form-name-error
+#signup-second-form-block-error
+  {
+    color: #ea352d;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 14px;
+    margin-top: 3px;
+  }
+#sell-form-name-error,
+#sell-form-name-error,
+#sell-form-description-error,
+#category_large_category_large-error,
+#category_middle_category_middle-error,
+#product_category_id-error,
+#product_condition-error,
+#product_shipping_burden-error,
+#product_shipping_id-error,
+#product_shipping_where-error,
+#product_shipping_day-error
+  {
+    color: #ea352d;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 14px;
+    margin-top: 3px;
+    margin-left: 10px;
+  }
+
+#product_price-error
   {
     color: #ea352d;
     font-weight: bold;

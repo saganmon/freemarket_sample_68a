@@ -1,7 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 
   def select_signup
-
   end
 
   def new

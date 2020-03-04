@@ -9,7 +9,7 @@ class Product < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
 
   validates :name, :description, :category_id, :condition, :shipping_id, :shipping_where, :shipping_day, :price, presence: true
-  validates :price, numericality: { only_integer: true , greater_than: 300, less_than: 9999999}
+  validates :price, numericality: { only_integer: true , greater_than: 299, less_than: 10000000}
   validates :images, presence: true
 
   enum condition: [:brand_new, :almost_new, :nothing_damage, :little_damage, :damage, :awful]

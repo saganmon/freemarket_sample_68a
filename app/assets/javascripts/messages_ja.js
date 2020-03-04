@@ -21,9 +21,10 @@ $.extend( $.validator.messages, {
 	step: $.validator.format( "{0} の倍数を入力してください。" ),
 	max: $.validator.format( "{0} 以下の値を入力してください。" ),
 	min: $.validator.format( "{0} 以上の値を入力してください。" ),
-	zenkaku: "全角で入力してください",
-	zenkakukana: "全角(かな)で入力してください",
-	password: "英数字7文字以上入力してください",
-	postcode: "正しい郵便番号を入力してください",
-	imagemax: "画像を1枚以上アップロードしてください"
+	zenkaku: "全角で入力してください。",
+	zenkakukana: "全角(かな)で入力してください。",
+	password: "英数字7文字以上入力してください。",
+	postcode: "正しい郵便番号を入力してください。",
+	imagemax: "画像を1枚以上アップロードしてください。",
+	selectbox: "選択してください"
 } );
