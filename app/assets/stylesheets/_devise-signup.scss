@@ -261,23 +261,21 @@ $font-color-blue: #0095ee;
         }
 
         &__prefecture{
-          position: relative;
-
-          .signup-form-prefecture{
-            height: 50px;
-            width: 100%;
-            font-size: 16px;
-            line-height: 1.5;
-            padding: 10px 16px 8px 16px;
-            margin: 8px 0px 8px 0px;
-            border-radius: 4px;
-            border: 1px solid #cccccc;
-            background-color: $background-color-white;
-            -webkit-appearance: none;
-            
-          }
+          
         }
-
       }
   }
+}
+
+.signup-form-prefecture{           
+  height: 50px;
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 10px 16px 8px 16px;
+  margin: 8px 0px 8px 0px;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  // background-color: $background-color-white;
+  -webkit-appearance: none;
 }

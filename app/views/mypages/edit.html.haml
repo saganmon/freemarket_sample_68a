@@ -1,0 +1,78 @@
+.wrapper
+  = render partial: 'shared/header'
+  .wrapper__main
+    = render partial: 'shared/mypage-list'
+
+    .wrapper__main__destinasions
+      .wrapper__main__destinasions__title
+        発送元・お届け先住所変更
+      .wrapper__main__destinasions__form
+        = form_with model:@purchase_destination,id: "signup-second-form", url: mypage_path, local:true do |f|
+          .signup-second__main__form__name
+            .signup-display-flex
+              = f.label "お名前(全角)",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            .signup-display-flex
+              = f.text_field :p_first_name, placeholder: "例)山田",class: "signup-form-half-left", id: "signup-second-form-first-name"
+              = f.text_field :p_last_name, placeholder: "例)太郎",class: "signup-form-half-right", id: "signup-second-form-last-name"
+
+          .signup-second__main__form__name-kana
+            .signup-display-flex
+              = f.label "お名前かな(全角)",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            .signup-display-flex
+              = f.text_field  :p_first_name_kana, placeholder: "例)やまだ",class: "signup-form-half-left", id: "signup-second-form-first-name-kana"
+              = f.text_field :p_last_name_kana, placeholder: "例)たろう",class: "signup-form-half-right", id: "signup-second-form-last-name-kana"
+
+          .signup-second__main__form__postcode
+            .signup-display-flex
+              = f.label "郵便番号",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            = f.text_field :p_postcode, placeholder: "例) 123-4567",class: "signup-form", id: "signup-second-form-postcode"
+
+
+          .signup-second__main__form__prefecture
+            .signup-display-flex
+              = f.label "都道府県",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            = f.select :p_prefecture,{ 北海道: "北海道" ,青森県: "青森県" ,岩手県: "岩手県" ,宮城県: "宮城県" ,秋田県: "秋田県" ,山形県: "山形県" ,福島県: "福島県" ,茨城県: "茨城県" ,栃木県: "栃木県" ,群馬県: "群馬県" ,埼玉県: "埼玉県" ,千葉県: "千葉県" ,東京都: "東京都" ,神奈川県: "神奈川県 ",新潟県: "新潟県" ,富山県: "富山県" ,石川県: "石川県" ,福井県: "福井県" ,山梨県: "山梨県" ,長野県: "長野県" ,岐阜県: "岐阜県" ,静岡県: "静岡県" ,愛知県: "愛知県" ,三重県: "三重県" ,滋賀県: "滋賀県" ,京都府: "京都府" ,大阪府: "大阪府" ,兵庫県: "兵庫県" ,奈良県: "奈良県" ,和歌山県: "和歌山県 ",鳥取県: "鳥取県" ,島根県: "島根県" ,岡山県: "岡山県" ,広島県: "広島県" ,山口県: "山口県" ,徳島県: "徳島県" ,香川県: "香川県" ,愛媛県: "愛媛県" ,高知県: "高知県" ,福岡県: "福岡県" ,佐賀県: "佐賀県" ,長崎県: "長崎県" ,熊本県: "熊本県" ,大分県: "大分県" ,宮崎県: "宮崎県" ,鹿児島県: "鹿児島県 ",沖縄県: "沖縄県" }, {include_blank: "---"}, {class: "signup-form-prefecture", id: "signup-second-form-prefecture"}
+            %i.signup-form-select-font.fas.fa-chevron-down
+
+          .signup-second__main__form__city
+            .signup-display-flex
+              = f.label "市区町村",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            = f.text_field :p_city, placeholder: "例) 横浜市緑区",class: "signup-form", id: "signup-second-form-city"
+
+          .signup-second__main__form__block
+            .signup-display-flex
+              = f.label "番地",class: "signup-label"
+              = tag.span("必須", class: "signup-mast")
+              = tag.br
+            = f.text_field :p_block, placeholder: "例) 青山1-1-1",class: "signup-form", id: "signup-second-form-block"
+
+          .signup-second__main__form__building
+            .signup-display-flex
+              = f.label "建物名",class: "signup-label"
+              = tag.span("任意", class: "signup-option")
+              = tag.br
+            = f.text_field :p_building, placeholder: "例) 柳ビル103",class: "signup-form"
+
+          .signup-second__main__form__phone-number
+            .signup-display-flex
+              = f.label "電話",class: "signup-label"
+              = tag.span("任意", class: "signup-option")
+              = tag.br
+            = f.text_field :p_phone_number, placeholder: "例) 09012345678",class: "signup-form"
+            
+          .wrapper__main__destinasions__form__submit
+            = tag.br
+            = f.submit '変更する', class: "signup-submit"
+
+
+  = render partial: 'shared/lower-part'

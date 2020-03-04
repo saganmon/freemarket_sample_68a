@@ -2,12 +2,6 @@
   = render 'shared/header'
 
   .navigation-bar
-  -#   = tag.ul class: "navigation-bar__contents" do
-  -#     = tag.li link_to('FURIMA', "/", class: "navigation-bar__contents__root")
-  -#     = tag.li link_to(@sell.category.parent.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.category.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.category.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.name, "#", class: "navigation-bar__contents__item navi-link active")
 
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
@@ -67,9 +61,9 @@
             %th
               カテゴリー
             %td
-              = tag.div link_to(@sell.category.parent.parent.name, "#")
-              = tag.div link_to(@sell.category.parent.name, "#")
-              = tag.div link_to(@sell.category.name, "#")
+              = tag.div link_to(@sell.category.root.name, "/searches/#{@sell.category.root.id}")
+              = tag.div link_to(@sell.category.parent.name, "/searches/#{@sell.category.parent.id}")
+              = tag.div link_to(@sell.category.name, "/searches/#{@sell.category.id}")
           %tr
             %th
               ブランド
@@ -141,6 +135,6 @@
       = link_to('後ろの商品', "#")
   
   .sell-product-relatedItems
-    = link_to(@sell.category.parent.parent.name, "#")
+    = link_to(@sell.category.root.name, "#")
 
   = render 'shared/lower-part'

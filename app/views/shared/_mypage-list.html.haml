@@ -12,7 +12,7 @@
       %li.wrapper__main__list__nav__box__text__sell
         -# ここはリンクを貼る
         = link_to '出品する', new_sell_path
-      %li.wrapper__main__list__nav__box__text
+      %li.wrapper__main__list__nav__box__text__show
         = link_to '出品した商品', myitem_show_searches_path
       %li.wrapper__main__list__nav__box__text
         = link_to 'ニュース一覧',''
@@ -28,8 +28,8 @@
     %ul.wrapper__main__list__nav__box
       %li.wrapper__main__list__nav__box__text
         = link_to 'プロフィール',''
-      %li.wrapper__main__list__nav__box__text
-        = link_to '発送元・発送元・お届け先住所',''
+      %li.wrapper__main__list__nav__box__text__description
+        = link_to '発送元・発送元・お届け先住所', edit_mypage_path(current_user.id)
       %li.wrapper__main__list__nav__box__text__card
         支払い方法
       %li.wrapper__main__list__nav__box__text
