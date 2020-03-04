@@ -59,6 +59,7 @@ $(function () {
       },
     },
     errorPlacement: function(error, element){
+      // 新規
       if(element.attr('name') === 'purchase_destination[p_first_name]'){
         error.insertAfter('.signup-second__main__form__name');
       } 

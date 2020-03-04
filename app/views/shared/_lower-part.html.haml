@@ -43,12 +43,12 @@
     = link_to image_tag('/material/logo/logo-white.png', size: "160x29"), root_path
   .footer__display
     © FURIMA
-
-.camera-form
-  = link_to new_sell_path do
-    .camera-form__text
-      出品する
-    .camera-form__text
-      = image_tag("/material/icon/icon_camera.png",size: "60x60")
+  - if user_signed_in?
+    .camera-form
+      = link_to new_sell_path do
+        .camera-form__text
+          出品する
+        .camera-form__text
+          = image_tag("/material/icon/icon_camera.png",size: "60x60")
 
 
