@@ -12,7 +12,7 @@
       - else
         .search-main__right-contents__images
           - @products.each do |p|
-            - unless user_signed_in? || p.user_id == current_user&.id
+            - if !user_signed_in? || p.user_id != current_user&.id
               .search-main__right-contents__images__list
                 .search-main__right-contents__images__list__image
                   = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
