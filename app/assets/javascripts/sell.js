@@ -11,7 +11,7 @@ $(function () {
     .done(function (categories) {
       nextSelect.empty();
       nextSelect.append(`
-        <option value="">---</option>
+        <option value="">--</option>
         `);
       $(categories).each(function (i,category) {
         nextSelect.append(`
@@ -35,7 +35,7 @@ $(function () {
     .done(function (categories) {
       nextSelect.empty();
       nextSelect.append(`
-        <option value="">---</option>
+        <option value="">--</option>
         `);
       $(categories).each(function (i,category) {
         nextSelect.append(`
@@ -60,7 +60,7 @@ var changeSelectShipping = function (id, nextSelect) {
   .done(function (shipping) {
     nextSelect.empty();
     nextSelect.append(`
-      <option value="">---</option>
+      <option value="">--</option>
       `);
     $(shipping).each(function (i,shipping) {
       nextSelect.append(`
@@ -79,7 +79,7 @@ var changeSelectShipping = function (id, nextSelect) {
         var product_name = $('.sell-main__product-name__box').val()
         if (product_name === ""){
           //大カテゴリにプルダウンを「---」に変更する
-          $('.sell-main__product-details__contents__category__lists').prepend(`<option value="" >---</option>`).val("");
+          // $('.sell-main__product-details__contents__category__lists').prepend(`<option value="--">--</option>`).val("");
           $('.category-box__middle').css('display', 'none');
           $('.category-box__small').css('display', 'none');
         } 

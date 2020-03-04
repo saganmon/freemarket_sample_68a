@@ -2,7 +2,7 @@
   .sell-header
     = link_to image_tag('/material/logo/logo.png', width: '140'), root_path
 
-  = form_with(model: @sell ,url: sell_path, local: true, html: { class: "sell-main"}) do |f|
+  = form_with(model: @sell ,url: sell_path, local: true, html: { class: "sell-main", id: "sell-form"}) do |f|
     = tag.h2("商品の情報を入力", class: "sell-main__title")
     .form-image
       .form-image__title
@@ -31,13 +31,13 @@
         = f.label :name, "商品名", class: "sell-main__product-name__title--text"
         = tag.span("必須", class: "sell-must")
       = tag.br
-      = f.text_field :name, class:"sell-main__product-name__box", placeholder: "40文字まで"
+      = f.text_field :name, class:"sell-main__product-name__box", placeholder: "40文字まで", id: "sell-form-name"
     .sell-main__product-description
       .sell-main__product-description__title
         = f.label :description, "商品の説明", class: "sell-main__product-description__title--text"
         = tag.span("必須", class: "sell-must")
       = tag.br
-      = f.text_area :description, rows: "6", class:"sell-main__product-description__box", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+      = f.text_area :description, rows: "6", class:"sell-main__product-description__box", id: "sell-form-description", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
     .sell-main__product-details
       .sell-main__product-details__title
         商品の詳細
@@ -48,7 +48,7 @@
             = tag.span("必須", class: "sell-must")
             = tag.br
           .sell-main__product-details__contents__category__title.category-box__large
-            = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}
+            = select :category_large,:category_large, options_from_collection_for_select(@categories.order("ancestry ASC").limit(13).order("id ASC"), :id, :name, {selected: @sell.category.root.id}), {include_blank: "--"}, {class: 'sell-main__product-details__contents__category__lists'}
             = tag.br
           .sell-main__product-details__contents__category__title.category-box__middle
             = select :category_middle,:category_middle, options_from_collection_for_select(@sell.category.parent.siblings.order("id ASC"), :id, :name, {selected: @sell.category.root.id}),{}, {class: 'sell-main__product-details__contents__category__lists'}

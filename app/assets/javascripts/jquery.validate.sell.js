@@ -1,8 +1,7 @@
 $(function () {
   var methods = {
-    imagemax: function (value, element) {
-      var count = $('.image-preview').length()
-      return count !== 0
+    selectbox: function (value, element, arg) {
+      return arg !== value;
     }
   }
   $.each(methods, function (key) {
@@ -10,16 +9,35 @@ $(function () {
   });
   $("#sell-form").validate({
     rules: {
-      "product[name]": { required: true, maxlength: 40 },
-      "product[images_attributes][0][name]": { image: true }
+      "product[name]"                     : { required: true, maxlength: 40 },
+      "product[description]"              : { required: true, maxlength: 1000 },
+      "category_large[category_large]"    : { selectbox: ""},
+      "category_middle[category_middle]"  : { selectbox: ""},
+      "product[category_id]"              : { selectbox: "" },
+      "product[condition]"                : { selectbox: "" },
+      "product[shipping_burden]"          : { selectbox: "" },
+      "product[shipping_id]"              : { selectbox: "" },
+      "product[shipping_burden]"          : { selectbox: "" },
+      "product[shipping_where]"           : { selectbox: "" },
+      "product[shipping_day]"             : { selectbox: "" },
+      "product[price]"                    : { required: true, number: true, min: 300, max: 9999999 }
     },
     messages: {
-
+      "product[price]"                    : { min: "¥300以上の金額を入力してください。", max: "¥9,999,999以下の金額を入力してください。" }
     },
     errorPlacement: function(error, element){
-      if(element.attr('name') === "product[images_attributes][0][name]"){
-        error.insertAfter('.form-image');
+      if(element.attr('name') === "category_large[category_large]"){
+        error.insertAfter('.sell-main__product-details__contents__category__title.category-box__large');
       } 
+      else if(element.attr('name') === "category_middle[category_middle]") {
+        error.insertAfter('.sell-main__product-details__contents__category__title.category-box__middle');
+      }
+      else if(element.attr('name') === "product[category_id]") {
+        error.insertAfter('.sell-main__product-details__contents__category__title.category-box__small');
+      }
+      else if(element.attr('name') === "product[price]") {
+        error.insertAfter('.sell-main__product-price__contents__sales-profit');
+      }
       else {
         error.insertAfter(element);
       }
@@ -30,7 +48,7 @@ $(function () {
   });
 
   // 入力欄をフォーカスアウトしたときにバリデーションを実行
-  $("#sell-form-name", "#product_images_attributes_1_name").blur(function () {
+  $("#sell-form-name", "#sell-form-description", "#category_large_category_large", "#category_middle_category_middle", "#product_category_id", "#product_condition", "#product_shipping_id", "#product_shipping_where", "#product_shipping_burden","#product_shipping_day", "#product_price", "#product_shipping_id").blur(function () {
     $(this).valid();
   });
 

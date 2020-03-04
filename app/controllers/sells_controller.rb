@@ -12,10 +12,10 @@ class SellsController < ApplicationController
 
   def create
     @sell = Product.new(product_params)
-    if @sell.save!
+    if @sell.save
       flash.now[:notice] = '出品完了しました。'
     else
-      redirect_to new_sell_path, alert: @sell.errors.full_messages
+      redirect_to new_sell_path, flash: {alert: '再度入力してください'}
     end
   end
 
