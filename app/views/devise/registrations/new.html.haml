@@ -27,7 +27,7 @@
             = f.label "パスワード",class: "signup-label"
             = tag.span("必須", class: "signup-mast")
             = tag.br
-          = f.password_field :password, placeholder: "7文字以上半角",class: "signup-form", id: "signup-first-"
+          = f.password_field :password, placeholder: "7文字以上半角",class: "signup-form", id: "signup-first-password"
 
         .signup-first__main__form__password-confirmation
           .signup-display-flex
@@ -51,8 +51,8 @@
             = tag.span("必須", class: "signup-mast")
             = tag.br
           .signup-display-flex
-            = f.text_field :first_name, placeholder: "例)山田",class: "signup-form-half-left", id: "signup-first-first_name"
-            = f.text_field :last_name, placeholder: "例)太郎",class: "signup-form-half-right", id: "signup-first-last_name"
+            = f.text_field :first_name, placeholder: "例)山田",class: "signup-form-half-left", id: "signup-first-first-name"
+            = f.text_field :last_name, placeholder: "例)太郎",class: "signup-form-half-right", id: "signup-first-last-name"
 
         .signup-first__main__form__name-kana
           .signup-display-flex
@@ -60,19 +60,19 @@
             = tag.span("必須", class: "signup-mast")
             = tag.br
           .signup-display-flex
-            = f.text_field  :first_name_kana, placeholder: "例)やまだ",class: "signup-form-half-left", id: "signup-first-first_name_kana"
-            = f.text_field :last_name_kana, placeholder: "例)たろう",class: "signup-form-half-right", id: "signup-first-last_name_kana"
+            = f.text_field  :first_name_kana, placeholder: "例)やまだ",class: "signup-form-half-left", id: "signup-first-first-name-kana"
+            = f.text_field :last_name_kana, placeholder: "例)たろう",class: "signup-form-half-right", id: "signup-first-last-name-kana"
 
         .signup-first__main__form__birthday
           .signup-display-flex
             = f.label "生年月日",class: "signup-label"
             = tag.span("必須", class: "signup-mast")
             = tag.br
-          = f.select :birthday_year,["--"], {}, {class: "signup-birthday", id: "signup-first-birthday_year"}
+          = f.select :birthday_year,["--"], {}, {class: "signup-birthday", id: "signup-first-birthday-year"}
           = f.label "年"
-          = f.select :birthday_month, ["--"], {},{class: "signup-birthday", id: "signup-first-birthday_month"}
+          = f.select :birthday_month, ["--"], {},{class: "signup-birthday", id: "signup-first-birthday-month"}
           = f.label "月"
-          = f.select :birthday_date, ["--"], {},{class: "signup-birthday", id: "signup-first-birthday_date"}
+          = f.select :birthday_date, ["--"], {},{class: "signup-birthday", id: "signup-first-birthday-date"}
           = f.label "日"
 
         .signup-first__main__form__birthday-check
