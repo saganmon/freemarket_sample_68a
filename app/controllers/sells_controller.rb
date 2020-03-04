@@ -11,11 +11,11 @@ class SellsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
-    if @product.save
+    @sell = Product.new(product_params)
+    if @sell.save!
       flash.now[:notice] = '出品完了しました。'
     else
-      redirect_to new_sell_path, alert: "再度入力してください"
+      redirect_to new_sell_path, alert: @sell.errors.full_messages
     end
   end
 
@@ -106,9 +106,7 @@ class SellsController < ApplicationController
   def current_user_check
     @product_id = Product.find(params[:id]).user_id
     @current_user_id = current_user.id
-      unless @product_id == @current_user_id
-        redirect_to root_path
-      end
+    redirect_to root_path unless @product_id == @current_user_id
   end
 
   def set_breadcrumb

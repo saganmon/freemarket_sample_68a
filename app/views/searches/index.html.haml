@@ -3,7 +3,7 @@
   .search-main
     .search-main__left-contents
       .search-main__left-contents__sort-selector
-        %select{:name => "budget_d", class: "search-main__left-contents__sort-selector__box"}
+        %select{name: "budget_d", class: "search-main__left-contents__sort-selector__box"}
           %option{value: "0"} 並び替え
           %option{value: "1"} 価格の安い順
           %option{value: "2"} 価格の高い順
@@ -61,11 +61,17 @@
       - else
         .search-main__right-contents__images
           - @products.each do |p|
-            - unless user_signed_in? || p.user_id == current_user&.id
+            - if !user_signed_in? || p.user_id != current_user&.id
               = link_to sell_path(p) do
                 .search-main__right-contents__images__list
-                  .search-main__right-contents__images__list__image
-                    = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+                  - if p.status == false
+                    .search-main__right-contents__images__list__image
+                      = image_tag("#{p.images.first.name}", width: "220px", height: "150px")
+                  - else
+                    .search-main__right-contents__images__list__image
+                      = image_tag("#{p.images.first.name}", width: "220px", height: "150px", style: "filter: blur(3px);")
+                    .search-main__right-contents__images__list__image__soldout
+                      = image_tag("/material/logo/unnamed (1).png", width: "220px", height: "150px")
                   .search-main__right-contents__images__list__name
                     = p.name
                   .search-main__right-contents__images__list__price

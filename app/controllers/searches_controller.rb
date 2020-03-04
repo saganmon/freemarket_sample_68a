@@ -8,8 +8,8 @@ class SearchesController < ApplicationController
     else
       @query = Product.ransack(params[:q])
       @products = Product.keyword_search(get_params)
-      @search_word = get_params
       @search = Product.new
+      @search_word = get_params
       @product = Product.new
     end
   end
@@ -28,7 +28,7 @@ class SearchesController < ApplicationController
     add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
     @product = Product.new
-    @products = @query.result(distinct: true)
+    @query_products = @query.result(distinct: true)
     @search_word = get_ransack_only_name
     @categories = Category.all
   end
@@ -39,6 +39,14 @@ class SearchesController < ApplicationController
     @products = Product.descendants_search(params[:id])
     @categories = Category.all
     @search_word = Category.find(params[:id]).name
+  end
+
+  def myitem_show
+    add_breadcrumb "出品した商品", myitem_show_searches_path
+    @product = Product.new
+    @products = Product.where(user_id: current_user.id)
+    @categories = Category.all
+    @search_word = current_user.nickname
   end
 
   private

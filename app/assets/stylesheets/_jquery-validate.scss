@@ -1,35 +1,82 @@
-.registration {
-  &__main {
-    // 〜省略〜
-    &__form {
-      // 〜省略〜
-      &__content {
-      // 〜省略〜
-        &__group {
-          // 〜省略〜
-          &__input.invalid { // バリデーションNGの場合に枠線を赤色に変更
-            border: #ea352d 1px solid;
-          }
-          &__input.valid {
-            border: seagreen 1px solid; // バリデーションNGの場合に枠線を緑色に変更
-          }
-        }
+.signup-form {
+  &.invalid {
+    border: #ea352d 2px solid;
+  }
+  &.valid {
+    border: #0098E8 1px solid;
+  }
+  &-half-left.invalid {
+    border: #ea352d 2px solid;
+  }
+  &-half-left.valid {
+    border: #0098E8 1px solid;
+  }
+  &-half-right.invalid {
+    border: #ea352d 2px solid;
+  }
+  &-half-right.valid {
+    border: #0098E8 1px solid;
+  }
+}
+
+.signup-birthday{
+  &.invalid {
+    border: #ea352d 2px solid;
+  }
+  &.valid {
+    border: #0098E8 1px solid;
+  }
+}
+
+.signup-form-prefecture{
+  &.invalid {
+    border: #ea352d 2px solid;
+  }
+  &.valid {
+    border: #0098E8 1px solid;
+  }
+}
+
+.sell-main{
+  &__product-name{
+    &__box{
+      &.invalid {
+        border: #ea352d 2px solid;
+      }
+      &.valid {
+        border: #0098E8 1px solid;
       }
     }
   }
-  
 }
+
+
 // エラーメッセージ
-#signup-first-nickname-error, #email-error, #password-error {
-  color: #ea352d;
-  line-height: 1.5;
-  font-size: 14px;
-  margin-top: 3px;
-}
-// 入力欄をクリック時に枠線を水色に変更
-input[type=text]:focus,
-input[type=email]:focus,
-input[type=password]:focus {
-  outline: none;
-  border-color: #0098E8;
-}
+#signup-first-nickname-error, 
+#signup-first-email-error, 
+#signup-first-password-error, 
+#signup-first-password-confirmation-error, 
+#signup-first-first-name-error, 
+#signup-first-first-name-error, 
+#signup-first-last-name-error, 
+#signup-first-first-name-kana-error, 
+#signup-first-last-name-kana-error, 
+#signup-first-birthday-year-error ,
+#signup-first-birthday-month-error, 
+#signup-first-birthday-date-error,
+#signup-second-form-first-name-error, 
+#signup-second-form-last-name-error, 
+#signup-second-form-first-name-kana-error, 
+#signup-second-form-last-name-kana-error, 
+#signup-second-form-postcode-error, 
+#signup-second-form-prefecture-error, 
+#signup-second-form-city-error, 
+#signup-second-form-block-error,
+#sell-form-name-error
+  {
+    color: #ea352d;
+    font-weight: bold;
+    line-height: 1.5;
+    font-size: 14px;
+    margin-top: 3px;
+  }
