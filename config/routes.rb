@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   root 'homes#index'
 
-  resources :mypages, only: [:index]
+  resources :mypages, only: [:index, :edit, :update]
   resources :sells, only: [:new, :create, :show, :edit, :update, :destroy] do
     resources :buys, only: [:new, :create] do
       collection do

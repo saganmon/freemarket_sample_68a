@@ -2,12 +2,6 @@
   = render 'shared/header'
 
   .navigation-bar
-  -#   = tag.ul class: "navigation-bar__contents" do
-  -#     = tag.li link_to('FURIMA', "/", class: "navigation-bar__contents__root")
-  -#     = tag.li link_to(@sell.category.parent.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.category.parent.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.category.name, "#", class: "navigation-bar__contents__category navi-link")
-  -#     = tag.li link_to(@sell.name, "#", class: "navigation-bar__contents__item navi-link active")
 
   .sell-product-detail
     = tag.h2(@sell.name, class: "sell-product-detail__title")
