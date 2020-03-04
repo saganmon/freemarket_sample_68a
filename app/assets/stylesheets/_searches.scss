@@ -94,6 +94,20 @@
         width: 220px;
         background-color: $background-color-white;
         position: relative;
+        &__image {
+          position: relative;
+          margin: 0;
+          &__soldout {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 4%;
+            font-size: 30px;
+            text-align: center;
+            color: #fff;
+          }
+        }
         &__name {
           font-size: 16px;
           color: $font-color-black;  

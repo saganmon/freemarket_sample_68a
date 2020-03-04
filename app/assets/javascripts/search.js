@@ -1,10 +1,30 @@
 $(function () {
   function buildHTML(product) {
-    var html =
+    if (product.status === false) {
+      var html =
+        `<a href="/sells/${product.id}">
+          <div class="search-main__right-contents__images__list">
+            <div class="search-main__right-contents__images__list__image">
+              <img width="220px" height="150px" src="${product.image}">
+            </div>
+            <div class="search-main__right-contents__images__list__name">
+              ${product.name}
+            </div>
+            <div class="search-main__right-contents__images__list__price">
+              ${product.price}
+            </div>
+          </div>
+        </a>`
+    }
+    else {
+      var html =
       `<a href="/sells/${product.id}">
         <div class="search-main__right-contents__images__list">
           <div class="search-main__right-contents__images__list__image">
             <img width="220px" height="150px" src="${product.image}">
+          </div>
+          <div class="search-main__right-contents__images__list__image__soldout">
+            <img width="220px" height="150px" src="/material/logo/unnamed (1).png">
           </div>
           <div class="search-main__right-contents__images__list__name">
             ${product.name}
@@ -14,6 +34,7 @@ $(function () {
           </div>
         </div>
       </a>`
+    }
     return html;
   };
 
