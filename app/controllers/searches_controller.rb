@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  before_action :set_breadcrumb
+  before_action :set_breadcrumb, :set_data
 
   def index
     add_breadcrumb "あいまい検索", searches_path
@@ -10,13 +10,11 @@ class SearchesController < ApplicationController
       @products = Product.keyword_search(get_params)
       @search = Product.new
       @search_word = get_params
-      @product = Product.new
     end
   end
 
   def sort
     add_breadcrumb "並び替え", searches_path
-    @product = Product.new
     @products = Product.search_sort_products(gets_params)
     respond_to do |format|
       format.html
@@ -27,29 +25,28 @@ class SearchesController < ApplicationController
   def detail_search
     add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
-    @product = Product.new
     @query_products = @query.result(distinct: true)
     @search_word = get_ransack_only_name
-    @categories = Category.all
   end
 
   def show
     add_breadcrumb "カテゴリー", search_path(params[:id])
-    @product = Product.new
     @products = Product.descendants_search(params[:id])
-    @categories = Category.all
     @search_word = Category.find(params[:id]).name
   end
 
   def myitem_show
     add_breadcrumb "出品した商品", myitem_show_searches_path
-    @product = Product.new
     @products = Product.where(user_id: current_user.id)
-    @categories = Category.all
     @search_word = current_user.nickname
   end
 
   private
+
+  def set_data
+    @product = Product.new
+    @categories = Category.all
+  end
 
   def get_params
     params.require(:product)[:keyword]
