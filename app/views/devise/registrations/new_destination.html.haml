@@ -14,8 +14,8 @@
             = tag.span("必須", class: "signup-mast")
             = tag.br
           .signup-display-flex
-            = f.text_field :p_first_name, placeholder: "例)山田",class: "signup-form-half-left", id: "signup-second-form-first-name"
-            = f.text_field :p_last_name, placeholder: "例)太郎",class: "signup-form-half-right", id: "signup-second-form-last-name"
+            = f.text_field :p_first_name, placeholder: "例)山田",value: @user.first_name, class: "signup-form-half-left", id: "signup-second-form-first-name"
+            = f.text_field :p_last_name, placeholder: "例)太郎",value: @user.last_name, class: "signup-form-half-right", id: "signup-second-form-last-name"
 
         .signup-second__main__form__name-kana
           .signup-display-flex
@@ -23,8 +23,8 @@
             = tag.span("必須", class: "signup-mast")
             = tag.br
           .signup-display-flex
-            = f.text_field :p_first_name_kana, placeholder: "例)やまだ",class: "signup-form-half-left", id: "signup-second-form-first-name-kana"
-            = f.text_field :p_last_name_kana, placeholder: "例)たろう",class: "signup-form-half-right", id: "signup-second-form-last-name-kana"
+            = f.text_field :p_first_name_kana, placeholder: "例)やまだ",value: @user.first_name_kana, class: "signup-form-half-left", id: "signup-second-form-first-name-kana"
+            = f.text_field :p_last_name_kana, placeholder: "例)たろう",value: @user.last_name_kana, class: "signup-form-half-right", id: "signup-second-form-last-name-kana"
 
         .signup-second__main__form__postcode
           .signup-display-flex
