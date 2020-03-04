@@ -8,8 +8,8 @@ class SearchesController < ApplicationController
     else
       @query = Product.ransack(params[:q])
       @products = Product.keyword_search(get_params)
-      @search_word = get_params
       @search = Product.new
+      @search_word = get_params
       @product = Product.new
     end
   end
@@ -28,7 +28,7 @@ class SearchesController < ApplicationController
     add_breadcrumb "絞り込み", detail_search_searches_path
     @query = Product.search(get_ransack)
     @product = Product.new
-    @products = @query.result(distinct: true)
+    @query_products = @query.result(distinct: true)
     @search_word = get_ransack_only_name
     @categories = Category.all
   end

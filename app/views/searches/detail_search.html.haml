@@ -56,11 +56,11 @@
       の検索結果
       = tag.br
       = tag.br
-      - if  @products.blank?
+      - if  @query_products.blank?
         検索結果がありませんでした。
       - else
         .search-main__right-contents__images
-          - @products.each do |p|
+          - @query_products.each do |p|
             - if !user_signed_in? || p.user_id != current_user&.id
               = link_to sell_path(p) do
                 .search-main__right-contents__images__list
