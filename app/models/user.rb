@@ -8,6 +8,8 @@ class User < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   has_many :purchase_destinations
+  has_many :purchase_credits
+  has_many :product
 
   validates :nickname, :birthday_year, :birthday_month,:birthday_date, presence: true
   validates :email, uniqueness: true, format:  { with: VALID_EMAIL_REGEX }
