@@ -9,7 +9,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    binding.pry
     unless @user.valid?
       redirect_to new_user_registration_path, alert: '入力内容を確認してください'
       return
