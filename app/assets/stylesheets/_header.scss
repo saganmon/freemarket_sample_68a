@@ -85,6 +85,8 @@
               width: 280px;
               line-height: 45px;
               padding-left: 3px;
+              height: 1000px;
+              display: none;
             }
             &__medium {
               z-index: 1000;
@@ -97,10 +99,11 @@
               width: 280px;
               line-height: 45px;
               padding-left: 3px;
+              height: 1000px;
+              display: none;
             }
             &__small {
               z-index: 1000;
-              // display: none;
               text-decoration: none;
               list-style: none;
               background-color: $background-color-white;
@@ -110,6 +113,8 @@
               width: 280px;
               line-height: 45px;
               padding-left: 3px;
+              height: 1000px;
+              display: none;
             }
           }
         }
